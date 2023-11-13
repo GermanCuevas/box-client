@@ -17,6 +17,15 @@ const config: Config = {
     fontFamily: {
       Roboto: ['Roboto'],
       Saira: ['Saira']
+    },
+    colors: {
+      lemonGreen: '#CEF169',
+      darkGreen: '#24424D',
+      lightGreen: '#80CF8B',
+      lightPurple: '#CEC4F4',
+      white: '#FEFEFE',
+      lightWhite: '#EBECEF',
+      orange: '#EF7709'
     }
   },
   plugins: []
