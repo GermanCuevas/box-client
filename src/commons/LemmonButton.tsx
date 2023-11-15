@@ -1,18 +1,20 @@
 import React from 'react'
-import Image from 'next/image'
+import { ArrowBack } from './Icons'
 
 interface LemmonButtonProps {
   height?: string
   width?: string
-  pathIcon?: string
-  text?: string
+  icon?: any
+  title?: string
+  subtitle?: string
 }
 
 const LemmonButton: React.FC<LemmonButtonProps> = ({
-  height = '40px',
+  height = '48px',
   width = '300px',
-  pathIcon = '/icons/chevron-down.svg',
-  text = 'repartos pendientes'
+  icon = <ArrowBack />,
+  title = 'repartos pendientes',
+  subtitle = null
 }) => {
   const styles = {
     height,
@@ -20,18 +22,18 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
   }
 
   return (
-    <button type="button" style={styles} className={'bg-lemonGreen rounded-[15px] relative pl-5'}>
-      <Image
-        className={'right-2 absolute top-[0.4rem]'}
-        width={30}
-        height={30}
-        alt="icon"
-        src={`${pathIcon}`}
-      />
-
-      <h3 className={'text-darkGreen font-Saira font-bold tracking-[1.5px] text-start text-lg'}>
-        {text.toLocaleUpperCase()}
-      </h3>
+    <button
+      type="button"
+      style={styles}
+      className={'bg-lemonGreen flex justify-between items-center rounded-[15px] pl-5 pr-5'}
+    >
+      <figcaption className="text-start flex flex-col justify-center  font-Saira h-full text-darkGreen ">
+        <h3 className={'font-bold leading-4 tracking-[1.5px] text-start text-lg uppercase'}>
+          {title}
+        </h3>
+        {subtitle && <h5 className="lowercase tracking-wide text-xs font-thin">{subtitle}</h5>}
+      </figcaption>
+      <figure className={subtitle ? '-rotate-90' : ''}>{icon}</figure>
     </button>
   )
 }
