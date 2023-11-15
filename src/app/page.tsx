@@ -1,10 +1,10 @@
 import BoxTitle from '@/commons/BoxTitle'
-/* import PackageDetails from '@/commons/PackageDetails' */
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col items-center">
       <h1>HOLA MUNDO!</h1>
+
       <BoxTitle
         dateBox="mie /03"
         titleBox="enero"
