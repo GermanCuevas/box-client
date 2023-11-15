@@ -1,10 +1,12 @@
 import BoxTitle from '@/commons/BoxTitle'
+import Input from '@/commons/Input'
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center">
+    <main>
+      {/* <main className="flex flex-col items-center"> */}
       <h1>HOLA MUNDO!</h1>
-
+      <Input placeholder="Nombre" type="text" />
       <BoxTitle
         dateBox="mie /03"
         titleBox="enero"
