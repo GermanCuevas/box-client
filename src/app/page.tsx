@@ -1,6 +1,6 @@
 import BoxTitle from '@/commons/BoxTitle'
 import Header from '@/components/Header'
-/* import PackageDetails from '@/commons/PackageDetails' */
+
 
 export default function Home() {
   return (
