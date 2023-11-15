@@ -1,13 +1,30 @@
+import { EyeClose, EyeOpen } from './Icons'
 interface input {
   placeholder?: string
   type?: string
-  eye?: boolean
+  eyeOn?: boolean
 }
 
-export default function Input({}: input) {
+export default function Input({ placeholder, type, eyeOn }: input) {
   return (
-    <div className="border-b-2 border-red-600">
-      {/* <input className="outline-none w-full border-b-[10px] border-red-500" type={type} placeholder={placeholder} /> */}
-    </div>
+    <>
+      <div className="relative">
+        <input
+          className="outline-none w-full border-b pb-0.5 text-sm"
+          type={type}
+          placeholder={placeholder}
+        />
+        {eyeOn === false && (
+          <div className="absolute top-1 right-[5px]">
+            <EyeClose />
+          </div>
+        )}
+        {eyeOn === true && (
+          <div className="absolute top-1 right-[5px]">
+            <EyeOpen />
+          </div>
+        )}
+      </div>
+    </>
   )
 }
