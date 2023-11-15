@@ -1,10 +1,11 @@
 import BoxTitle from '@/commons/BoxTitle'
+import Header from '@/components/Header'
 /* import PackageDetails from '@/commons/PackageDetails' */
 
 export default function Home() {
   return (
-    <main>
-      <h1>HOLA MUNDO!</h1>
+    <main className="bg-lightGreen h-screen">
+      <Header />
       <BoxTitle
         dateBox="mie /03"
         titleBox="enero"
