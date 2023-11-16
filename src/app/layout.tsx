@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { roboto } from '../../public/fonts/fonts'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${roboto.className} antialiased`}>{children}</body>
     </html>
   )
 }

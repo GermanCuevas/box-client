@@ -15,10 +15,6 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
       }
     },
-    fontFamily: {
-      Roboto: ['Roboto'],
-      Saira: ['Saira']
-    },
     colors: {
       lemonGreen: '#CEF169',
       darkGreen: '#24424D',
