@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: 'Roboto';
-    src: url(../../public/fonts/Roboto-Regular.ttf);
-  }
-  @font-face {
-    font-family: 'Saira';
-    src: url(../../public/fonts/SairaCondensed-Bold.ttf);
-  }
-}
 
 * {
   margin: 0;
