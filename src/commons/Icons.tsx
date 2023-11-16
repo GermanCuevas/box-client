@@ -332,3 +332,4 @@ export function BoxTitle({ width, height, color }: check) {
     </svg>
   )
 }
+
