@@ -14,7 +14,7 @@ export default function Register() {
           <BoxTitle width="90" height="40" />
         </div>
         <div className="mb-3 mt-4  tracking-normal w-full">
-          <LemmonButton title="creá tu cuenta" height="40px" width="100%" />
+          <LemmonButton title="creá tu cuenta" width={'w-full'} />
         </div>
         <div className="w-full">
           <div className="bg-white  p-5 rounded-[13px] ">
