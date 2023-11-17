@@ -10,8 +10,8 @@ export function CheckOK({ width, height, color, classNameCheck }: check) {
     <div className={classNameCheck}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={width || '24'}
-        height={height || '24'}
+        width={width || '20'}
+        height={height || '20'}
         viewBox="0 0 24 24"
         fill={color || 'rgba(0, 0, 0, 1)'}
         transform=""
@@ -320,7 +320,6 @@ export function BoxTitle({ width, height, color }: check) {
   )
 }
 
-
 export function BoxTitleLogin({ width, height }: check) {
   return (
     <svg
@@ -393,4 +392,3 @@ export function BoxTitleLogin({ width, height }: check) {
     </svg>
   )
 }
-
