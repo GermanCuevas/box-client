@@ -8,7 +8,7 @@ interface LogoutButtonProps {
 export default function LogoutButton({ text, classNameButton }: LogoutButtonProps) {
   return (
     <button
-      className={`bg-lightGreen text-xl text-darkGreen rounded-xl border-darkGreen border-2 ${classNameButton}`}
+      className={`bg-lightGreen text-sm text-darkGreen rounded-xl border-darkGreen border-2 ${classNameButton}`}
     >
       {text}
     </button>
