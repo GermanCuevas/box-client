@@ -49,7 +49,7 @@ export default function Home() {
       <Deliveries deliveryType={'history'} data={fakeDataHistory} />
 
       <ButtomBottom
-        buttonClassName={'bg-darkGreen'}
+        buttonClassName={'bg-darkGreen w-[270px]'}
         titleButtomClasses={'text-lemonGreen'}
         titleButtom="obtener paquetes"
       />
