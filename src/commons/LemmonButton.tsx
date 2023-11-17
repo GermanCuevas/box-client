@@ -8,31 +8,30 @@ interface LemmonButtonProps {
   icon?: any
   title?: string
   subtitle?: string
-  tracking?: string
 }
 
 const LemmonButton: React.FC<LemmonButtonProps> = ({
-  height = 'h-[40px]',
-  width = 'w-[300px]',
+  height = '48px',
+  width = '300px',
   icon = <ArrowBack />,
   title = 'repartos pendientes',
-  subtitle = null,
-  tracking = 'tracking-[.5px]'
+  subtitle = null
 }) => {
+  const styles = {
+    height,
+    width
+  }
+
   return (
     <button
       type="button"
-      className={`bg-lemonGreen flex justify-between items-center rounded-[15px] pl-5 pr-5 max-w-[300px] ${height} ${width}`}
+      style={styles}
+      className={'bg-lemonGreen flex justify-between items-center rounded-[15px] pl-5 pr-5'}
     >
-
       <figcaption
         className={`text-start flex flex-col justify-center  ${saira.className} antialiased h-full text-darkGreen `}
       >
         <h3 className={'font-bold leading-4 tracking-[1.5px] text-start text-lg uppercase '}>
-
-
-      <figcaption className="text-start flex flex-col justify-center  font-Saira h-full text-darkGreen ">
-        <h3 className={`font-bold leading-4  ${tracking} text-start text-lg uppercase`}>
           {title}
         </h3>
         {subtitle && <h5 className="lowercase tracking-wide text-xs font-thin">{subtitle}</h5>}
