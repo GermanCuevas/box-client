@@ -1,16 +1,18 @@
 import { EyeClose, EyeOpen } from './Icons'
+
 interface input {
   placeholder?: string
   type?: string
   eyeOn?: boolean
+  inputClasses?: string
 }
 
-export default function Input({ placeholder, type, eyeOn }: input) {
+export default function Input({ placeholder, type, eyeOn, inputClasses }: input) {
   return (
     <>
       <div className="relative">
         <input
-          className="outline-none w-full border-b pb-0.5 text-sm"
+          className={`${inputClasses} outline-none w-full border-b-[0.5px] pb-0.5 text-sm`}
           type={type}
           placeholder={placeholder}
         />
