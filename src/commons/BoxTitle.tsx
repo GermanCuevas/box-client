@@ -16,7 +16,7 @@ export default function BoxTitle({
 }: box) {
   return (
     <div className="bg-lightPurple flex justify-center items-center rounded-t-[15px]">
-      <div className={`w-[30rem] h-[3.5rem] flex ${boxClasses} items-center  text-darkGreen`}>
+      <div className={`w-full h-[3.5rem] flex ${boxClasses} items-center  text-darkGreen`}>
         <h2 className={titleBoxClasses}>{titleBox}</h2>
         {dateBox && <h2 className={dateBoxClasses}>{dateBox}</h2>}
       </div>
