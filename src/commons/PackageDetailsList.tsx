@@ -14,7 +14,7 @@ export default function PackageDetailsList({
   packageID = '#0A235',
   direction = 'Amenabar 2356,',
   location = 'CABA',
-  status = 'delivered'
+  status = 'pending'
 }: packageDetailsList) {
   const statusChanges = {
     'in course': { bgCircle: 'bg-lightGreen', textStatus: 'en curso' },
@@ -25,7 +25,7 @@ export default function PackageDetailsList({
   return (
     <li
       className={
-        'list-none flex justify-between items-center  max-w-[300px] w-[300px] h-[75px] m-auto bg-white pl-2'
+        'list-none flex justify-between items-center  max-w-[300px] w-full h-[75px] m-auto  pl-3'
       }
     >
       <figure className="bg-lightPurple w-[50px] h-[50px] grid place-content-center rounded-2xl">
