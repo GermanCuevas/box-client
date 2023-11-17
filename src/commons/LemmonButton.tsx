@@ -28,10 +28,19 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
       style={styles}
       className={'bg-lemonGreen flex justify-between items-center rounded-[15px] pl-5 pr-5'}
     >
+
+
+      <figcaption className="text-start flex flex-col justify-center  font-Saira h-full text-darkGreen ">
+        <h3
+          className={`font-bold leading-4 ${saira.className} antialiased ${tracking} text-start text-[14px] uppercase`}
+        >
+
+
       <figcaption
         className={`text-start flex flex-col justify-center  ${saira.className} antialiased h-full text-darkGreen`}
       >
         <h3 className={'font-bold leading-4 tracking-[1.5px] text-start text-lg uppercase '}>
+
           {title}
         </h3>
         {subtitle && <h5 className="lowercase tracking-wide text-xs font-thin">{subtitle}</h5>}
