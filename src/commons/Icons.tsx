@@ -320,7 +320,6 @@ export function BoxTitle({ width, height, color }: check) {
   )
 }
 
-
 export function BoxTitleLogin({ width, height }: check) {
   return (
     <svg
@@ -393,4 +392,3 @@ export function BoxTitleLogin({ width, height }: check) {
     </svg>
   )
 }
-
