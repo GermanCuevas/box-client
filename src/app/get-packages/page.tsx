@@ -17,7 +17,7 @@ export default function GetPackages() {
           <Header />
         </div>
         <div className="mb-3 mt-6  tracking-normal w-full">
-          <LemmonButton title={'obtener paquetes'} height="40px" width="100%" />
+          <LemmonButton title={'obtener paquetes'} width={'w-full'} />
         </div>
       </div>
       <div className="ml-8 mr-8 bg-lightGreen w-full text-xs flex flex-col justify-center items-center">
