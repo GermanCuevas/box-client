@@ -46,7 +46,7 @@ export default function Home() {
         <LogoutButton classNameButton={'text-[12px] border-[1px]  px-4'} text={'cerrar sesión'} />
       </header>
       <Deliveries data={fakeDataPendings} />
-      <Deliveries data={fakeDataHistory} />
+      <Deliveries deliveryType={'history'} data={fakeDataHistory} />
 
       <ButtomBottom
         buttonClassName={'bg-darkGreen'}
