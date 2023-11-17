@@ -6,7 +6,6 @@ export default function Header() {
     <div className="w-full">
       <div className=" flex justify-between items-center">
         <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
-
         <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
       </div>
     </div>

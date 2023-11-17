@@ -14,12 +14,12 @@ export default function Shipment() {
         <div className=" w-full">
           <Header />
         </div>
-        <div className="mb-3 mt-4  tracking-normal w-full">
+        <div className="mb-3 mt-6  tracking-normal w-full">
           <LemmonButton title="Reparto en curso" height="40px" width="100%" />
         </div>
         <div className="w-full">
           <div className="relative">
-            <img src="/img/reparto.png" alt="" className="h-[340px] rounded-[13px]" />
+            <img src="/img/reparto.png" alt="" className="h-[396px] rounded-[13px]" />
             <div className="absolute inset-0 flex justify-center items-end ">
               <div className="bg-lightPurple mb-6 w-full mx-4 rounded-[15px]">
                 <div className={`flex flex-col leading-4 p-4 ${roboto.className} text-[12px]`}>
