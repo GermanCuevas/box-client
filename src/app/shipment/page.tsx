@@ -15,7 +15,7 @@ export default function Shipment() {
           <Header />
         </div>
         <div className="mb-3 mt-6  tracking-normal w-full">
-          <LemmonButton title="Reparto en curso" height="40px" width="100%" />
+          <LemmonButton title="Reparto en curso" width={'w-full'} />
         </div>
         <div className="w-full">
           <div className="relative">
