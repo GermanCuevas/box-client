@@ -1,17 +1,16 @@
-# Git Workflow with Semantic Versioning (Semver) Documentation
+# Git Workflow Documentation
 
 ## Table of Contents
 
 1. **Introduction**
 2. **Branching Model**
 3. **Workflow**
-4. **Semantic Versioning (Semver)**
-5. **Conclusion**
-6. **Glossary**
+4. **Conclusion**
+5. **Glossary**
 
 ## 1. Introduction
 
-This document describes the guidelines that this project follows. These guidelines includes Git Workflow and Semver rules.
+This document describes the guidelines that this project follows. These guidelines includes Git Workflow rules.
 
 The aim is to provide consistency in our development work and progression.
 
@@ -144,44 +143,11 @@ git push origin hotfix/1.1.1 --tags
 
 Then create a pull request to both `main` and `develop`, once the pull request is reviewed and approved, it can be merged.
 
-## 4. Semantic Versioning (Semver)
+## 4. Conclusion
 
-Semantic Versioning (Semver) is a versioning scheme for software that help us to determine the changes of the developed software through time.
+This Git workflow model provides us with a robust structure for managing our project's development. By using develop, feature, bugfix, release and hotfix branches in combination with GitHub's pull request mechanism, we can ensure code quality and maintainability.
 
-The version format is `MAJOR.MINOR.PATCH`. We increment these values following these rules:
-
-- MAJOR version when we make incompatible or breaking changes.
-- MINOR version when we add functionality in a backward-compatible manner.
-- PATCH version when we make backward-compatible bug fixes.
-
-Remember that for any versions prior to 1.0.0, the software should be considered unstable and changes may still be introduced that break backward compatibility.
-
-That is why we start our versioning at `0.1.0` and will increment the `MAJOR` number to `1.0.0` when we are ready to release our first stable version.
-
-## 4.1 Semver flow
-
-### MAJOR Changes
-
-- When we make incompatible changes to the software that will break backward compatibility (breaking changes).
-- Only increment the `MAJOR` version when we are ready to release a new stable version.
-- Reset the `MINOR` and `PATCH` versions to `0`.
-
-### MINOR Changes
-
-- When we add new functionality in a backward-compatible manner.
-- Increment the `MINOR` version when we are ready to release a new stable version.
-- Reset the `PATCH` version to `0`.
-
-### PATCH Changes
-
-- When we make backward-compatible bug fixes.
-- Increment the `PATCH` version when we are ready to release a new stable version.
-
-## 5. Conclusion
-
-This Git workflow model provides us with a robust structure for managing our project's development. By using develop, feature, bugfix, release and hotfix branches in combination with GitHub's pull request mechanism, we can ensure code quality and maintainability. By adhering to Semantic Versioning, we are also able to clearly communicate the nature of changes with each new version.
-
-## 6. Glossary
+## 5. Glossary
 
 - **Git**: A distributed version control system for tracking changes in source code during software development.
 - **GitHub**: A hosting platform for Git repositories that provides a web-based graphical interface. It also provides access control and collaboration features, such as bug tracking, feature requests, task management, and continuous integration.
