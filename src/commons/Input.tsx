@@ -1,3 +1,5 @@
+'use client'
+import { useState } from 'react'
 import { EyeClose, EyeOpen } from './Icons'
 
 interface input {
@@ -7,22 +9,39 @@ interface input {
   inputClasses?: string
 }
 
-export default function Input({ placeholder, type, eyeOn, inputClasses }: input) {
+export default function Input({ placeholder, type = 'text', eyeOn, inputClasses }: input) {
+  const [isEyeClose, setIsEyeClose] = useState(eyeOn)
+
+  function handleClickEye() {
+    setIsEyeClose(!isEyeClose)
+  }
+
+  function changeType() {
+    if (eyeOn === undefined) {
+      return type
+    }
+    if (isEyeClose) {
+      return 'text'
+    } else if (!isEyeClose) {
+      return 'password'
+    }
+  }
+
   return (
     <>
       <div className="relative">
         <input
           className={`${inputClasses} outline-none w-full border-b-[0.5px] pb-0.5 text-sm`}
-          type={type}
+          type={changeType()}
           placeholder={placeholder}
         />
-        {eyeOn === false && (
-          <div className="absolute top-1 right-[5px]">
+        {isEyeClose === false && (
+          <div className="absolute top-1 right-[5px] cursor-pointer" onClick={handleClickEye}>
             <EyeClose />
           </div>
         )}
-        {eyeOn === true && (
-          <div className="absolute top-1 right-[5px]">
+        {isEyeClose === true && (
+          <div className="absolute top-1 right-[5px] cursor-pointer" onClick={handleClickEye}>
             <EyeOpen />
           </div>
         )}
