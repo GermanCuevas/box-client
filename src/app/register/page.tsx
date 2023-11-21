@@ -1,10 +1,10 @@
-'use client'
-import ButtomBottom from '@/commons/ButtomBottom'
-import { CameraPlus, BoxTitle } from '@/commons/Icons'
-import Input from '@/commons/Input'
-import LemmonButton from '@/commons/LemmonButton'
+'use client';
+import ButtomBottom from '@/commons/ButtomBottom';
+import { CameraPlus, BoxTitle } from '@/commons/Icons';
+import Input from '@/commons/Input';
+import LemmonButton from '@/commons/LemmonButton';
 
-import { roboto } from '../../../public/fonts/fonts'
+import { roboto } from '../../../public/fonts/fonts';
 
 export default function Register() {
   return (
@@ -49,7 +49,7 @@ export default function Register() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 /* 

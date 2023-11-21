@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 interface box {
-  titleBox?: string
-  dateBox?: string
-  titleBoxClasses?: string
-  dateBoxClasses?: string
-  boxClasses?: string
+  titleBox?: string;
+  dateBox?: string;
+  titleBoxClasses?: string;
+  dateBoxClasses?: string;
+  boxClasses?: string;
 }
 
 export default function BoxTitle({
@@ -21,5 +21,5 @@ export default function BoxTitle({
         {dateBox && <h2 className={dateBoxClasses}>{dateBox}</h2>}
       </div>
     </div>
-  )
+  );
 }

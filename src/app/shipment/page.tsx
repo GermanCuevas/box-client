@@ -1,11 +1,8 @@
-'use client'
-import ButtomBottom from '@/commons/ButtomBottom'
-
-import LemmonButton from '@/commons/LemmonButton'
-
-import { roboto } from '../../../public/fonts/fonts'
-
-import Header from '@/components/Header'
+'use client';
+import ButtomBottom from '@/commons/ButtomBottom';
+import LemmonButton from '@/commons/LemmonButton';
+import { roboto } from '../../../public/fonts/fonts';
+import Header from '@/components/Header';
 
 export default function Shipment() {
   return (
@@ -81,5 +78,5 @@ export default function Shipment() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import ButtomBottom from '@/commons/ButtomBottom'
-import { BoxTitle } from '@/commons/Icons'
-import LogoutButton from '@/commons/LogoutButton'
-import Deliveries from '@/components/Deliveries'
+import ButtomBottom from '@/commons/ButtomBottom';
+import { BoxTitle } from '@/commons/Icons';
+import LogoutButton from '@/commons/LogoutButton';
+import Deliveries from '@/components/Deliveries';
 
 const fakeDataPendings = [
   {
@@ -16,7 +16,7 @@ const fakeDataPendings = [
     location: 'CABA',
     status: 'pending'
   }
-]
+];
 const fakeDataHistory = [
   {
     packageID: '#0G370',
@@ -36,7 +36,7 @@ const fakeDataHistory = [
     location: 'CABA',
     status: 'delivered'
   }
-]
+];
 
 export default function Home() {
   return (
@@ -54,5 +54,5 @@ export default function Home() {
         titleButtom="obtener paquetes"
       />
     </main>
-  )
+  );
 }

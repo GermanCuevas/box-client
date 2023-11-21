@@ -1,13 +1,13 @@
-import React from 'react'
-import { Box } from './Icons'
-import { Trash } from './Icons'
+import React from 'react';
+import { Box } from './Icons';
+import { Trash } from './Icons';
 
 interface packageDetailsList {
-  packageID?: string
-  direction?: string
-  location?: string
-  status?: 'in course' | 'pending' | 'delivered'
-  icon?: any
+  packageID?: string;
+  direction?: string;
+  location?: string;
+  status?: 'in course' | 'pending' | 'delivered';
+  icon?: any;
 }
 
 export default function PackageDetailsList({
@@ -20,7 +20,7 @@ export default function PackageDetailsList({
     'in course': { bgCircle: 'bg-lightGreen', textStatus: 'en curso' },
     pending: { bgCircle: 'bg-orange', textStatus: 'pendiente' },
     delivered: { bgCircle: 'bg-darkGreen', textStatus: 'entregado' }
-  }
+  };
 
   return (
     <li
@@ -73,5 +73,5 @@ export default function PackageDetailsList({
         </div>
       </div>
     </li>
-  )
+  );
 }

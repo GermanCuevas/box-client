@@ -1,5 +1,5 @@
-import LogoutButton from '@/commons/LogoutButton'
-import Image from 'next/image'
+import LogoutButton from '@/commons/LogoutButton';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -9,5 +9,5 @@ export default function Header() {
         <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
       </div>
     </div>
-  )
+  );
 }

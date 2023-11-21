@@ -1,29 +1,29 @@
-'use client'
-import { useState } from 'react'
-import { EyeClose, EyeOpen } from './Icons'
+'use client';
+import { useState } from 'react';
+import { EyeClose, EyeOpen } from './Icons';
 
 interface input {
-  placeholder?: string
-  type?: string
-  eyeOn?: boolean
-  inputClasses?: string
+  placeholder?: string;
+  type?: string;
+  eyeOn?: boolean;
+  inputClasses?: string;
 }
 
 export default function Input({ placeholder, type = 'text', eyeOn, inputClasses }: input) {
-  const [isEyeClose, setIsEyeClose] = useState(eyeOn)
+  const [isEyeClose, setIsEyeClose] = useState(eyeOn);
 
   function handleClickEye() {
-    setIsEyeClose(!isEyeClose)
+    setIsEyeClose(!isEyeClose);
   }
 
   function changeType() {
     if (eyeOn === undefined) {
-      return type
+      return type;
     }
     if (isEyeClose) {
-      return 'text'
+      return 'text';
     } else if (!isEyeClose) {
-      return 'password'
+      return 'password';
     }
   }
 
@@ -47,5 +47,5 @@ export default function Input({ placeholder, type = 'text', eyeOn, inputClasses 
         )}
       </div>
     </>
-  )
+  );
 }

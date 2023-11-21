@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 interface buttom {
-  titleButtom?: string
-  titleButtomClasses?: string
-  buttonClassName?: string
+  titleButtom?: string;
+  titleButtomClasses?: string;
+  buttonClassName?: string;
 }
 
 export default function ButtomBottom({ titleButtom, titleButtomClasses, buttonClassName }: buttom) {
@@ -12,5 +12,5 @@ export default function ButtomBottom({ titleButtom, titleButtomClasses, buttonCl
     >
       <h2 className={`text-xs uppercase font-normal  ${titleButtomClasses}`}>{titleButtom}</h2>
     </button>
-  )
+  );
 }

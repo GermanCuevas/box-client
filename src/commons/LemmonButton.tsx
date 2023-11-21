@@ -1,15 +1,15 @@
-import React from 'react'
-import { saira } from '../../public/fonts/fonts'
+import React from 'react';
+import { saira } from '../../public/fonts/fonts';
 
-import { ArrowBack } from './Icons'
+import { ArrowBack } from './Icons';
 
 interface LemmonButtonProps {
-  height?: string
-  width?: string
-  icon?: any
-  title?: string
-  subtitle?: string
-  tracking?: string
+  height?: string;
+  width?: string;
+  icon?: any;
+  title?: string;
+  subtitle?: string;
+  tracking?: string;
 }
 
 const LemmonButton: React.FC<LemmonButtonProps> = ({
@@ -35,6 +35,6 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
       </figcaption>
       <figure className={subtitle ? '-rotate-90' : ''}>{icon}</figure>
     </button>
-  )
-}
-export default LemmonButton
+  );
+};
+export default LemmonButton;

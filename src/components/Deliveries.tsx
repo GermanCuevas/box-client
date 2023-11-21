@@ -1,21 +1,21 @@
-import React from 'react'
+import React from 'react';
 //icon
-import { ChevronDownSmall } from '@/commons/Icons'
+import { ChevronDownSmall } from '@/commons/Icons';
 //commons
-import LemmonButton from '@/commons/LemmonButton'
-import PackageDetailsList from '@/commons/PackageDetailsList'
+import LemmonButton from '@/commons/LemmonButton';
+import PackageDetailsList from '@/commons/PackageDetailsList';
 
 interface data {
-  packageID?: string
-  direction?: string
-  location?: string
-  status?: 'in course' | 'pending' | 'delivered'
+  packageID?: string;
+  direction?: string;
+  location?: string;
+  status?: 'in course' | 'pending' | 'delivered';
 }
 
 interface deliveries {
-  lemmonTitle?: string
-  data?: Array<object>
-  deliveryType?: string
+  lemmonTitle?: string;
+  data?: Array<object>;
+  deliveryType?: string;
 }
 
 export default function Deliveries({
@@ -37,7 +37,7 @@ export default function Deliveries({
           </>
         )}
         {data?.map(({ packageID, location, status, direction }: data, index: number, array) => {
-          const lastElement = index === array.length - 1
+          const lastElement = index === array.length - 1;
 
           return (
             <>
@@ -49,9 +49,9 @@ export default function Deliveries({
               />
               {!lastElement && <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />}
             </>
-          )
+          );
         })}
       </ul>
     </section>
-  )
+  );
 }
