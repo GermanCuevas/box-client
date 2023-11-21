@@ -1,7 +1,7 @@
 import ButtomBottom from '@/commons/ButtomBottom'
-import { BoxTitle } from '@/commons/Icons'
-import LogoutButton from '@/commons/LogoutButton'
+
 import Deliveries from '@/components/Deliveries'
+import Header from '@/components/Header'
 
 const fakeDataPendings = [
   {
@@ -40,14 +40,20 @@ const fakeDataHistory = [
 
 export default function Home() {
   return (
-    <main className="bg-lightGreen h-[100vh] flex flex-col justify-evenly pt-5">
-      <header className={'flex justify-between px-8'}>
-        <BoxTitle />
-        <LogoutButton classNameButton={'text-[12px] border-[1px]  px-4'} text={'cerrar sesión'} />
-      </header>
-      <Deliveries data={fakeDataPendings} />
-      <Deliveries deliveryType={'history'} data={fakeDataHistory} />
-
+    <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
+      <Header />
+      <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
+        <div className="h-[40%] ">
+          <Deliveries data={fakeDataPendings} />
+        </div>
+        <div className="h-[55%] ">
+          <Deliveries
+            lemmonTitle={'historial de repartos'}
+            deliveryType={'history'}
+            data={fakeDataHistory}
+          />
+        </div>
+      </div>
       <ButtomBottom
         buttonClassName={'bg-darkGreen w-[270px]'}
         titleButtomClasses={'text-lemonGreen'}

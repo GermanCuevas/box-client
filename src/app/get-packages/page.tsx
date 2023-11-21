@@ -11,16 +11,14 @@ import { roboto } from '../../../public/fonts/fonts'
 
 export default function GetPackages() {
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 px-7">
+    <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4">
+      <Header />
       <div className={`w-full max-w-[300px] ${roboto.className}`}>
-        <div className=" w-full">
-          <Header />
-        </div>
         <div className="mb-3 mt-6  tracking-normal w-full">
           <LemmonButton title={'obtener paquetes'} width={'w-full'} />
         </div>
       </div>
-      <div className="ml-8 mr-8 bg-lightGreen w-full text-xs flex flex-col justify-center items-center">
+      <div className="px-3 bg-lightGreen w-full text-xs flex flex-col justify-center items-center">
         <div className="w-[90%]">
           <BoxTitle
             titleBox={'¿Cuántos paquetes repartirás hoy?'}

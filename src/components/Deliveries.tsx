@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 //icon
 import { ChevronDownSmall } from '@/commons/Icons'
 //commons
@@ -23,11 +24,24 @@ export default function Deliveries({
   data,
   deliveryType
 }: deliveries) {
-  return (
-    <section className={'w-[300px] min-h-[100px] rounded-[15px] m-auto  bg-white'}>
-      <LemmonButton height={'h-[43px]'} title={lemmonTitle} icon={<ChevronDownSmall />} />
+  const [toggleList, setToggleList] = useState(false)
 
-      <ul className={'w-full h-fit flex flex-col  items-center'}>
+  const useHandleLemmonToggle = () => {
+    setToggleList((prev) => !prev)
+  }
+
+  return (
+    <section
+      className={`w-[300px] min-h-[100px] rounded-[15px] m-auto ${!toggleList ? 'bg-white' : ''}`}
+    >
+      <LemmonButton
+        hanleLemmonButton={useHandleLemmonToggle}
+        height={'h-[43px]'}
+        title={lemmonTitle}
+        icon={<ChevronDownSmall />}
+      />
+
+      <ul className={`w-full h-fit ${!toggleList ? 'flex' : 'hidden'}   flex-col  items-center`}>
         {deliveryType === 'history' && (
           <>
             <li className={'text-[12px] text-start w-full pl-5 font-[500] text-darkGreen'}>

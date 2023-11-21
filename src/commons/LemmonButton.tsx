@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { saira } from '../../public/fonts/fonts'
 
@@ -10,6 +12,7 @@ interface LemmonButtonProps {
   title?: string
   subtitle?: string
   tracking?: string
+  hanleLemmonButton?: () => void
 }
 
 const LemmonButton: React.FC<LemmonButtonProps> = ({
@@ -18,10 +21,12 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
   icon = <ArrowBack />,
   title = 'repartos pendientes',
   subtitle = null,
-  tracking = 'tracking-[.5px]'
+  tracking = 'tracking-[.5px]',
+  hanleLemmonButton
 }) => {
   return (
     <button
+      onClick={hanleLemmonButton}
       type="button"
       className={`bg-lemonGreen flex justify-between items-center rounded-[15px] pl-5 pr-5 max-w-[300px] ${height} ${width} ${tracking}`}
     >
