@@ -1,8 +1,8 @@
-import React from 'react'
-import { roboto } from '../../public/fonts/fonts'
+import React from 'react';
+import { roboto } from '../../public/fonts/fonts';
 interface hello {
-  name?: string
-  imagen?: string
+  name?: string;
+  imagen?: string;
 }
 
 export default function HelloAdmin({ name, imagen }: hello) {
@@ -18,5 +18,5 @@ export default function HelloAdmin({ name, imagen }: hello) {
         </h2>
       </div>
     </div>
-  )
+  );
 }

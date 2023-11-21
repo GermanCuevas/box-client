@@ -1,8 +1,8 @@
 interface check {
-  width?: string
-  height?: string
-  color?: string
-  classNameCheck?: string
+  width?: string;
+  height?: string;
+  color?: string;
+  classNameCheck?: string;
 }
 
 export function CheckOK({ width, height, color, classNameCheck }: check) {
@@ -19,11 +19,11 @@ export function CheckOK({ width, height, color, classNameCheck }: check) {
         <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
       </svg>
     </div>
-  )
+  );
 }
 
 export function CheckOff({ classNameCheck }: check) {
-  return <div className={`rounded-full ${classNameCheck}`}></div>
+  return <div className={`rounded-full ${classNameCheck}`}></div>;
 }
 
 // flecha  lemonCommon
@@ -42,7 +42,7 @@ export function ChevronDownSmall({ width, height, color }: check) {
         fill={color || '#24424D'}
       />
     </svg>
-  )
+  );
 }
 
 export function ChevronDownBig({ width, height, color }: check) {
@@ -63,7 +63,7 @@ export function ChevronDownBig({ width, height, color }: check) {
         stroke-linejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 export function ArrowBack({ width, height, color }: check) {
@@ -83,7 +83,7 @@ export function ArrowBack({ width, height, color }: check) {
         fill="#24424D"
       />
     </svg>
-  )
+  );
 }
 
 export function EyeClose({ width, height, color }: check) {
@@ -106,7 +106,7 @@ export function EyeClose({ width, height, color }: check) {
       />
       <line x1="1.67861" y1="16.4728" x2="16.9995" y2="3.617" stroke="#24424D" />
     </svg>
-  )
+  );
 }
 
 export function EyeOpen({ width, height, color }: check) {
@@ -128,7 +128,7 @@ export function EyeOpen({ width, height, color }: check) {
         stroke="#24424D"
       />
     </svg>
-  )
+  );
 }
 
 export function Box({ width, height, color }: check) {
@@ -157,7 +157,7 @@ export function Box({ width, height, color }: check) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 export function Trash({ width, height, color }: check) {
@@ -184,7 +184,7 @@ export function Trash({ width, height, color }: check) {
       <path d="M17.1177 9.63158L16.7942 13.3158" stroke="#24424D" stroke-linecap="round" />
       <rect x="0.5" y="0.5" width="30" height="19" rx="4.5" stroke="#24424D" />
     </svg>
-  )
+  );
 }
 
 export function CameraPlus({ width, height, color }: check) {
@@ -206,7 +206,7 @@ export function CameraPlus({ width, height, color }: check) {
         stroke-linecap="round"
       />
     </svg>
-  )
+  );
 }
 
 export function ArrowLeftBox({ width, height, color }: check) {
@@ -225,7 +225,7 @@ export function ArrowLeftBox({ width, height, color }: check) {
       />
       <rect x="0.5" y="0.5" width="18" height="19" rx="4.5" stroke="#24424D" />
     </svg>
-  )
+  );
 }
 
 export function ArrowRightBox({ width, height, color }: check) {
@@ -256,7 +256,7 @@ export function ArrowRightBox({ width, height, color }: check) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 export function ChevronBox({ width, height, color }: check) {
@@ -287,7 +287,7 @@ export function ChevronBox({ width, height, color }: check) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 export function BoxTitle({ width, height, color }: check) {
@@ -317,7 +317,7 @@ export function BoxTitle({ width, height, color }: check) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 export function BoxTitleLogin({ width, height }: check) {
@@ -390,5 +390,5 @@ export function BoxTitleLogin({ width, height }: check) {
         </clipPath>
       </defs>
     </svg>
-  )
+  );
 }

@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import Address from '@/commons/Address'
-import ButtomBottom from '@/commons/ButtomBottom'
-import BoxTitle from '@/commons/BoxTitle'
-import LemmonButton from '@/commons/LemmonButton'
-import Header from '@/components/Header'
-import React from 'react'
-import { ChevronDownBig } from '@/commons/Icons'
-import { roboto } from '../../../public/fonts/fonts'
+import Address from '@/commons/Address';
+import ButtomBottom from '@/commons/ButtomBottom';
+import BoxTitle from '@/commons/BoxTitle';
+import LemmonButton from '@/commons/LemmonButton';
+import Header from '@/components/Header';
+import React from 'react';
+import { ChevronDownBig } from '@/commons/Icons';
+import { roboto } from '../../../public/fonts/fonts';
 
 export default function GetPackages() {
   return (
@@ -48,5 +48,5 @@ export default function GetPackages() {
         />
       </div>
     </div>
-  )
+  );
 }
