@@ -1,5 +1,5 @@
-'use client'
-import React, { useState } from 'react'
+'use client';
+import React, { useState } from 'react';
 //icon
 import { ChevronDownSmall } from '@/commons/Icons';
 //commons
@@ -24,11 +24,11 @@ export default function Deliveries({
   data,
   deliveryType
 }: deliveries) {
-  const [toggleList, setToggleList] = useState(false)
+  const [toggleList, setToggleList] = useState(false);
 
   const useHandleLemmonToggle = () => {
-    setToggleList((prev) => !prev)
-  }
+    setToggleList((prev) => !prev);
+  };
 
   return (
     <section

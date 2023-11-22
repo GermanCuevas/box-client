@@ -1,9 +1,8 @@
+import ButtomBottom from '@/commons/ButtomBottom';
 
-import ButtomBottom from '@/commons/ButtomBottom'
+import Deliveries from '@/components/Deliveries';
+import Header from '@/components/Header';
 
-import Deliveries from '@/components/Deliveries'
-import Header from '@/components/Header'
-        
 const fakeDataPendings = [
   {
     packageID: '#0A235',
