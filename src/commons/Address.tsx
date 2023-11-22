@@ -1,8 +1,8 @@
-import React from 'react'
-import { CheckOK, CheckOff } from './Icons'
+import React from 'react';
+import { CheckOK, CheckOff } from './Icons';
 interface address {
-  status?: boolean
-  onClickButton?(): void
+  status?: boolean;
+  onClickButton?(): void;
 }
 
 export default function Address({ status, onClickButton }: address) {
@@ -25,5 +25,5 @@ export default function Address({ status, onClickButton }: address) {
         <h2>Amenabar 2356, CABA</h2>
       </div>
     </div>
-  )
+  );
 }

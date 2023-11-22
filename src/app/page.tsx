@@ -1,8 +1,9 @@
+
 import ButtomBottom from '@/commons/ButtomBottom'
 
 import Deliveries from '@/components/Deliveries'
 import Header from '@/components/Header'
-
+        
 const fakeDataPendings = [
   {
     packageID: '#0A235',
@@ -16,7 +17,7 @@ const fakeDataPendings = [
     location: 'CABA',
     status: 'pending'
   }
-]
+];
 const fakeDataHistory = [
   {
     packageID: '#0G370',
@@ -36,7 +37,7 @@ const fakeDataHistory = [
     location: 'CABA',
     status: 'delivered'
   }
-]
+];
 
 export default function Home() {
   return (
@@ -60,5 +61,5 @@ export default function Home() {
         titleButtom="obtener paquetes"
       />
     </main>
-  )
+  );
 }

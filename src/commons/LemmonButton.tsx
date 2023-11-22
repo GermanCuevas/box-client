@@ -1,11 +1,14 @@
+
 'use client'
 
 import React from 'react'
 import { saira } from '../../public/fonts/fonts'
 
-import { ArrowBack } from './Icons'
+
+import { ArrowBack } from './Icons';
 
 interface LemmonButtonProps {
+
   height?: string
   width?: string
   icon?: any
@@ -13,6 +16,7 @@ interface LemmonButtonProps {
   subtitle?: string
   tracking?: string
   hanleLemmonButton?: () => void
+
 }
 
 const LemmonButton: React.FC<LemmonButtonProps> = ({
@@ -40,6 +44,6 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
       </figcaption>
       <figure className={subtitle ? '-rotate-90' : ''}>{icon}</figure>
     </button>
-  )
-}
-export default LemmonButton
+  );
+};
+export default LemmonButton;

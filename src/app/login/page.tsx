@@ -1,7 +1,7 @@
-import { BoxTitleLogin } from '@/commons/Icons'
-import Input from '@/commons/Input'
-import React from 'react'
-import ButtomBottom from '@/commons/ButtomBottom'
+import { BoxTitleLogin } from '@/commons/Icons';
+import Input from '@/commons/Input';
+import React from 'react';
+import ButtomBottom from '@/commons/ButtomBottom';
 
 export default function Login() {
   return (
@@ -40,5 +40,5 @@ export default function Login() {
         </div>
       </div>
     </section>
-  )
+  );
 }
