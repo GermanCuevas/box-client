@@ -1,22 +1,18 @@
+'use client';
 
-'use client'
-
-import React from 'react'
-import { saira } from '../../public/fonts/fonts'
-
+import React from 'react';
+import { saira } from '../../public/fonts/fonts';
 
 import { ArrowBack } from './Icons';
 
 interface LemmonButtonProps {
-
-  height?: string
-  width?: string
-  icon?: any
-  title?: string
-  subtitle?: string
-  tracking?: string
-  hanleLemmonButton?: () => void
-
+  height?: string;
+  width?: string;
+  icon?: any;
+  title?: string;
+  subtitle?: string;
+  tracking?: string;
+  hanleLemmonButton?: () => void;
 }
 
 const LemmonButton: React.FC<LemmonButtonProps> = ({
