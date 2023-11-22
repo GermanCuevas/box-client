@@ -3,6 +3,7 @@ import ButtomBottom from '@/commons/ButtomBottom';
 import LemmonButton from '@/commons/LemmonButton';
 import { roboto } from '../../../public/fonts/fonts';
 import Header from '@/components/Header';
+import Image from 'next/image';
 
 export default function Shipment() {
   return (
@@ -14,7 +15,7 @@ export default function Shipment() {
         </div>
         <div className="w-full">
           <div className="relative">
-            <img src="/img/reparto.png" alt="hola" className="h-[396px] rounded-[13px]" />
+            <Image src="/img/reparto.png" alt="hola" height={396} className="rounded-[13px]" />
             <div className="absolute inset-0 flex justify-center items-end ">
               <div className="bg-lightPurple mb-6 w-full mx-4 rounded-[15px]">
                 <div className={`flex flex-col leading-4 p-4 ${roboto.className} text-[12px]`}>
@@ -76,5 +77,5 @@ export default function Shipment() {
         </div>
       </div>
     </section>
-  )
+  );
 }
