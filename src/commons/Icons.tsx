@@ -3,6 +3,7 @@ interface check {
   height?: string;
   color?: string;
   classNameCheck?: string;
+  classNameGroup?: string;
 }
 
 export function CheckOK({ width, height, color, classNameCheck }: check) {
@@ -286,6 +287,22 @@ export function ChevronBox({ width, height, color }: check) {
           stroke="#24424D"
         />
       </g>
+    </svg>
+  );
+}
+
+export function Group({ width, height, color, classNameGroup }: check) {
+  return (
+    <svg
+      className={classNameGroup}
+      width={width || '35'}
+      height={height || '19'}
+      viewBox="0 0 35 19"
+      fill={color || 'none'}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="35" height="19" rx="9.5" fill="#24424D" />
+      <circle cx="25.5" cy="9.5" r="7.5" fill="#CEF169" />
     </svg>
   );
 }
