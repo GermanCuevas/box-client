@@ -1,6 +1,10 @@
+'use client';
+//redux
+import { useAppSelector } from '@/store/hooks';
+//commons
 import ButtomBottom from '@/commons/ButtomBottom';
-
 import Deliveries from '@/components/Deliveries';
+//components
 import Header from '@/components/Header';
 
 const fakeDataPendings = [
@@ -39,6 +43,10 @@ const fakeDataHistory = [
 ];
 
 export default function Home() {
+  const { userAuth } = useAppSelector((state) => state.user);
+
+  console.log(userAuth);
+
   return (
     <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
       <Header />
