@@ -8,7 +8,7 @@ import { ArrowBack } from './Icons';
 interface LemmonButtonProps {
   height?: string;
   width?: string;
-  icon?: any;
+  icon?: React.ReactNode;
   title?: string;
   subtitle?: string;
   tracking?: string;
