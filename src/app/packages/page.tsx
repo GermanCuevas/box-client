@@ -43,13 +43,13 @@ const fakeDataHistory = [
     status: 'delivered'
   }
 ];
-
-interface dataProps {
-  packageID?: string;
-  direction?: string;
-  location?: string;
-  status: 'in course' | 'pending' | 'delivered';
-}
+//verificar any
+// interface dataProps {
+//   packageID?: string;
+//   direction?: string;
+//   location?: string;
+//   status: 'in course' | 'pending' | 'delivered';
+// }
 
 interface packageProps {}
 
@@ -89,7 +89,7 @@ export default function Package({}: packageProps) {
               </>
             }
             {fakeDataHistory?.map(
-              ({ packageID, location, status, direction }: dataProps, index: number, array) => {
+              ({ packageID, location, status, direction }: any, index: number, array) => {
                 const lastElement = index === array.length - 1;
 
                 return (
