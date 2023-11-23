@@ -4,9 +4,11 @@ import Image from 'next/image';
 interface hello {
   name?: string;
   imagen?: string;
+  title?: string;
+  subTitle?: string;
 }
 
-export default function HelloAdmin({ name, imagen }: hello) {
+export default function HelloAdmin({ name, imagen, title, subTitle }: hello) {
   return (
     <div className="w-[300px] min-h-[100px] rounded-[15px] m-auto  bg-white flex  items-center">
       <div className="ml-4 flex flex-col  items-center">
@@ -19,10 +21,10 @@ export default function HelloAdmin({ name, imagen }: hello) {
         />
       </div>
       <div className={'ml-4 flex flex-col'}>
-        <h1 className={`text-darkGreen font-bold ${roboto.className}`}>¡Hola Admin!{name}</h1>
-        <h2 className={`text-darkGreen text-sm ${roboto.className}`}>
-          Estos son los pedidos del día
-        </h2>
+        <h1 className={`text-darkGreen font-bold ${roboto.className}`}>
+          {title} {name}
+        </h1>
+        <h2 className={`text-darkGreen text-sm ${roboto.className}`}>{subTitle}</h2>
       </div>
     </div>
   );
