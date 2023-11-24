@@ -3,6 +3,7 @@ interface check {
   height?: string;
   color?: string;
   classNameCheck?: string;
+  classNameGroup?: string;
 }
 
 export function CheckOK({ width, height, color, classNameCheck }: check) {

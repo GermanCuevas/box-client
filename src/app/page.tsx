@@ -1,11 +1,15 @@
 'use client';
+//router
+import { useRouter } from 'next/navigation';
 //redux
 import { useAppSelector } from '@/store/hooks';
+
 //commons
 import ButtomBottom from '@/commons/ButtomBottom';
 import Deliveries from '@/components/Deliveries';
 //components
 import Header from '@/components/Header';
+import { useEffect } from 'react';
 
 const fakeDataPendings = [
   {
@@ -43,30 +47,46 @@ const fakeDataHistory = [
 ];
 
 export default function Home() {
-  const { userAuth } = useAppSelector((state) => state.user);
+  const userAuth = useAppSelector((store) => store.user.userAuth);
 
-  console.log(userAuth);
+  const router = useRouter();
 
+  useEffect(() => {
+    if (!userAuth) {
+      router.push('/login');
+    }
+  }, [router, userAuth]);
+
+  const handleButton = () => {
+    router.push('/packages');
+  };
   return (
-    <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
-      <Header />
-      <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
-        <div className="h-[40%] ">
-          <Deliveries data={fakeDataPendings} />
-        </div>
-        <div className="h-[55%] ">
-          <Deliveries
-            lemmonTitle={'historial de repartos'}
-            deliveryType={'history'}
-            data={fakeDataHistory}
+    <>
+      {!userAuth ? (
+        <></>
+      ) : (
+        <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
+          <Header />
+          <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
+            <div className="h-[40%] ">
+              <Deliveries data={fakeDataPendings} />
+            </div>
+            <div className="h-[55%] ">
+              <Deliveries
+                lemmonTitle={'historial de repartos'}
+                deliveryType={'history'}
+                data={fakeDataHistory}
+              />
+            </div>
+          </div>
+          <ButtomBottom
+            handleButton={handleButton}
+            buttonClassName={'bg-darkGreen w-[270px]'}
+            titleButtomClasses={'text-lemonGreen'}
+            titleButtom="obtener paquetes"
           />
-        </div>
-      </div>
-      <ButtomBottom
-        buttonClassName={'bg-darkGreen w-[270px]'}
-        titleButtomClasses={'text-lemonGreen'}
-        titleButtom="obtener paquetes"
-      />
-    </main>
+        </main>
+      )}
+    </>
   );
 }

@@ -24,8 +24,8 @@ export default function Register() {
                   <CameraPlus />
                 </div>
               </div>
-              <Input placeholder="Nombre" type="text" />
               <Input placeholder="Apellido" type="text" />
+              <Input placeholder="Nombre" type="text" />
               <Input placeholder="Email@contraseña.com" type="email" />
               <Input placeholder="**********" type="password" eyeOn={true} />
               <Input placeholder="Confirmar contraseña" type="password" eyeOn={false} />
