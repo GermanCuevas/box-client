@@ -44,7 +44,9 @@ export default function Login() {
     onSubmit
   });
 
-  
+  const handleRegister = () => {
+    router.push('/register');
+  };
 
   return (
     <section className="h-screen w-full bg-darkGreen bg-[url(../../public/img/BgLogin.svg)] flex justify-center items-center py-4 px-7">
