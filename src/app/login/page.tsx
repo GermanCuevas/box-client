@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, ChangeEvent } from 'react';
+import React from 'react';
 //router
 import { useRouter } from 'next/navigation';
 //redux
@@ -10,6 +10,8 @@ import { setUserAuth } from '@/store/slices/userSlice';
 import { BoxTitleLogin } from '@/commons/Icons';
 import Input from '@/commons/Input';
 import ButtomBottom from '@/commons/ButtomBottom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 export default function Login() {
   //redux
@@ -18,53 +20,62 @@ export default function Login() {
   //router
   const router = useRouter();
 
-  //useState
-  const [userInfo, setUserInfo] = useState({ email: '', password: '' });
-
-  //functions
-  const handleChangeUserInfo = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserInfo({ ...userInfo, [name]: value });
+  const initialValues = {
+    email: '',
+    password: ''
   };
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Correo electrónico no válido').required('Correo necesario'),
+    password: Yup.string().required('Contraseña requerida')
+  });
 
-  //submit
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const onSubmit = (values: any) => {
+    // Maneja la lógica de envío del formulario aquí
+    console.log(values);
     dispatch(setUserAuth(true));
-
     // const user = users?.filter(user => user.email === userInfo.email && user.password === userInfo.password )
-
     // console.log(user);
-
     router.push('/');
   };
-  const handleRegister = () => {
-    router.push('/register');
-  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit
+  });
+
+  
 
   return (
     <section className="h-screen w-full bg-darkGreen bg-[url(../../public/img/BgLogin.svg)] flex justify-center items-center py-4 px-7">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={formik.handleSubmit}
         className="bg-lightGreen h-[305px] w-full max-w-[300px] relative rounded-[15px]"
       >
-        <div className="flex flex-col gap-y-4 mb-8 mt-16 mx-5">
+        <div className="flex flex-col gap-4 mb-8 mt-16 mx-5">
           <Input
             inputClasses="bg-lightGreen leading-normal tracking-tight font-light"
             type="email"
             placeholder="Email@contraseña.com"
-            handleChange={handleChangeUserInfo}
-            name="email"
+            {...formik.getFieldProps('email')}
           />
           <Input
             inputClasses="bg-lightGreen leading-normal tracking-tight font-light"
             type="password"
             placeholder="contraseña"
             eyeOn={false}
-            handleChange={handleChangeUserInfo}
-            name="password"
+            {...formik.getFieldProps('password')}
           />
+          <div className="relative">
+            {formik.touched.password && formik.errors.password && (
+              <>
+                <div className="absolute">
+                  <div className="text-xs">{formik.errors.email}</div>
+                  <div className="text-xs">{formik.errors.password}</div>
+                </div>
+              </>
+            )}
+          </div>
         </div>
         <div className="flex flex-col gap-y-3 mt-8 mx-5 ">
           <ButtomBottom
