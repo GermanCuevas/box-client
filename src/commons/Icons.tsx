@@ -401,14 +401,14 @@ export function Circle() {
           id="Ellipse 370"
           d="M3 35.5C3 17.5507 17.5507 3 35.5 3C53.4493 3.00001 68 17.5508 68 35.5C68 53.4493 53.4493 68 35.5 68C17.5507 68 2.99999 53.4492 3 35.5Z"
           stroke="#EBECEF"
-          stroke-width="6"
+          strokeWidth="6"
         />
         <path
           id="Ellipse 373"
           d="M35.5 3C53.4493 3.00001 68 17.5508 68 35.5C68 53.4493 53.4493 68 35.5 68"
           stroke="#CEC4F4"
-          stroke-opacity="0.5"
-          stroke-width="6"
+          strokeOpacity="0.5"
+          strokeWidth="6"
         />
         <g id="Ellipse 372" filter="url(#filter0_d_48_805)">
           <circle cx="5.5" cy="5.5" r="5.5" transform="matrix(1 0 0 -1 26 73)" fill="#CEC4F4" />
@@ -422,9 +422,9 @@ export function Circle() {
           width="15"
           height="15"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
