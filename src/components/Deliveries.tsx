@@ -17,12 +17,14 @@ interface deliveries {
   lemmonTitle?: string;
   data?: Array<object>;
   deliveryType?: string;
+  roundedClass?: string;
 }
 
 export default function Deliveries({
   lemmonTitle = 'repartos pendientes',
   data,
-  deliveryType
+  deliveryType,
+  roundedClass = 'rounded-[15px]'
 }: deliveries) {
   const [toggleList, setToggleList] = useState(false);
 
@@ -32,7 +34,7 @@ export default function Deliveries({
 
   return (
     <section
-      className={`w-[300px] min-h-[100px] rounded-[15px] m-auto ${!toggleList ? 'bg-white' : ''}`}
+      className={`w-[300px] min-h-[100px] ${roundedClass} m-auto ${!toggleList ? 'bg-white' : ''}`}
     >
       <LemmonButton
         hanleLemmonButton={useHandleLemmonToggle}
@@ -45,7 +47,7 @@ export default function Deliveries({
         {deliveryType === 'history' && (
           <>
             <li className={'text-[12px] text-start w-full pl-5 font-[500] text-darkGreen'}>
-              <p>58 paquetes entregados</p>
+              <p className="m-2">58 paquetes entregados</p>
             </li>
             <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
           </>

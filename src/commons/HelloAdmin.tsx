@@ -25,7 +25,7 @@ export default function HelloAdmin({
 }: hello) {
   return (
     <div
-      className={`w-[300px] min-h-[100px] rounded-[15px] m-auto  bg-white flex items-center${
+      className={`w-[300px] min-h-[90px] rounded-[15px] m-auto  bg-white flex items-center${
         classNamediv1 || ''
       }`}
     >
