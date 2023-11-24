@@ -8,10 +8,6 @@ import { roboto } from '../../../public/fonts/fonts';
 import HelloAdmin from '@/commons/HelloAdmin';
 import Deliveries from '@/components/Deliveries';
 
-interface ProfileAdminProps {
-  data?: Array<object>;
-}
-
 const fakeDataHistory = [
   {
     packageID: '#0G370',
@@ -33,8 +29,7 @@ const fakeDataHistory = [
   }
 ];
 
-export default function ProfileAdmin({ data = [] }: ProfileAdminProps) {
-  console.log(data);
+export default function ProfileAdmin() {
   return (
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
       <Header />
