@@ -32,9 +32,7 @@ export default function DeliveryDetails({
 
   return (
     <li
-      className={
-        'list-none flex max-w-[300px] w-full h-[90px] m-auto bg-white border-b-[0.5px] pl-2'
-      }
+      className={'list-none flex max-w-[300px] w-full h-[100px] m-auto bg-white border-b-[0.5px] '}
     >
       <div className="basis-[30%] flex justify-center items-center">
         <div className="w-[80px] h-[80px] relative flex justify-center items-center">
