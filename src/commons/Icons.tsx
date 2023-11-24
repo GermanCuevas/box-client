@@ -59,9 +59,9 @@ export function ChevronDownBig({ width, height, color }: check) {
         id="Vector"
         d="M2 2L12 10L22 2"
         stroke="#24424D"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -99,7 +99,7 @@ export function EyeClose({ width, height, color }: check) {
       <path
         d="M7.99998 6.22987C8.60766 6.0849 9.2736 6.00006 9.99998 6.00006C12.7879 6.00006 14.6853 7.24984 15.8167 8.35223C16.3833 8.90432 16.6666 9.18037 16.6666 10.0001C16.6666 10.8197 16.3833 11.0958 15.8167 11.6479C14.6853 12.7503 12.7879 14.0001 9.99998 14.0001C7.21206 14.0001 5.31462 12.7503 4.18324 11.6479C3.61662 11.0958 3.33331 10.8197 3.33331 10.0001C3.33331 9.18037 3.61662 8.90432 4.18324 8.35223C4.50406 8.03963 4.88647 7.71519 5.33331 7.41075"
         stroke="#24424D"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M12 10.0001C12 11.1046 11.1046 12.0001 10 12.0001C8.89543 12.0001 8 11.1046 8 10.0001C8 8.89549 8.89543 8.00006 10 8.00006C11.1046 8.00006 12 8.89549 12 10.0001Z"
@@ -122,7 +122,7 @@ export function EyeOpen({ width, height, color }: check) {
       <path
         d="M8.00001 6.22981C8.60769 6.08484 9.27363 6 10 6C12.7879 6 14.6854 7.24978 15.8167 8.35217C16.3834 8.90426 16.6667 9.18031 16.6667 10C16.6667 10.8197 16.3834 11.0957 15.8167 11.6478C14.6854 12.7502 12.7879 14 10 14C7.21209 14 5.31465 12.7502 4.18327 11.6478C3.61665 11.0957 3.33334 10.8197 3.33334 10C3.33334 9.18031 3.61665 8.90426 4.18327 8.35217C4.50409 8.03957 4.8865 7.71513 5.33334 7.41069"
         stroke="#24424D"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M12 10C12 11.1046 11.1046 12 10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10Z"
@@ -146,15 +146,15 @@ export function Box({ width, height, color }: check) {
           id="Vector"
           d="M29.9812 15.6C29.9368 14.0267 29.7872 13.0237 29.2831 12.1677C28.5662 10.9503 27.2752 10.2728 24.6932 8.91782L22.2933 7.65836C20.1865 6.55279 19.1331 6 18 6C16.8669 6 15.8135 6.55279 13.7067 7.65836L11.3068 8.91782C8.72475 10.2728 7.43375 10.9503 6.71688 12.1677C6 13.3851 6 14.9 6 17.9298V18.0702C6 21.1 6 22.6149 6.71688 23.8323C7.43375 25.0497 8.72475 25.7272 11.3068 27.0822L13.7067 28.3416C15.8135 29.4472 16.8669 30 18 30C19.1331 30 20.1865 29.4472 22.2933 28.3416L24.6932 27.0822C27.2752 25.7272 28.5662 25.0497 29.2831 23.8323C29.7872 22.9763 29.9368 21.9733 29.9812 20.4"
           stroke="#24424D"
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
         />
         <path
           id="Vector_2"
           d="M28.8 12.6L24 15M18 18L7.20001 12.6M18 18V29.4M18 18C18 18 21.2912 16.3544 23.4 15.3C23.6343 15.1828 24 15 24 15M24 15V19.2M24 15L12.6 9"
           stroke="#24424D"
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
         />
       </g>
     </svg>
@@ -173,16 +173,16 @@ export function Trash({ width, height, color }: check) {
       <path
         d="M13.6693 4.47368C13.9358 3.61512 14.6548 3 15.5 3C16.3452 3 17.0643 3.61512 17.3307 4.47368"
         stroke="#24424D"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
-      <path d="M21 5.94737H10" stroke="#24424D" stroke-linecap="round" />
+      <path d="M21 5.94737H10" stroke="#24424D" strokeLinecap="round" />
       <path
         d="M19.9216 7.78947L19.624 12.873C19.5095 14.8293 19.4522 15.8074 18.8925 16.4037C18.3328 17 17.4719 17 15.7502 17H15.2498C13.5281 17 12.6673 17 12.1076 16.4037C11.5479 15.8074 11.4906 14.8293 11.3761 12.873L11.0785 7.78947"
         stroke="#24424D"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
-      <path d="M13.8824 9.63158L14.206 13.3158" stroke="#24424D" stroke-linecap="round" />
-      <path d="M17.1177 9.63158L16.7942 13.3158" stroke="#24424D" stroke-linecap="round" />
+      <path d="M13.8824 9.63158L14.206 13.3158" stroke="#24424D" strokeLinecap="round" />
+      <path d="M17.1177 9.63158L16.7942 13.3158" stroke="#24424D" strokeLinecap="round" />
       <rect x="0.5" y="0.5" width="30" height="19" rx="4.5" stroke="#24424D" />
     </svg>
   );
@@ -197,14 +197,14 @@ export function CameraPlus({ width, height, color }: check) {
       fill={color || 'none'}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M22 16H12" stroke="#24424D" stroke-width="2" stroke-linecap="round" />
-      <path d="M17 11L17 21" stroke="#24424D" stroke-width="2" stroke-linecap="round" />
-      <path d="M26.7333 10.9333H25.2" stroke="#24424D" stroke-width="2" stroke-linecap="round" />
+      <path d="M22 16H12" stroke="#24424D" strokeWidth="2" strokeLinecap="round" />
+      <path d="M17 11L17 21" stroke="#24424D" strokeWidth="2" strokeLinecap="round" />
+      <path d="M26.7333 10.9333H25.2" stroke="#24424D" strokeWidth="2" strokeLinecap="round" />
       <path
         d="M1 17.1212C1 12.3546 1 9.97122 2.16099 8.25916C2.66359 7.51799 3.30943 6.88162 4.06163 6.38639C5.17811 5.65132 6.57587 5.38858 8.71589 5.29467C9.73712 5.29467 10.6164 4.53217 10.8167 3.54545C11.1171 2.06538 12.436 1 13.9678 1H19.0322C20.564 1 21.8829 2.06538 22.1833 3.54545C22.3836 4.53217 23.2629 5.29467 24.2841 5.29467C26.4241 5.38858 27.8219 5.65132 28.9384 6.38639C29.6906 6.88162 30.3364 7.51799 30.839 8.25916C32 9.97122 32 12.3546 32 17.1212C32 21.8879 32 24.2712 30.839 25.9833C30.3364 26.7244 29.6906 27.3608 28.9384 27.856C27.2008 29 24.782 29 19.9444 29H13.0556C8.21796 29 5.79917 29 4.06163 27.856C3.30943 27.3608 2.66359 26.7244 2.16099 25.9833C1.83307 25.4997 1.59777 24.9626 1.42893 24.3333"
         stroke="#24424D"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -222,7 +222,7 @@ export function ArrowLeftBox({ width, height, color }: check) {
       <path
         d="M6.02937 10.7924C5.50936 10.3921 5.50936 9.6079 6.02937 9.20759L10.14 6.04322C10.7976 5.53703 11.75 6.00579 11.75 6.83563L11.75 13.1644C11.75 13.9942 10.7976 14.463 10.14 13.9568L6.02937 10.7924Z"
         stroke="#24424D"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <rect x="0.5" y="0.5" width="18" height="19" rx="4.5" stroke="#24424D" />
     </svg>
@@ -243,7 +243,7 @@ export function ArrowRightBox({ width, height, color }: check) {
           id="Polygon 5"
           d="M12.9706 10.7924C13.4906 10.3921 13.4906 9.6079 12.9706 9.20759L8.85999 6.04322C8.20243 5.53703 7.25 6.00579 7.25 6.83563L7.25 13.1644C7.25 13.9942 8.20243 14.463 8.85999 13.9568L12.9706 10.7924Z"
           stroke="#24424D"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <rect
           id="Rectangle 39549"
@@ -274,8 +274,8 @@ export function ChevronBox({ width, height, color }: check) {
           id="Vector"
           d="M7 6L13 12L19 6"
           stroke="#24424D"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <rect
           id="Rectangle 39549"
@@ -389,6 +389,61 @@ export function BoxTitleLogin({ width, height }: check) {
         <clipPath id="clip0_7_3228">
           <path d="M0 0H184V49H0V0Z" fill="white" />
         </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
+export function Circle() {
+  return (
+    <svg width="71" height="77" viewBox="0 0 71 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="Group 37367">
+        <path
+          id="Ellipse 370"
+          d="M3 35.5C3 17.5507 17.5507 3 35.5 3C53.4493 3.00001 68 17.5508 68 35.5C68 53.4493 53.4493 68 35.5 68C17.5507 68 2.99999 53.4492 3 35.5Z"
+          stroke="#EBECEF"
+          strokeWidth="6"
+        />
+        <path
+          id="Ellipse 373"
+          d="M35.5 3C53.4493 3.00001 68 17.5508 68 35.5C68 53.4493 53.4493 68 35.5 68"
+          stroke="#CEC4F4"
+          strokeOpacity="0.5"
+          strokeWidth="6"
+        />
+        <g id="Ellipse 372" filter="url(#filter0_d_48_805)">
+          <circle cx="5.5" cy="5.5" r="5.5" transform="matrix(1 0 0 -1 26 73)" fill="#CEC4F4" />
+        </g>
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_48_805"
+          x="24"
+          y="62"
+          width="15"
+          height="15"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="1" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_48_805" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_48_805"
+            result="shape"
+          />
+        </filter>
       </defs>
     </svg>
   );

@@ -22,7 +22,8 @@ const config: Config = {
       lightPurple: '#CEC4F4',
       white: '#FEFEFE',
       lightWhite: '#EBECEF',
-      orange: '#EF7709'
+      orange: '#EF7709',
+      darkGrey: '#626262'
     }
   },
   plugins: []

@@ -11,7 +11,13 @@ interface input {
   name?: string;
 }
 
-export default function Input({ placeholder, type = 'text', eyeOn, inputClasses, ...formikProps }: input) {
+export default function Input({
+  placeholder,
+  type = 'text',
+  eyeOn,
+  inputClasses,
+  ...formikProps
+}: input) {
   const [isEyeClose, setIsEyeClose] = useState(eyeOn);
 
   function handleClickEye() {
