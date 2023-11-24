@@ -5,18 +5,18 @@ import { useRouter } from 'next/navigation';
 //redux
 import { useAppDispatch } from '@/store/hooks';
 import { setUserAuth } from '@/store/slices/userSlice';
-// import { useGetUserByIdQuery , useGetUsersQuery } from '@/store/services/userApi';
+import { useGetUsersQuery } from '@/store/services/userApi';
 //commons
 import { BoxTitleLogin } from '@/commons/Icons';
 import Input from '@/commons/Input';
 import ButtomBottom from '@/commons/ButtomBottom';
-import { useFormik } from 'formik';
+import { FormikHelpers, useFormik } from 'formik';
 import * as Yup from 'yup';
 
 export default function Login() {
   //redux
   const dispatch = useAppDispatch();
-  // const { data : users  , isLoading , isError , error , isFetching } = useGetUsersQuery(null)
+  const { data: users, isFetching } = useGetUsersQuery(null);
   //router
   const router = useRouter();
 
@@ -29,13 +29,26 @@ export default function Login() {
     password: Yup.string().required('Contraseña requerida')
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (
+    values: { email: string; password: string },
+    formikHelpers: FormikHelpers<{ email: string; password: string }>
+  ) => {
     // Maneja la lógica de envío del formulario aquí
-    console.log(values);
-    dispatch(setUserAuth(true));
-    // const user = users?.filter(user => user.email === userInfo.email && user.password === userInfo.password )
-    // console.log(user);
-    router.push('/');
+    if (!isFetching) {
+      const user = users?.filter((user) => {
+        return values.email === user.email && user.password === values.password;
+      });
+      const userIsAuth = user?.length === 1;
+      if (userIsAuth) {
+        dispatch(setUserAuth(userIsAuth));
+        router.push('/');
+      } else {
+        formikHelpers.setErrors({
+          email: 'Correo electrónico o contraseña incorrectos',
+          password: 'Correo electrónico o contraseña incorrectos'
+        });
+      }
+    }
   };
 
   const formik = useFormik({
