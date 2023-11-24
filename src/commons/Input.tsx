@@ -9,7 +9,7 @@ interface input {
   inputClasses?: string;
 }
 
-export default function Input({ placeholder, type = 'text', eyeOn, inputClasses }: input) {
+export default function Input({ placeholder, type = 'text', eyeOn, inputClasses, ...rest }: input) {
   const [isEyeClose, setIsEyeClose] = useState(eyeOn);
 
   function handleClickEye() {
@@ -34,6 +34,7 @@ export default function Input({ placeholder, type = 'text', eyeOn, inputClasses 
           className={`${inputClasses} outline-none w-full border-b-[0.5px] pb-0.5 text-sm`}
           type={changeType()}
           placeholder={placeholder}
+          {...rest}
         />
         {isEyeClose === false && (
           <div className="absolute top-1 right-[5px] cursor-pointer" onClick={handleClickEye}>
