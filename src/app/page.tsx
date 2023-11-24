@@ -46,7 +46,7 @@ const fakeDataHistory = [
 ];
 
 export default function Home() {
-  const { userAuth } = useAppSelector((store) => store.user);
+  const userAuth = useAppSelector((store) => store.user.userAuth);
 
   const router = useRouter();
   if (!userAuth) {
