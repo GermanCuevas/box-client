@@ -9,6 +9,7 @@ import ButtomBottom from '@/commons/ButtomBottom';
 import Deliveries from '@/components/Deliveries';
 //components
 import Header from '@/components/Header';
+import { useEffect } from 'react';
 
 const fakeDataPendings = [
   {
@@ -49,9 +50,13 @@ export default function Home() {
   const userAuth = useAppSelector((store) => store.user.userAuth);
 
   const router = useRouter();
-  if (!userAuth) {
-    router.push('/login');
-  }
+
+  useEffect(() => {
+    if (!userAuth) {
+      router.push('/login');
+    }
+  }, [router, userAuth]);
+
   const handleButton = () => {
     router.push('/packages');
   };
