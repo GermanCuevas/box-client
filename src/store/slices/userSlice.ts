@@ -2,11 +2,20 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface userState {
-  userAuth: boolean;
+  userInfo: object | null;
+  userAuth: boolean | null;
 }
+const loadUserAuthFromLocalStorage = () => {
+  if (typeof window !== 'undefined') {
+    const storedUserAuth = localStorage.getItem('userAuth');
+    return storedUserAuth ? JSON.parse(storedUserAuth) : false;
+  }
+  return false;
+};
 
 const initialState: userState = {
-  userAuth: false
+  userInfo: null,
+  userAuth: loadUserAuthFromLocalStorage()
 };
 
 export const userSlice = createSlice({
@@ -14,11 +23,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUserAuth: (state, { payload }: PayloadAction<boolean>) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.userAuth = payload;
+
+      localStorage.setItem('userAuth', JSON.stringify(payload));
     }
   }
 });
