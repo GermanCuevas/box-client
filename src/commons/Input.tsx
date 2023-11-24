@@ -1,5 +1,6 @@
+/* eslint-disable */
 'use client';
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { EyeClose, EyeOpen } from './Icons';
 
 interface input {
@@ -7,9 +8,10 @@ interface input {
   type?: string;
   eyeOn?: boolean;
   inputClasses?: string;
+  name?: string;
 }
 
-export default function Input({ placeholder, type = 'text', eyeOn, inputClasses, ...rest }: input) {
+export default function Input({ placeholder, type = 'text', eyeOn, inputClasses, ...formikProps }: input) {
   const [isEyeClose, setIsEyeClose] = useState(eyeOn);
 
   function handleClickEye() {
@@ -34,7 +36,7 @@ export default function Input({ placeholder, type = 'text', eyeOn, inputClasses,
           className={`${inputClasses} outline-none w-full border-b-[0.5px] pb-0.5 text-sm`}
           type={changeType()}
           placeholder={placeholder}
-          {...rest}
+          {...formikProps}
         />
         {isEyeClose === false && (
           <div className="absolute top-1 right-[5px] cursor-pointer" onClick={handleClickEye}>

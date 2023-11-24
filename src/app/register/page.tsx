@@ -7,6 +7,7 @@ import LemmonButton from '@/commons/LemmonButton';
 import { roboto } from '../../../public/fonts/fonts';
 
 export default function Register() {
+  const handleChange = () => {};
   return (
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 px-7">
       <div className={`w-full max-w-[300px] ${roboto.className}`}>
@@ -24,11 +25,21 @@ export default function Register() {
                   <CameraPlus />
                 </div>
               </div>
-              <Input placeholder="Nombre" type="text" />
-              <Input placeholder="Apellido" type="text" />
-              <Input placeholder="Email@contraseña.com" type="email" />
-              <Input placeholder="**********" type="password" eyeOn={true} />
-              <Input placeholder="Confirmar contraseña" type="password" eyeOn={false} />
+              <Input handleChange={handleChange} placeholder="Nombre" type="text" />
+              <Input handleChange={handleChange} placeholder="Apellido" type="text" />
+              <Input handleChange={handleChange} placeholder="Email@contraseña.com" type="email" />
+              <Input
+                handleChange={handleChange}
+                placeholder="**********"
+                type="password"
+                eyeOn={true}
+              />
+              <Input
+                handleChange={handleChange}
+                placeholder="Confirmar contraseña"
+                type="password"
+                eyeOn={false}
+              />
               <div className="flex flex-col gap-y-3 mt-8">
                 <ButtomBottom
                   titleButtom="Crear"

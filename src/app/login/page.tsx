@@ -1,12 +1,25 @@
 'use client';
+import React from 'react';
+//router
+import { useRouter } from 'next/navigation';
+//redux
+import { useAppDispatch } from '@/store/hooks';
+import { setUserAuth } from '@/store/slices/userSlice';
+// import { useGetUserByIdQuery , useGetUsersQuery } from '@/store/services/userApi';
+//commons
 import { BoxTitleLogin } from '@/commons/Icons';
 import Input from '@/commons/Input';
-import React from 'react';
 import ButtomBottom from '@/commons/ButtomBottom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 export default function Login() {
+  //redux
+  const dispatch = useAppDispatch();
+  // const { data : users  , isLoading , isError , error , isFetching } = useGetUsersQuery(null)
+  //router
+  const router = useRouter();
+
   const initialValues = {
     email: '',
     password: ''
@@ -19,6 +32,10 @@ export default function Login() {
   const onSubmit = (values: any) => {
     // Maneja la lógica de envío del formulario aquí
     console.log(values);
+    dispatch(setUserAuth(true));
+    // const user = users?.filter(user => user.email === userInfo.email && user.password === userInfo.password )
+    // console.log(user);
+    router.push('/');
   };
 
   const formik = useFormik({
@@ -26,6 +43,8 @@ export default function Login() {
     validationSchema,
     onSubmit
   });
+
+  
 
   return (
     <section className="h-screen w-full bg-darkGreen bg-[url(../../public/img/BgLogin.svg)] flex justify-center items-center py-4 px-7">
@@ -60,11 +79,13 @@ export default function Login() {
         </div>
         <div className="flex flex-col gap-y-3 mt-8 mx-5 ">
           <ButtomBottom
+            typeButton={true}
             titleButtom="Ingresar"
             buttonClassName="uppercase bg-darkGreen w-[100%]"
             titleButtomClasses={'text-lemonGreen'}
           />
           <ButtomBottom
+            handleButton={handleRegister}
             titleButtom="Crear tu cuenta"
             buttonClassName="uppercase w-[100%]"
             titleButtomClasses="text-darkGreen "
