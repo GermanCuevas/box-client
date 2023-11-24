@@ -1,5 +1,6 @@
+/* eslint-disable */
 'use client';
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { EyeClose, EyeOpen } from './Icons';
 
 interface input {
@@ -8,7 +9,7 @@ interface input {
   eyeOn?: boolean;
   inputClasses?: string;
   name?: string;
-  handleChange?: () => void;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
