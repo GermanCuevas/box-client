@@ -26,11 +26,16 @@ export const userSlice = createSlice({
       state.userAuth = payload;
 
       localStorage.setItem('userAuth', JSON.stringify(payload));
+    },
+    setUserInfo: (state, { payload }: PayloadAction<object>) => {
+      state.userInfo = payload;
+
+      state.userAuth = true;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setUserAuth } = userSlice.actions;
+export const { setUserAuth, setUserInfo } = userSlice.actions;
 
 export default userSlice;

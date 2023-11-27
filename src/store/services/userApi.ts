@@ -18,8 +18,15 @@ export const userApi = createApi({
     }),
     getUserById: builder.query<User, { id: string }>({
       query: ({ id }) => `users/${id}`
+    }),
+    postUser: builder.mutation<User, Partial<User>>({
+      query: (newUserData) => ({
+        url: 'users',
+        method: 'POST',
+        body: newUserData
+      })
     })
   })
 });
 
-export const { useGetUsersQuery, useGetUserByIdQuery } = userApi;
+export const { useGetUsersQuery, useGetUserByIdQuery, usePostUserMutation } = userApi;
