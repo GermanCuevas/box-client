@@ -11,30 +11,40 @@ interface input {
   name?: string;
 }
 
-export default function Input({ placeholder, type = 'text', eyeOn, inputClasses, ...formikProps }: input) {
+export default function Input({
+  placeholder,
+  type = 'text',
+  eyeOn,
+  inputClasses,
+  ...formikProps
+}: input) {
   const [isEyeClose, setIsEyeClose] = useState(eyeOn);
 
   function handleClickEye() {
     setIsEyeClose(!isEyeClose);
   }
 
-  function changeType() {
-    if (eyeOn === undefined) {
-      return type;
-    }
-    if (isEyeClose) {
-      return 'text';
-    } else if (!isEyeClose) {
-      return 'password';
-    }
+  interface InputTypes {
+    text: string;
+    password: string;
+    email: string;
   }
+  interface InputTypes {
+    [key: string]: string;
+  }
+
+  const inputTypes: InputTypes = {
+    text: 'text',
+    password: isEyeClose ? 'text' : 'password',
+    email: 'email'
+  };
 
   return (
     <>
       <div className="relative">
         <input
           className={`${inputClasses} outline-none w-full border-b-[0.5px] pb-0.5 text-sm`}
-          type={changeType()}
+          type={inputTypes[type]}
           placeholder={placeholder}
           {...formikProps}
         />

@@ -15,7 +15,13 @@ export default function Shipment() {
         </div>
         <div className="w-full">
           <div className="relative">
-            <Image src="/img/reparto.png" alt="hola" height={396} className="rounded-[13px]" />
+            <Image
+              src="/img/reparto.png"
+              alt="hola"
+              height={396}
+              width={200}
+              className="rounded-[13px]"
+            />
             <div className="absolute inset-0 flex justify-center items-end ">
               <div className="bg-lightPurple mb-6 w-full mx-4 rounded-[15px]">
                 <div className={`flex flex-col leading-4 p-4 ${roboto.className} text-[12px]`}>
