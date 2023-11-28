@@ -15,8 +15,8 @@ export default function AdminHome() {
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
       <Header />
       <div className={'w-full max-w-[300px]'}>
-        <div className="mb-2 mt-6  tracking-normal">
-          <LemmonButton title={'gestionar pedidos'} width={'w-full'} />
+        <div className="text-center mb-2 mt-6  tracking-normal">
+          <LemmonButton title={'gestionar pedidos'} width={'w-full'} icon={''} />
         </div>
         <div>
           <HelloAdmin
