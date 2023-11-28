@@ -10,7 +10,7 @@ export function BoxTitleLogin({ width, height }: IconsInterface) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="Capa_1">
-        <g clip-path="url(#clip0_7_3228)">
+        <g clipPath="url(#clip0_7_3228)">
           <g id="Group">
             <path
               id="Vector"

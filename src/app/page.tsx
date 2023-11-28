@@ -61,32 +61,26 @@ export default function Home() {
     router.push('/packages');
   };
   return (
-    <>
-      {!userAuth ? (
-        <></>
-      ) : (
-        <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
-          <Header />
-          <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
-            <div className="h-[40%] ">
-              <Deliveries data={fakeDataPendings} />
-            </div>
-            <div className="h-[55%] ">
-              <Deliveries
-                lemmonTitle={'historial de repartos'}
-                deliveryType={'history'}
-                data={fakeDataHistory}
-              />
-            </div>
-          </div>
-          <ButtomBottom
-            handleButton={handleButton}
-            buttonClassName={'bg-darkGreen w-[270px]'}
-            titleButtomClasses={'text-lemonGreen'}
-            titleButtom="obtener paquetes"
+    <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
+      <Header />
+      <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
+        <div className="h-[40%] ">
+          <Deliveries data={fakeDataPendings} />
+        </div>
+        <div className="h-[55%] ">
+          <Deliveries
+            lemmonTitle={'historial de repartos'}
+            deliveryType={'history'}
+            data={fakeDataHistory}
           />
-        </main>
-      )}
-    </>
+        </div>
+      </div>
+      <ButtomBottom
+        handleButton={handleButton}
+        buttonClassName={'bg-darkGreen w-[270px]'}
+        titleButtomClasses={'text-lemonGreen'}
+        titleButtom="obtener paquetes"
+      />
+    </main>
   );
 }

@@ -43,6 +43,7 @@ const fakeDataHistory = [
     status: 'delivered'
   }
 ];
+
 //verificar any
 // interface dataProps {
 //   packageID?: string;
@@ -89,23 +90,22 @@ export default function Package({}: packageProps) {
               </>
             }
             {fakeDataHistory?.map(
-              ({ packageID, location, status, direction }: any, index: number, array) => {
-                const lastElement = index === array.length - 1;
-
-                return (
-                  <>
-                    <PackageDetailsList
-                      status={status}
-                      location={location}
-                      direction={direction}
-                      packageID={packageID}
+              ({ packageID, location, status, direction }: any, index: number, array) => (
+                <React.Fragment key={index}>
+                  <PackageDetailsList
+                    status={status}
+                    location={location}
+                    direction={direction}
+                    packageID={packageID}
+                  />
+                  {index !== array.length - 1 && (
+                    <li
+                      key={`separator-${index}`}
+                      className={'w-[275px] border-b-[.1px] border-b-darkGreen '}
                     />
-                    {!lastElement && (
-                      <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
-                    )}
-                  </>
-                );
-              }
+                  )}
+                </React.Fragment>
+              )
             )}
           </ul>
           <div className="bg-white flex border-t border-t-darkGreen justify-center items-center rounded-b-[15px] h-[3rem] w-full">
