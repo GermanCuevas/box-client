@@ -52,21 +52,22 @@ export default function Deliveries({
             <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
           </>
         )}
-        {data?.map(({ packageID, location, status, direction }: data, index: number, array) => {
-          const lastElement = index === array.length - 1;
-
-          return (
-            <>
-              <PackageDetailsList
-                status={status}
-                location={location}
-                direction={direction}
-                packageID={packageID}
+        {data?.map(({ packageID, location, status, direction }: data, index: number, array) => (
+          <React.Fragment key={index}>
+            <PackageDetailsList
+              status={status}
+              location={location}
+              direction={direction}
+              packageID={packageID}
+            />
+            {index !== array.length - 1 && (
+              <li
+                key={`separator-${index}`}
+                className={'w-[275px] border-b-[.1px] border-b-darkGreen '}
               />
-              {!lastElement && <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />}
-            </>
-          );
-        })}
+            )}
+          </React.Fragment>
+        ))}
       </ul>
     </section>
   );
