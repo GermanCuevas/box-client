@@ -6,7 +6,7 @@ import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import Header from '@/components/Header';
 import React from 'react';
-import { ChevronDownBig } from '@/commons/Icons';
+import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 import { roboto } from '../../../public/fonts/fonts';
 
 export default function GetPackages() {

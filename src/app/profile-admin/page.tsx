@@ -1,12 +1,14 @@
 'use client';
-
-import LemmonButton from '@/commons/LemmonButton';
-import Header from '@/components/Header';
 import React from 'react';
-import { ChevronDownBig, ChevronDownSmall } from '@/commons/Icons';
-import { roboto } from '../../../public/fonts/fonts';
+//icons
+import { ChevronDownSmall } from '@/commons/icons/ChevronDownSmall';
+import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
+//commons
+import LemmonButton from '@/commons/LemmonButton';
 import HelloAdmin from '@/commons/HelloAdmin';
+//components
 import Deliveries from '@/components/Deliveries';
+import Header from '@/components/Header';
 
 const fakeDataHistory = [
   {
@@ -33,7 +35,7 @@ export default function ProfileAdmin() {
   return (
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
       <Header />
-      <div className={`w-full max-w-[300px] ${roboto.className}`}>
+      <div className={'w-full max-w-[300px]'}>
         <div className="mb-3 mt-6  tracking-normal">
           <LemmonButton title={'gestionar pedidos'} width={'w-full'} />
         </div>

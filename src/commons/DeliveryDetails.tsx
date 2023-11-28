@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Circle } from './Icons';
+// import { Circle } from './icons/Circle.tsx';
 import Image from 'next/image';
 
 interface delivery {

@@ -3,7 +3,7 @@
 import React from 'react';
 import { saira } from '../../public/fonts/fonts';
 
-import { ArrowBack } from './Icons';
+import { ArrowBack } from './icons/ArrowBack';
 
 interface LemmonButtonProps {
   height?: string;

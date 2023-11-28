@@ -1,6 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import { ArrowLeftBox, ArrowRightBox } from './Icons';
+//icons
+import { ArrowLeftBox } from './icons/ArrowLeftBox';
+import { ArrowRightBox } from './icons/ArrowRightBox';
+//font
 import { saira } from '../../public/fonts/fonts';
 
 export default function DateDetail() {

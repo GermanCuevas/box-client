@@ -1,16 +1,19 @@
 'use client';
+//icons
+import { CameraPlus } from '@/commons/icons/CameraPlus';
+import { BoxTitle } from '@/commons/icons/BoxTitle';
+//commons
 import ButtomBottom from '@/commons/ButtomBottom';
-import { CameraPlus, BoxTitle } from '@/commons/Icons';
 import Input from '@/commons/Input';
 import LemmonButton from '@/commons/LemmonButton';
-
-import { roboto } from '../../../public/fonts/fonts';
+//redux
 import { usePostUserMutation } from '@/store/services/userApi';
+// import { useAppDispatch } from '@/store/hooks';
+// import { setUserInfo } from '@/store/slices/userSlice';
+
 //formik
 import { FormikHelpers, useFormik } from 'formik';
 import * as Yup from 'yup';
-// import { useAppDispatch } from '@/store/hooks';
-// import { setUserInfo } from '@/store/slices/userSlice';
 import { useRouter } from 'next/navigation';
 export default function Register() {
   const [postUser] = usePostUserMutation();
@@ -83,7 +86,7 @@ export default function Register() {
 
   return (
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 px-7">
-      <div className={`w-full max-w-[300px] ${roboto.className}`}>
+      <div className={'w-full max-w-[300px] '}>
         <div>
           <BoxTitle width="90" height="40" />
         </div>
