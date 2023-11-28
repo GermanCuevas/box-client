@@ -36,13 +36,13 @@ export default function ProfileAdmin() {
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
       <Header />
       <div className={'w-full max-w-[300px]'}>
-        <div className="mb-3 mt-6  tracking-normal">
+        <div className="mb-2 mt-6  tracking-normal">
           <LemmonButton title={'gestionar pedidos'} width={'w-full'} />
         </div>
         <div>
           <HelloAdmin />
         </div>
-        <div className="mb-6 mt-6 tracking-normal text-sm">
+        <div className="mb-4 mt-2 tracking-normal text-sm">
           <LemmonButton
             title={'repartos pendientes'}
             width={'w-full'}
