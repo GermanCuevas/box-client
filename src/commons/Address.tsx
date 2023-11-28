@@ -1,5 +1,8 @@
 import React from 'react';
-import { CheckOK, CheckOff } from './Icons';
+//icons
+import { CheckOK } from './icons/CheckOK';
+import { CheckOff } from './icons/CheckOff';
+
 interface address {
   status?: boolean;
   onClickButton?(): void;

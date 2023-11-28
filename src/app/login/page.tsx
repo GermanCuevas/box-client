@@ -7,7 +7,7 @@ import { useAppDispatch } from '@/store/hooks';
 import { setUserAuth } from '@/store/slices/userSlice';
 import { useGetUsersQuery } from '@/store/services/userApi';
 //commons
-import { BoxTitleLogin } from '@/commons/Icons';
+import { BoxTitleLogin } from '@/commons/icons/BoxTitleLogin';
 import Input from '@/commons/Input';
 import ButtomBottom from '@/commons/ButtomBottom';
 import { FormikHelpers, useFormik } from 'formik';

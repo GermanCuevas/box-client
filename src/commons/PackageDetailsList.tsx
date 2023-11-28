@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Box } from './Icons';
-import { Trash } from './Icons';
+import { Box } from './icons/Box';
+import { Trash } from './icons/Trash';
 import { usePathname } from 'next/navigation';
 
 interface packageDetailsList {

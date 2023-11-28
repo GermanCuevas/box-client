@@ -1,10 +1,10 @@
 'use client';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ChevronBox } from '@/commons/Icons';
+import { ChevronBox } from '@/commons/icons/ChevronBox';
 import { useState } from 'react';
-import { roboto } from '../../../public/fonts/fonts';
-import { BoxTitle } from '@/commons/Icons';
+
+import { BoxTitle } from '@/commons/icons/BoxTitle';
 import Input from '@/commons/Input';
 import ButtomBottom from '@/commons/ButtomBottom';
 import LemmonButton from '@/commons/LemmonButton';
@@ -18,7 +18,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
 
   return (
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 px-7">
-      <div className={`w-full max-w-[300px] ${roboto.className}`}>
+      <div className={'w-full max-w-[300px] '}>
         <div>
           <BoxTitle width="90" height="40" />
         </div>

@@ -9,7 +9,7 @@ import LemmonButton from '@/commons/LemmonButton';
 //components
 import Header from '@/components/Header';
 //icons
-import { ChevronDownBig } from '@/commons/Icons';
+import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 
 const fakeDataHistory = [
   {

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 //icon
-import { ChevronDownSmall } from '@/commons/Icons';
+import { ChevronDownSmall } from '@/commons/icons/ChevronDownSmall';
 //commons
 import LemmonButton from '@/commons/LemmonButton';
 import PackageDetailsList from '@/commons/PackageDetailsList';

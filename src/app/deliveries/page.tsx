@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronDownBig } from '@/commons/Icons';
+import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 import BoxTitle2 from '@/commons/BoxTitle';
 
 import LemmonButton from '@/commons/LemmonButton';

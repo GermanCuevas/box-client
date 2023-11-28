@@ -1,8 +1,8 @@
 /* eslint-disable */
 'use client';
 import { useState, ChangeEvent } from 'react';
-import { EyeClose, EyeOpen } from './Icons';
-
+import { EyeClose } from './icons/EyeClose';
+import { EyeOpen } from './icons/EyeOpen';
 interface input {
   placeholder?: string;
   type?: string;
