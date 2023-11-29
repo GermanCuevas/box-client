@@ -23,6 +23,14 @@ export default function HelloAdmin({
   classNamediv2,
   classNameh2
 }: hello) {
+  // const [editMode, setEditMode] = useState(true);
+  // const [subTitle, setSubTitle] = useState('HABILITADO');
+
+  // const handleSwitchChange = () => {
+  //   setEditMode(!editMode);
+  //   setSubTitle(editMode ? 'DESHABILITADO' : 'HABILITADO');
+  // };
+
   return (
     <div
       className={`w-[300px] min-h-[90px] rounded-[15px] m-auto  bg-white flex items-center${
@@ -47,7 +55,12 @@ export default function HelloAdmin({
         </div>
         {editMode ? (
           <label className="relative inline-flex items-center cursor-pointer ml-16">
-            <input type="checkbox" value="" className="sr-only peer" />
+            <input
+              type="checkbox"
+              value=""
+              className="sr-only peer"
+              // onChange={handleSwitchChange}
+            />
             <div className="w-11 h-6 bg-darkGreen rounded-full peer dark:bg-gray-700 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-lemonGreen after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-lemonGreen after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-darkGreen peer-checked:bg-green-600"></div>
           </label>
         ) : (

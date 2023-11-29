@@ -4,7 +4,6 @@ import React from 'react';
 import LemmonButton from '@/commons/LemmonButton';
 import HelloAdmin from '@/commons/HelloAdmin';
 //components
-import Header from '@/components/Header';
 import DateDetail from '@/commons/DateDetail';
 import ButtomBottom from '@/commons/ButtomBottom';
 //icons
@@ -13,8 +12,7 @@ import { Plus } from '@/commons/icons/Plus';
 export default function AdminHome() {
   return (
     <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
-      <Header />
-      <div className={'w-full max-w-[300px]'}>
+      <div className="w-full max-w-[300px]">
         <div className="text-center mb-2 mt-6  tracking-normal">
           <LemmonButton title={'gestionar pedidos'} width={'w-full'} icon={''} />
         </div>
@@ -30,8 +28,7 @@ export default function AdminHome() {
         </div>
         <div className="px-3 max-w-[300px] max-h-[332px] bg-lightGreen text-xs flex flex-col justify-center items-center">
           <div className="w-[300px]">
-            {/* common de ivan
-            /> */}
+            {/* common de ivan */}
             <div className="bg-lightGreen gap-y-3 mt-[10px] relative">
               <ButtomBottom
                 titleButtom={'nuevo paquete'}

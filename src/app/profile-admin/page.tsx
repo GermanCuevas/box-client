@@ -33,8 +33,8 @@ const fakeDataHistory = [
 export default function ProfileAdmin() {
   return (
     <div className="flex flex-col items-center justify-center py-4 h-screen">
-      <div className={'w-full max-w-[300px]'}>
-        <div className="mb-2 mt-6  tracking-normal">
+      <div className="w-full max-w-[300px]">
+        <div className="mb-2 tracking-normal">
           <LemmonButton title={'gestionar pedidos'} width={'w-full'} />
         </div>
         <div>
