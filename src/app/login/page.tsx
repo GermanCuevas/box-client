@@ -3,24 +3,32 @@ import React from 'react';
 //router
 import { useRouter } from 'next/navigation';
 //redux
-import { useAppDispatch } from '@/store/hooks';
-import { setUserAuth } from '@/store/slices/userSlice';
-import { useGetUsersQuery } from '@/store/services/userApi';
+/* import { useAppDispatch } from '@/store/hooks';
+
+import { useGetUsersQuery } from '@/store/services/userApi'; */
 //commons
 import { BoxTitleLogin } from '@/commons/icons/BoxTitleLogin';
 import Input from '@/commons/Input';
 import ButtomBottom from '@/commons/ButtomBottom';
-import { FormikHelpers, useFormik } from 'formik';
-import * as Yup from 'yup';
+
+import useInput from '@/hooks/useInput';
 
 export default function Login() {
   //redux
-  const dispatch = useAppDispatch();
-  const { data: users, isFetching } = useGetUsersQuery(null);
+  /* const dispatch = useAppDispatch();
+  const { data: users, isFetching } = useGetUsersQuery(null); */
   //router
   const router = useRouter();
+  const mail = useInput('mail');
+  const password = useInput('password');
 
-  const initialValues = {
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(mail.value);
+    console.log(password.value);
+  };
+
+  /* const initialValues = {
     email: '',
     password: ''
   };
@@ -55,7 +63,7 @@ export default function Login() {
     initialValues,
     validationSchema,
     onSubmit
-  });
+  }); */
 
   const handleRegister = () => {
     router.push('/register');
@@ -64,35 +72,37 @@ export default function Login() {
   return (
     <section className="h-screen w-full bg-darkGreen bg-[url(../../public/img/BgLogin.svg)] flex justify-center items-center py-4 px-7">
       <form
-        onSubmit={formik.handleSubmit}
+        onSubmit={handleOnSubmit}
         className="bg-lightGreen h-[305px] w-full max-w-[300px] relative rounded-[15px]"
       >
-        <div className="flex flex-col gap-4 mb-8 mt-16 mx-5">
-          <Input
-            inputClasses="bg-lightGreen leading-normal tracking-tight font-light"
-            type="email"
-            placeholder="Email@contraseña.com"
-            {...formik.getFieldProps('email')}
-          />
-          <Input
-            inputClasses="bg-lightGreen leading-normal tracking-tight font-light"
-            type="password"
-            placeholder="contraseña"
-            eyeOn={false}
-            {...formik.getFieldProps('password')}
-          />
-          <div className="relative">
-            {formik.touched.password && formik.errors.password && (
-              <>
-                <div className="absolute">
-                  <div className="text-xs">{formik.errors.email}</div>
-                  <div className="text-xs">{formik.errors.password}</div>
-                </div>
-              </>
-            )}
+        <div className="flex flex-col gap-y-5 mb-8 mt-16 mx-5">
+          <div className="flex flex-col gap-y-[5px]">
+            <Input
+              value={mail.value}
+              onChange={mail.onChange}
+              onBlur={mail.blur}
+              onFocus={mail.focus}
+              inputClasses="bg-lightGreen leading-normal tracking-tight font-light"
+              type="email"
+              placeholder="Email@contraseña.com"
+            />
+            <p className="h-[5px] text-[12px] text-[#B6371C]">{mail.message}</p>
+          </div>
+          <div className="flex flex-col gap-y-[5px]">
+            <Input
+              value={password.value}
+              onChange={password.onChange}
+              onBlur={password.blur}
+              onFocus={password.focus}
+              inputClasses="bg-lightGreen leading-normal tracking-tight font-light"
+              type="password"
+              placeholder="contraseña"
+              eyeOn={false}
+            />
+            <p className="h-[5px] text-[12px] text-[#B6371C]">{password.message}</p>
           </div>
         </div>
-        <div className="flex flex-col gap-y-3 mt-8 mx-5 ">
+        <div className="flex flex-col gap-y-3 mt-10 mx-5 ">
           <ButtomBottom
             typeButton={true}
             titleButtom="Ingresar"
