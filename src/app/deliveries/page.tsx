@@ -6,9 +6,6 @@ import BoxTitle2 from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import DeliveryDetails from '@/commons/DeliveryDetails';
 
-import Image from 'next/image';
-import LogoutButton from '@/commons/LogoutButton';
-
 export default function Deliveries() {
   interface FeikData {
     name: string;
@@ -39,18 +36,12 @@ export default function Deliveries() {
   ];
 
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 px-7">
+    <div className="w-full flex flex-col items-center justify-center h-screen py-4 px-7">
       <div className={'w-full max-w-[300px]'}>
-        <div className="mb-[1.45rem]">
-          <header className=" w-full flex justify-between items-center">
-            <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
-            <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
-          </header>
-        </div>
+        <div className="mb-[1.45rem]"></div>
         <div className="mb-3 mt-4 tracking-normal w-full">
           <LemmonButton title="repartidores" width={'w-full'} />
         </div>
-
         <div className="w-full h-[490px]">
           <BoxTitle2
             titleBox={'ENERO'}

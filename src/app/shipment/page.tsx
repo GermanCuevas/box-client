@@ -2,13 +2,11 @@
 import ButtomBottom from '@/commons/ButtomBottom';
 import LemmonButton from '@/commons/LemmonButton';
 import { roboto } from '../../../public/fonts/fonts';
-import Header from '@/components/Header';
 import Image from 'next/image';
 
 export default function Shipment() {
   return (
-    <section className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 ">
-      <Header />
+    <section className="w-full flex flex-col items-center justify-center h-screen py-4 ">
       <div className={`w-full max-w-[300px] ${roboto.className}`}>
         <div className="mb-3 mt-6  tracking-normal w-full">
           <LemmonButton title="Reparto en curso" width={'w-full'} />

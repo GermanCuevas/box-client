@@ -1,7 +1,6 @@
 'use client';
 //icons
 import { CameraPlus } from '@/commons/icons/CameraPlus';
-import { BoxTitle } from '@/commons/icons/BoxTitle';
 //commons
 import ButtomBottom from '@/commons/ButtomBottom';
 import Input from '@/commons/Input';
@@ -27,11 +26,8 @@ export default function Register() {
   };
 
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center min-h-screen py-4 px-7">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen py-4 px-7">
       <div className={'w-full max-w-[300px] '}>
-        <div>
-          <BoxTitle width="90" height="40" />
-        </div>
         <div className="mb-3 mt-4  tracking-normal w-full">
           <LemmonButton title="creá tu cuenta" width={'w-full'} />
         </div>
