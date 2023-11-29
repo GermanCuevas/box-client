@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 interface hello {
   name?: string;
@@ -23,13 +24,15 @@ export default function HelloAdmin({
   classNamediv2,
   classNameh2
 }: hello) {
-  // const [editMode, setEditMode] = useState(true);
-  // const [subTitle, setSubTitle] = useState('HABILITADO');
+  const pathname = usePathname();
+  const [changeMode, setchangeMode] = useState({ state: true, subtitle: 'HABILITADO' });
 
-  // const handleSwitchChange = () => {
-  //   setEditMode(!editMode);
-  //   setSubTitle(editMode ? 'DESHABILITADO' : 'HABILITADO');
-  // };
+  const handleSwitchChange = () => {
+    setchangeMode({
+      state: !changeMode.state,
+      subtitle: changeMode.state ? 'DESABILITADO ' : 'HABILITADO'
+    });
+  };
 
   return (
     <div
@@ -41,13 +44,13 @@ export default function HelloAdmin({
         <Image src={imagen} alt="" height={60} width={60} className="mr-2" />
         <div className={'flex flex-col ml-2'}>
           <h1 className={'text-darkGreen font-bold'}>{name}</h1>
-          {editMode ? (
+          {pathname === '/profile-admin' ? (
             <h2
               className={`text-darkGreen text-sm bg-lightGreen rounded pl-1 pr-1 font-bold ${
                 classNameh2 || ''
               }`}
             >
-              {subTitle}
+              {changeMode.subtitle}
             </h2>
           ) : (
             <h2 className={`text-darkGreen text-sm ${classNameh2 || ''}`}>{subTitle}</h2>
@@ -59,7 +62,7 @@ export default function HelloAdmin({
               type="checkbox"
               value=""
               className="sr-only peer"
-              // onChange={handleSwitchChange}
+              onChange={handleSwitchChange}
             />
             <div className="w-11 h-6 bg-darkGreen rounded-full peer dark:bg-gray-700 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-lemonGreen after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-lemonGreen after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-darkGreen peer-checked:bg-green-600"></div>
           </label>

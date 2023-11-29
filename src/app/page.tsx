@@ -60,12 +60,12 @@ export default function Home() {
     router.push('/packages');
   };
   return (
-    <main className=" h-[100vh] flex flex-col justify-between">
+    <main className=" h-[92.5vh] flex flex-col justify-between">
       <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
         <div className="h-[40%] ">
           <Deliveries data={fakeDataPendings} />
         </div>
-        <div className="h-[55%] ">
+        <div className="h-[50%] ">
           <Deliveries
             lemmonTitle={'historial de repartos'}
             deliveryType={'history'}
@@ -75,7 +75,7 @@ export default function Home() {
       </div>
       <ButtomBottom
         handleButton={handleButton}
-        buttonClassName={'bg-darkGreen w-[270px] mb-4'}
+        buttonClassName={'bg-darkGreen w-[270px] mb-2'}
         titleButtomClasses={'text-lemonGreen'}
         titleButtom="obtener paquetes"
       />
