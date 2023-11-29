@@ -9,6 +9,10 @@ interface input {
   eyeOn?: boolean;
   inputClasses?: string;
   name?: string;
+  value?: string;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
