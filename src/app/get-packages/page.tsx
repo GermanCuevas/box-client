@@ -6,13 +6,12 @@ import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import React from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
-import { roboto } from '../../../public/fonts/fonts';
 
 export default function GetPackages() {
   return (
-    <div className="w-full flex flex-col items-center justify-center py-4 h-screen">
-      <div className={`w-full max-w-[300px] ${roboto.className}`}>
-        <div className="mb-3 mt-6  tracking-normal">
+    <div className="w-full flex flex-col items-center justify-center py-2 h-screen">
+      <div className="w-full max-w-[300px]">
+        <div className="mb-3 tracking-normal">
           <LemmonButton title={'obtener paquetes'} width={'w-full'} />
         </div>
       </div>
@@ -37,7 +36,7 @@ export default function GetPackages() {
           <ChevronDownBig />
         </div>
       </div>
-      <div className="bg-lightGreen flex flex-col gap-y-3 mt-4">
+      <div className="bg-lightGreen flex flex-col gap-y-3 mt-4 mb-8">
         <ButtomBottom
           titleButtom={'iniciar jornada'}
           buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}

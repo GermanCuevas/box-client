@@ -75,7 +75,7 @@ export default function Home() {
       </div>
       <ButtomBottom
         handleButton={handleButton}
-        buttonClassName={'bg-darkGreen w-[270px]'}
+        buttonClassName={'bg-darkGreen w-[270px] mb-4'}
         titleButtomClasses={'text-lemonGreen'}
         titleButtom="obtener paquetes"
       />

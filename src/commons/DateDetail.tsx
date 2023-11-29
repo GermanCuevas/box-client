@@ -42,7 +42,7 @@ export default function DateDetail() {
       <div className="max-w-[300px] w-full m-auto">
         <BoxTitle
           titleBoxClasses="font-bold uppercase text-sm"
-          boxClasses={'justify-between h-[1.875rem] mx-5 '}
+          boxClasses={'justify-between h-[30px] mx-5 '}
           titleBox={currentMonth}
         />
       </div>

@@ -42,7 +42,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
               </div>
             </form>
           </div>
-          <div className="bg-lightGreen flex flex-col gap-y-3 mt-[10px] relative">
+          <div className="bg-lightGreen flex flex-col gap-y-3 mt-[10px] mb-10 relative">
             <ButtomBottom
               titleButtom={'AGREGAR'}
               buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
