@@ -1,125 +1,103 @@
 'use client';
 //icons
 import { CameraPlus } from '@/commons/icons/CameraPlus';
-import { BoxTitle } from '@/commons/icons/BoxTitle';
 //commons
 import ButtomBottom from '@/commons/ButtomBottom';
 import Input from '@/commons/Input';
 import LemmonButton from '@/commons/LemmonButton';
-//redux
-import { usePostUserMutation } from '@/store/services/userApi';
-// import { useAppDispatch } from '@/store/hooks';
-// import { setUserInfo } from '@/store/slices/userSlice';
 
-//formik
-import { FormikHelpers, useFormik } from 'formik';
-import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
-export default function Register() {
-  const [postUser] = usePostUserMutation();
+import useInput from '@/hooks/useInput';
 
-  const initialValues = {
-    lastname: '',
-    email: '',
-    name: '',
-    password: '',
-    password_validate: ''
-  };
+export default function Register() {
+  const name = useInput('name');
+  const lastname = useInput('lastname');
+  const mail = useInput('mail');
+  const password = useInput('password');
+  const repeatPassword = useInput('password');
+
   // const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Correo electrónico no válido').required('Correo necesario'),
-    password: Yup.string().required('Contraseña requerida'),
-    password_validate: Yup.string()
-      .oneOf([Yup.ref('password')], 'Las contraseñas deben coincidir')
-      .required('Confirmación de contraseña requerida'),
-    name: Yup.string().required('Nombre requerido'),
-    lastname: Yup.string().required('Apellido requerido')
-  });
-
-  const onSubmit = async (
-    values: {
-      email: string;
-      password: string;
-      name: string;
-      password_validate: string;
-      lastname: string;
-    },
-    formikHelpers: FormikHelpers<{
-      email: string;
-      password: string;
-      name: string;
-      password_validate: string;
-      lastname: string;
-    }>
-  ) => {
-    if (values.password === values.password_validate) {
-      const objToPush = {
-        name: values.name + ' ' + values.lastname,
-        email: values.email,
-        password: values.password
-      };
-
-      try {
-        await postUser(objToPush).unwrap();
-
-        router.push('/login');
-      } catch (error) {
-        formikHelpers.setErrors({
-          email: 'Correo electrónico o contraseña incorrectos',
-          password: 'Correo electrónico o contraseña incorrectos'
-        });
-      }
-    }
-  };
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit
-  });
-
-  const handleSessionInit = () => {
+  const handleSessionInit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(name.value);
     router.push('/login');
   };
 
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 px-7">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen py-4 px-7">
       <div className={'w-full max-w-[300px] '}>
-        <div>
-          <BoxTitle width="90" height="40" />
-        </div>
         <div className="mb-3 mt-4  tracking-normal w-full">
           <LemmonButton title="creá tu cuenta" width={'w-full'} />
         </div>
         <div className="w-full">
           <div className="bg-white  p-5 rounded-[13px] ">
-            <form onSubmit={formik.handleSubmit} className="flex flex-col gap-y-4">
+            <form onSubmit={handleSessionInit} className="flex flex-col gap-y-4">
               <div className="flex justify-center items-center mb-2">
                 <div className="p-8 bg-lightWhite rounded-[1.7rem]">
                   <CameraPlus />
                 </div>
               </div>
-              <Input {...formik.getFieldProps('lastname')} placeholder="Apellido" type="text" />
-              <Input {...formik.getFieldProps('name')} placeholder="Nombre" type="text" />
-              <Input
-                {...formik.getFieldProps('email')}
-                placeholder="Email@domain.com"
-                type="email"
-              />
-              <Input
-                {...formik.getFieldProps('password')}
-                placeholder="Contraseña"
-                type="password"
-                eyeOn={true}
-              />
-              <Input
-                {...formik.getFieldProps('password_validate')}
-                placeholder="Confirmar contraseña"
-                type="password"
-                eyeOn={false}
-              />
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={name.value}
+                  onChange={name.onChange}
+                  onFocus={name.focus}
+                  onBlur={name.blur}
+                  placeholder="Nombre"
+                  type="text"
+                  inputClasses=""
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{name.message}</p>
+              </div>
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={lastname.value}
+                  onChange={lastname.onChange}
+                  onFocus={lastname.focus}
+                  onBlur={lastname.blur}
+                  placeholder="Apellido"
+                  type="text"
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{lastname.message}</p>
+              </div>
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={mail.value}
+                  onChange={mail.onChange}
+                  onFocus={mail.focus}
+                  onBlur={mail.blur}
+                  placeholder="Email@domain.com"
+                  type="email"
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{mail.message}</p>
+              </div>
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={password.value}
+                  onChange={password.onChange}
+                  onFocus={password.focus}
+                  onBlur={password.blur}
+                  placeholder="Contraseña"
+                  type="password"
+                  eyeOn={true}
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{password.message}</p>
+              </div>
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={repeatPassword.value}
+                  onChange={repeatPassword.onChange}
+                  onFocus={repeatPassword.focus}
+                  onBlur={repeatPassword.blur}
+                  placeholder="Confirmar contraseña"
+                  type="password"
+                  eyeOn={false}
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{repeatPassword.message}</p>
+              </div>
+
               <div className="flex flex-col gap-y-3 mt-8">
                 <ButtomBottom
                   typeButton={true}
@@ -128,7 +106,6 @@ export default function Register() {
                   titleButtomClasses={'text-lightGreen'}
                 />
                 <ButtomBottom
-                  handleButton={handleSessionInit}
                   titleButtom="Iniciar sesión"
                   buttonClassName="uppercase w-[100%]"
                   titleButtomClasses="text-darkGreen "

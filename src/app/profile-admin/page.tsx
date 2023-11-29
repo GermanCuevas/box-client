@@ -8,7 +8,6 @@ import LemmonButton from '@/commons/LemmonButton';
 import HelloAdmin from '@/commons/HelloAdmin';
 //components
 import Deliveries from '@/components/Deliveries';
-import Header from '@/components/Header';
 
 const fakeDataHistory = [
   {
@@ -33,8 +32,7 @@ const fakeDataHistory = [
 
 export default function ProfileAdmin() {
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
-      <Header />
+    <div className="flex flex-col items-center justify-center py-4 h-screen">
       <div className={'w-full max-w-[300px]'}>
         <div className="mb-2 mt-6  tracking-normal">
           <LemmonButton title={'gestionar pedidos'} width={'w-full'} />

@@ -6,8 +6,7 @@ import { useRouter } from 'next/navigation';
 import BoxTitle from '@/commons/BoxTitle';
 import PackageDetailsList from '@/commons/PackageDetailsList';
 import LemmonButton from '@/commons/LemmonButton';
-//components
-import Header from '@/components/Header';
+
 //icons
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 
@@ -62,8 +61,7 @@ export default function Package({}: packageProps) {
   };
 
   return (
-    <section className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
-      <Header />
+    <section className="h-[100vh] flex flex-col justify-between pt-5">
       <div className={'h-[90%] flex flex-col items-center w-full'}>
         <LemmonButton hanleLemmonButton={handleRedirect} title="paquetes" />
 

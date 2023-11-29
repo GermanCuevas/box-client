@@ -7,8 +7,7 @@ import { useAppSelector } from '@/store/hooks';
 //commons
 import ButtomBottom from '@/commons/ButtomBottom';
 import Deliveries from '@/components/Deliveries';
-//components
-import Header from '@/components/Header';
+
 import { useEffect } from 'react';
 
 const fakeDataPendings = [
@@ -61,8 +60,7 @@ export default function Home() {
     router.push('/packages');
   };
   return (
-    <main className="bg-lightGreen h-[100vh] flex flex-col justify-between pt-5">
-      <Header />
+    <main className=" h-[100vh] flex flex-col justify-between">
       <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
         <div className="h-[40%] ">
           <Deliveries data={fakeDataPendings} />
