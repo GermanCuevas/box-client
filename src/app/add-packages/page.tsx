@@ -27,11 +27,11 @@ const AddPackage: React.FC<AddPackageProps> = () => {
               <Input placeholder="Dirección" type="text" />
               <Input placeholder="Nombre de quien recibe" type="text" />
               <Input placeholder="Peso del paquete (Kg)" type="email" />
-              <div className="relative">
-                <span>Fecha de entrega</span>
-                <div className="border border-black rounded-md pt-[6px] pr-[11px] pb-[5px] pl-[15px] ">
+              <div className="relative mt-10">
+                <span className="text-darkGreen font-Roboto text-sm">Fecha de entrega</span>
+                <div className="border border-darkGreen rounded-md pt-[6px] pr-[11px] pb-[5px] pl-[15px] ">
                   <DatePicker
-                    className="outline-none w-[232px] cursor-pointer"
+                    className="outline-none w-[232px] cursor-pointer text-sm text-darkGreen"
                     selected={startDate}
                     onChange={(date: Date | null) => setStartDate(date)}
                   />
