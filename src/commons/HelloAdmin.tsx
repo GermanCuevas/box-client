@@ -14,7 +14,6 @@ interface hello {
   classNameGroup?: string;
   icon?: React.ReactNode;
 }
-
 export default function HelloAdmin({
   name = 'Victoria!',
   editMode = true,
@@ -33,7 +32,6 @@ export default function HelloAdmin({
       subtitle: changeMode.state ? 'DESABILITADO ' : 'HABILITADO'
     });
   };
-
   return (
     <div
       className={`w-[300px] min-h-[90px] rounded-[15px] m-auto  bg-white flex items-center${
