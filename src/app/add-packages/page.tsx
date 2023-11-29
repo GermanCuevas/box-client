@@ -4,7 +4,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ChevronBox } from '@/commons/icons/ChevronBox';
 import { useState } from 'react';
 
-import { BoxTitle } from '@/commons/icons/BoxTitle';
 import Input from '@/commons/Input';
 import ButtomBottom from '@/commons/ButtomBottom';
 import LemmonButton from '@/commons/LemmonButton';
@@ -17,11 +16,8 @@ const AddPackage: React.FC<AddPackageProps> = () => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
 
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center h-screen py-4 px-7">
-      <div className={'w-full max-w-[300px] '}>
-        <div>
-          <BoxTitle width="90" height="40" />
-        </div>
+    <div className="w-full flex flex-col items-center justify-center h-screen py-4 px-7">
+      <div>
         <div className="mb-3 mt-4  tracking-normal w-full">
           <LemmonButton title="agregar paquetes" width={'w-full'} />
         </div>

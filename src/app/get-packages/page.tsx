@@ -4,15 +4,13 @@ import Address from '@/commons/Address';
 import ButtomBottom from '@/commons/ButtomBottom';
 import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
-import Header from '@/components/Header';
 import React from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 import { roboto } from '../../../public/fonts/fonts';
 
 export default function GetPackages() {
   return (
-    <div className="bg-lightGreen w-full flex flex-col items-center justify-center py-4 h-screen">
-      <Header />
+    <div className="w-full flex flex-col items-center justify-center py-4 h-screen">
       <div className={`w-full max-w-[300px] ${roboto.className}`}>
         <div className="mb-3 mt-6  tracking-normal">
           <LemmonButton title={'obtener paquetes'} width={'w-full'} />
