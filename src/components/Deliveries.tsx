@@ -5,12 +5,14 @@ import { ChevronDownSmall } from '@/commons/icons/ChevronDownSmall';
 //commons
 import LemmonButton from '@/commons/LemmonButton';
 import PackageDetailsList from '@/commons/PackageDetailsList';
+import Link from 'next/link';
 
 interface data {
   packageID?: string;
   direction?: string;
   location?: string;
   status?: 'in course' | 'pending' | 'delivered';
+  id?: string;
 }
 
 interface deliveries {
@@ -52,22 +54,37 @@ export default function Deliveries({
             <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
           </>
         )}
-        {data?.map(({ packageID, location, status, direction }: data, index: number, array) => (
-          <React.Fragment key={index}>
-            <PackageDetailsList
-              status={status}
-              location={location}
-              direction={direction}
-              packageID={packageID}
-            />
-            {index !== array.length - 1 && (
-              <li
-                key={`separator-${index}`}
-                className={'w-[275px] border-b-[.1px] border-b-darkGreen '}
-              />
-            )}
-          </React.Fragment>
-        ))}
+
+        {data?.map(
+          ({ packageID, location, status, direction, id = '' }: data, index: number, array) => (
+            <React.Fragment key={index}>
+              <Link href={`/shipment/${deliveryType}/${id}`} className="w-full">
+                <PackageDetailsList
+                  status={status}
+                  location={location}
+                  direction={direction}
+                  packageID={packageID}
+                  id={id}
+                  type={deliveryType}
+                />
+              </Link>
+              {/* <PackageDetailsList
+                status={status}
+                location={location}
+                direction={direction}
+                packageID={packageID}
+                id={id}
+                type={deliveryType}
+              /> */}
+              {index !== array.length - 1 && (
+                <li
+                  key={`separator-${index}`}
+                  className={'w-[275px] border-b-[.1px] border-b-darkGreen '}
+                />
+              )}
+            </React.Fragment>
+          )
+        )}
       </ul>
     </section>
   );

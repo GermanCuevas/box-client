@@ -2,40 +2,23 @@
 import ButtomBottom from '@/commons/ButtomBottom';
 import LemmonButton from '@/commons/LemmonButton';
 import { roboto } from '../../../public/fonts/fonts';
-import Image from 'next/image';
+
+import { MapComponent } from '@/components/maps';
 
 export default function Shipment() {
   return (
-    <section className="w-full flex flex-col items-center justify-center h-screen py-4 ">
+    <section className="w-full flex flex-col items-center justify-start min-h-[calc(100vh-50px)] py-4 ">
       <div className={`w-full max-w-[300px] ${roboto.className}`}>
-        <div className="mb-3 mt-6  tracking-normal w-full">
+        <div className="mb-3 mt-[.4rem]  tracking-normal w-full">
           <LemmonButton title="Reparto en curso" width={'w-full'} />
         </div>
         <div className="w-full">
-          <div className="relative">
-            <Image
-              src="/img/reparto.png"
-              alt="hola"
-              height={396}
-              width={200}
-              className="rounded-[13px]"
-            />
-            <div className="absolute inset-0 flex justify-center items-end ">
-              <div className="bg-lightPurple mb-6 w-full mx-4 rounded-[15px]">
-                <div className={`flex flex-col leading-4 p-4 ${roboto.className} text-[12px]`}>
-                  <h2>
-                    <span className="font-bold">Destino: </span>Amenabar 2100, CABA
-                  </h2>
-                  <h2>
-                    <span className="font-bold">Número de paquete: </span>#0A235
-                  </h2>
-                  <h2>
-                    <span className="font-bold">Recibe: </span>David Rodriguez
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
+          <MapComponent
+            destino="Yerbal"
+            coordinates={[-34.60756683, -58.43708801]}
+            numPackage="#4546SD"
+            userInfo="Ivan Lucana"
+          />
           <div className="flex flex-col gap-y-3 mt-8">
             <ButtomBottom
               titleButtom="Finalizar"
