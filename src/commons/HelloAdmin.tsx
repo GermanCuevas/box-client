@@ -16,7 +16,7 @@ interface hello {
 }
 
 export default function HelloAdmin({
-  name = 'Victoria!',
+  name = 'Victoria',
   editMode = true,
   imagen = '/img/Mask group.png',
   subTitle = 'HABILITADO',
@@ -40,9 +40,9 @@ export default function HelloAdmin({
         classNamediv1 || ''
       }`}
     >
-      <div className={`ml-4 flex flex-row items-center ${classNamediv2 || ''}`}>
+      <div className={`ml-2 flex flex-row items-center ${classNamediv2 || ''}`}>
         <Image src={imagen} alt="" height={60} width={60} className="mr-2" />
-        <div className={'flex flex-col ml-2'}>
+        <div className={'flex flex-col ml-1'}>
           <h1 className={'text-darkGreen font-bold'}>{name}</h1>
           {pathname === '/profile-admin' ? (
             <h2
