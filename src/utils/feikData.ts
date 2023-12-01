@@ -1,4 +1,4 @@
-import { FakeDataAll } from './index';
+import { FakeDataAll } from '.';
 
 const fakeDataAll: FakeDataAll = {
   pending: [
