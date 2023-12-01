@@ -9,6 +9,7 @@ import ButtonBottom from '@/commons/ButtonBottom';
 //icons
 import { Plus } from '@/commons/icons/Plus';
 import DeliveriesAdmin from '@/components/DeliveriesAdmin';
+import Link from 'next/link';
 
 export default function AdminHome() {
   return (
@@ -31,11 +32,13 @@ export default function AdminHome() {
           <div className="w-[300px] rounded-[15px]">
             <DeliveriesAdmin />
             <div className="bg-lightGreen gap-y-3 mt-[10px] relative">
-              <ButtonBottom
-                titleButton={'nuevo paquete'}
-                icon={<Plus />}
-                buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
-              />
+              <Link href={'/add-packages'}>
+                <ButtonBottom
+                  titleButton={'nuevo paquete'}
+                  icon={<Plus />}
+                  buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+                />
+              </Link>
             </div>
           </div>
         </div>

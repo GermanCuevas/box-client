@@ -57,7 +57,7 @@ export default function DeliveriesAdmin({
         <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '}>
           <DeliveryAvailability title={'Repartidores'} enabledDeliveries={2} percentage={20} />
           <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
-          <DeliveryAvailability percentage={80} />
+          <DeliveryAvailability title={'Paquetes'} percentage={80} />
         </div>
 
         {/* {data?.map(

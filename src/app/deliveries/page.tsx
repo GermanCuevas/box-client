@@ -5,6 +5,7 @@ import BoxTitle2 from '@/commons/BoxTitle';
 
 import LemmonButton from '@/commons/LemmonButton';
 import DeliveryDetails from '@/commons/DeliveryDetails';
+import Link from 'next/link';
 
 export default function Deliveries() {
   interface FeikData {
@@ -14,9 +15,9 @@ export default function Deliveries() {
   }
   const feikData: FeikData[] = [
     {
-      name: 'Ivan',
-      percentage: 29,
-      status: 'delivered'
+      name: 'Victoria',
+      percentage: 45,
+      status: 'in course'
     },
     {
       name: 'Florencia',
@@ -24,9 +25,9 @@ export default function Deliveries() {
       status: 'disabled'
     },
     {
-      name: 'Victoria',
-      percentage: 45,
-      status: 'in course'
+      name: 'Ivan',
+      percentage: 29,
+      status: 'delivered'
     },
     {
       name: 'Nico',
@@ -36,10 +37,9 @@ export default function Deliveries() {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center justify-center h-screen py-4 px-7">
+    <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-100px)] py-4 px-7">
       <div className={'w-full max-w-[300px]'}>
-        <div className="mb-[1.45rem]"></div>
-        <div className="mb-3 mt-4 tracking-normal w-full">
+        <div className="mb-3 mt-3 tracking-normal w-full">
           <LemmonButton title="repartidores" width={'w-full'} />
         </div>
         <div className="w-full h-[490px]">
@@ -48,17 +48,18 @@ export default function Deliveries() {
             dateBox="mie/03"
             titleBoxClasses="font-bold"
             dateBoxClasses="font-bold"
-            boxClasses={'justify-between h-[2.4rem] mx-5'}
+            boxClasses={'justify-between h-[35px] mx-5'}
           />
           <div className="bg-white rounded-b-[13px] px-[.56rem] ">
             {feikData.map((idem, i) => {
               return (
-                <DeliveryDetails
-                  key={i}
-                  name={idem.name}
-                  percentage={idem.percentage}
-                  status={idem.status}
-                />
+                <Link key={i} href={'/profile-admin'}>
+                  <DeliveryDetails
+                    name={idem.name}
+                    percentage={idem.percentage}
+                    status={idem.status}
+                  />
+                </Link>
               );
             })}
             <div className="flex items-center justify-center h-[3rem]">

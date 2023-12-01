@@ -83,6 +83,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
             <ButtonBottom
               titleButton={'AGREGAR'}
               buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+              handleButton={() => alert('Paquete agregado')}
             />
           </div>
         </div>

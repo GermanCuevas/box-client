@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import ButtonBottom from './ButtonBottom';
+import { useRouter } from 'next/navigation';
 
 interface details {
   imgDeliveries?: string;
@@ -79,10 +80,15 @@ export default function DeliveryAvailability({
   packagesDistributed = 13,
   totalPackages = 20
 }: details) {
+  const router = useRouter();
   const displayValue =
     title === 'Repartidores'
       ? `${enabledDeliveries}/${totalDeliveries}`
       : `${packagesDistributed}/${totalPackages}`;
+  const handleClick = () => {
+    if (title === 'Repartidores') router.push('/deliveries');
+    if (title === 'Paquetes') router.push('/get-packages');
+  };
 
   return (
     <li className={'list-none flex max-w-[300px] w-full h-[100px] m-auto bg-white  '}>
@@ -126,6 +132,7 @@ export default function DeliveryAvailability({
           titleButton="VER"
           buttonClassName="bg-darkGreen w-[52px]"
           titleButtonClasses="text-lemonGreen "
+          handleButton={handleClick}
         />
       </div>
     </li>
