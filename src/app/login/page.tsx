@@ -11,7 +11,7 @@ import { useGetUsersQuery } from '@/store/services/userApi'; */
 //sd
 import { BoxTitleLogin } from '@/commons/icons/BoxTitleLogin';
 import Input from '@/commons/Input';
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 
 import useInput from '@/hooks/useInput';
 
@@ -105,17 +105,17 @@ export default function Login() {
           </div>
         </div>
         <div className="flex flex-col gap-y-3 mt-10 mx-5 ">
-          <ButtomBottom
+          <ButtonBottom
             typeButton={true}
-            titleButtom="Ingresar"
+            titleButton="Ingresar"
             buttonClassName="uppercase bg-darkGreen w-[100%]"
-            titleButtomClasses={'text-lemonGreen'}
+            titleButtonClasses={'text-lemonGreen'}
           />
-          <ButtomBottom
+          <ButtonBottom
             handleButton={handleRegister}
-            titleButtom="Crear tu cuenta"
+            titleButton="Crear tu cuenta"
             buttonClassName="uppercase w-[100%]"
-            titleButtomClasses="text-darkGreen "
+            titleButtonClasses="text-darkGreen "
           />
           <p className={'text-center text-darkGreen underline text-[13px]'}>Olvidé mi contraseña</p>
         </div>

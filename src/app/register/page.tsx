@@ -2,7 +2,7 @@
 //icons
 import { CameraPlus } from '@/commons/icons/CameraPlus';
 //commons
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 import Input from '@/commons/Input';
 import LemmonButton from '@/commons/LemmonButton';
 
@@ -99,16 +99,16 @@ export default function Register() {
               </div>
 
               <div className="flex flex-col gap-y-3 mt-8">
-                <ButtomBottom
+                <ButtonBottom
                   typeButton={true}
-                  titleButtom="Crear"
+                  titleButton="Crear"
                   buttonClassName="uppercase bg-darkGreen w-[100%]"
-                  titleButtomClasses={'text-lightGreen'}
+                  titleButtonClasses={'text-lightGreen'}
                 />
-                <ButtomBottom
-                  titleButtom="Iniciar sesión"
+                <ButtonBottom
+                  titleButton="Iniciar sesión"
                   buttonClassName="uppercase w-[100%]"
-                  titleButtomClasses="text-darkGreen "
+                  titleButtonClasses="text-darkGreen "
                 />
                 <p className={'text-center text-darkGreen underline text-[14px]'}>
                   ¿Ya tenés tu cuenta?
@@ -145,15 +145,15 @@ export default function Register() {
             <Input placeholder="**********" type="password" eyeOn />
             <Input placeholder="Confirmar contraseña" type="password" eyeOn />
             <div className="flex flex-col gap-y-3 mt-8">
-              <ButtomBottom
-                titleButtom="Crear"
+              <ButtonBottom
+                titleButton="Crear"
                 buttonClassName="uppercase bg-darkGreen w-[100%]"
-                titleButtomClasses="text-lightGreen"
+                titleButtonClasses="text-lightGreen"
               />
-              <ButtomBottom
-                titleButtom="Iniciar sesión"
+              <ButtonBottom
+                titleButton="Iniciar sesión"
                 buttonClassName="uppercase w-[100%]"
-                titleButtomClasses="text-darkGreen "
+                titleButtonClasses="text-darkGreen "
               />
               <p className={`text-center text-darkGreen underline text-[14px] ${roboto.className}`}>
                 ¿Ya tenés tu cuenta?

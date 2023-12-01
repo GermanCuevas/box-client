@@ -1,5 +1,5 @@
 'use client';
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 import LemmonButton from '@/commons/LemmonButton';
 
 import { MapComponent } from '@/components/maps';
@@ -39,15 +39,15 @@ export default function Pending({ params }: ParamsObject) {
             />
           )}
           <div className="flex flex-col gap-y-3 mt-8">
-            <ButtomBottom
-              titleButtom="Finalizar"
+            <ButtonBottom
+              titleButton="Finalizar"
               buttonClassName="uppercase bg-darkGreen w-[100%]"
-              titleButtomClasses={'text-lightGreen'}
+              titleButtonClasses={'text-lightGreen'}
             />
-            <ButtomBottom
-              titleButtom="Cancelar entrega"
+            <ButtonBottom
+              titleButton="Cancelar entrega"
               buttonClassName="uppercase w-[100%]"
-              titleButtomClasses="text-darkGreen "
+              titleButtonClasses="text-darkGreen "
             />
           </div>
         </div>

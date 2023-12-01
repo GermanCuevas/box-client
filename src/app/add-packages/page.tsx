@@ -5,7 +5,7 @@ import { ChevronBox } from '@/commons/icons/ChevronBox';
 import { useState } from 'react';
 
 import Input from '@/commons/Input';
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 import LemmonButton from '@/commons/LemmonButton';
 
 interface AddPackageProps {
@@ -43,8 +43,8 @@ const AddPackage: React.FC<AddPackageProps> = () => {
             </form>
           </div>
           <div className="bg-lightGreen flex flex-col gap-y-3 mt-[10px] mb-10 relative">
-            <ButtomBottom
-              titleButtom={'AGREGAR'}
+            <ButtonBottom
+              titleButton={'AGREGAR'}
               buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
             />
           </div>
