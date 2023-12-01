@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/store/hooks';
 
 //commons
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 import Deliveries from '@/components/Deliveries';
 
 import { useEffect } from 'react';
@@ -74,11 +74,11 @@ export default function Home() {
           />
         </div>
       </div>
-      <ButtomBottom
+      <ButtonBottom
         handleButton={handleButton}
         buttonClassName={'bg-darkGreen w-[270px] mb-2'}
-        titleButtomClasses={'text-lemonGreen'}
-        titleButtom="obtener paquetes"
+        titleButtonClasses={'text-lemonGreen'}
+        titleButton="obtener paquetes"
       />
     </main>
   );
