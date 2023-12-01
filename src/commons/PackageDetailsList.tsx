@@ -11,6 +11,8 @@ interface packageDetailsList {
   location?: string;
   status?: 'in course' | 'pending' | 'delivered';
   icon?: any;
+  id?: string;
+  type?: string;
 }
 
 export default function PackageDetailsList({
