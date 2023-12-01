@@ -28,7 +28,7 @@ export default function Register() {
   return (
     <div className="w-full flex flex-col items-center justify-center min-h-screen py-4 px-7">
       <div className={'w-full max-w-[300px] '}>
-        <div className="mb-3 mt-4  tracking-normal w-full">
+        <div className="mb-3 tracking-normal w-full">
           <LemmonButton title="creá tu cuenta" width={'w-full'} />
         </div>
         <div className="w-full">
@@ -39,6 +39,7 @@ export default function Register() {
                   <CameraPlus />
                 </div>
               </div>
+
               <div className="flex flex-col gap-y-[5px]">
                 <Input
                   value={name.value}

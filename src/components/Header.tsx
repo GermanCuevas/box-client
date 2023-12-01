@@ -21,11 +21,13 @@ export default function Header() {
     return null;
   }
   return (
-    <header className=" w-full px-7 flex justify-between items-center pt-3">
-      <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
-      {path === '/register' ? null : (
-        <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
-      )}
+    <header className=" w-full flex justify-center items-center pt-3">
+      <div className="w-[300px] flex justify-between items-center">
+        <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
+        {path === '/register' ? null : (
+          <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
+        )}
+      </div>
     </header>
   );
 }

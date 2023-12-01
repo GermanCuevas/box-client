@@ -10,6 +10,7 @@ import Deliveries from '@/components/Deliveries';
 
 import { useEffect } from 'react';
 import { feikDataACE } from '@/utils';
+import Link from 'next/link';
 
 /* const fakeDataPendings = [
   {
@@ -74,12 +75,14 @@ export default function Home() {
           />
         </div>
       </div>
-      <ButtonBottom
-        handleButton={handleButton}
-        buttonClassName={'bg-darkGreen w-[270px] mb-2'}
-        titleButtonClasses={'text-lemonGreen'}
-        titleButton="obtener paquetes"
-      />
+      <Link href={'/get-packages'}>
+        <ButtonBottom
+          handleButton={handleButton}
+          buttonClassName={'bg-darkGreen w-[270px] mb-2'}
+          titleButtonClasses={'text-lemonGreen'}
+          titleButton="obtener paquetes"
+        />
+      </Link>
     </main>
   );
 }

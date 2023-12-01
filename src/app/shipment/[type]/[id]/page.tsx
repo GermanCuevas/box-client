@@ -38,7 +38,7 @@ export default function Pending({ params }: ParamsObject) {
               userInfo={userData.nombre}
             />
           )}
-          <div className="flex flex-col gap-y-3 mt-8">
+          <div className="flex flex-col gap-y-3 mt-8 px-2">
             <ButtonBottom
               titleButton="Finalizar"
               buttonClassName="uppercase bg-darkGreen w-[100%]"
