@@ -5,7 +5,7 @@ import LemmonButton from '@/commons/LemmonButton';
 import HelloAdmin from '@/commons/HelloAdmin';
 //components
 import DateDetail from '@/commons/DateDetail';
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 //icons
 import { Plus } from '@/commons/icons/Plus';
 
@@ -30,8 +30,8 @@ export default function AdminHome() {
           <div className="w-[300px]">
             {/* common de ivan */}
             <div className="bg-lightGreen gap-y-3 mt-[10px] relative">
-              <ButtomBottom
-                titleButtom={'nuevo paquete'}
+              <ButtonBottom
+                titleButton={'nuevo paquete'}
                 icon={<Plus />}
                 buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
               />

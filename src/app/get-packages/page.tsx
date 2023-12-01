@@ -1,7 +1,7 @@
 'use client';
 
 import Address from '@/commons/Address';
-import ButtomBottom from '@/commons/ButtomBottom';
+import ButtonBottom from '@/commons/ButtonBottom';
 import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import React from 'react';
@@ -37,8 +37,8 @@ export default function GetPackages() {
         </div>
       </div>
       <div className="bg-lightGreen flex flex-col gap-y-3 mt-4 mb-8">
-        <ButtomBottom
-          titleButtom={'iniciar jornada'}
+        <ButtonBottom
+          titleButton={'iniciar jornada'}
           buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
         />
       </div>
