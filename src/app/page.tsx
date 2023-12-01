@@ -9,8 +9,9 @@ import ButtomBottom from '@/commons/ButtomBottom';
 import Deliveries from '@/components/Deliveries';
 
 import { useEffect } from 'react';
+import { feikDataACE } from '@/utils';
 
-const fakeDataPendings = [
+/* const fakeDataPendings = [
   {
     packageID: '#0A235',
     direction: 'Amenabar 2356',
@@ -44,7 +45,7 @@ const fakeDataHistory = [
     status: 'delivered'
   }
 ];
-
+ */
 export default function Home() {
   const userAuth = useAppSelector((store) => store.user.userAuth);
 
@@ -63,13 +64,13 @@ export default function Home() {
     <main className=" h-[92.5vh] flex flex-col justify-between">
       <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
         <div className="h-[40%] ">
-          <Deliveries data={fakeDataPendings} />
+          <Deliveries data={feikDataACE.fakeDataAll['pending']} deliveryType={'pending'} />
         </div>
         <div className="h-[50%] ">
           <Deliveries
             lemmonTitle={'historial de repartos'}
             deliveryType={'history'}
-            data={fakeDataHistory}
+            data={feikDataACE.fakeDataAll['history']}
           />
         </div>
       </div>
