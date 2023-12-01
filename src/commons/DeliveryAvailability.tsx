@@ -86,7 +86,7 @@ export default function DeliveryAvailability({
 
   return (
     <li className={'list-none flex max-w-[300px] w-full h-[100px] m-auto bg-white  '}>
-      <div className="basis-[30%] flex justify-center items-center">
+      <div className="basis-[30%] flex justify-center items-center ">
         <div className="w-[80px] h-[80px] relative flex justify-center items-center">
           <div className="w-[71px] h-[71px] absolute border-lightWhite border-4 rounded-full"></div>
           <div className="w-[71px] h-[71px] absolute rounded-full border-4 border-lightPurple ">
