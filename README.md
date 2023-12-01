@@ -49,10 +49,10 @@ Easy to use web application that allows you to navigate quickly so you can monit
 
 ### Built With
 
-|          |            |                       |
-| :------: | :--------: | :-------------------: |
-|   Next   |   Redux    |        Docker         |
-| Tailwind | TypeScript | React Testing Library |
+|          |            |        |
+| :------: | :--------: | :----: |
+|   Next   |   Redux    | Docker |
+| Tailwind | TypeScript |  AWS   |
 
 <p align="right"><a href="#home">⬆ Back to top</a></p>
 
@@ -182,7 +182,7 @@ This project is not yet deployed, but you can try it in your local. Follow the i
   <p>German Cuevas:</p>
   <a href="mailto:german.1990.cuevas@gmail.com" target="_blank" rel="noopener noreferrer">
     <img alt="Gmail" title="gmail" src="https://custom-icon-badges.demolab.com/badge/-german.1990.cuevas@gmail.com-red?style=for-the-badge&logo=mention&logoColor=white"/></a>
-  <a href="https://www.linkedin.com/in/santi-estevez/" target="_blank" rel="noopener noreferrer">
+  <a href="https://www.linkedin.com/in/german-cuevas-/" target="_blank" rel="noopener noreferrer">
     <img alt="Linkedin" title="linkedin" src="https://custom-icon-badges.demolab.com/badge/-Linkedin-blue?style=for-the-badge&logoColor=white&logo=linkedin"/></a>
   <a href="https://github.com/GermanCuevas" target="_blank" rel="noopener noreferrer">
     <img alt="Github" title="Github" src="https://custom-icon-badges.demolab.com/badge/-Github-grey?style=for-the-badge&logoColor=white&logo=github"/></a>
