@@ -7,18 +7,20 @@ import { useRouter } from 'next/navigation';
 
 import { useGetUsersQuery } from '@/store/services/userApi'; */
 //commons
-//sd
-//sd
+
 import { BoxTitleLogin } from '@/commons/icons/BoxTitleLogin';
 import Input from '@/commons/Input';
 import ButtonBottom from '@/commons/ButtonBottom';
 
 import useInput from '@/hooks/useInput';
+import { useAppDispatch } from '@/store/hooks';
+import { useGetUsersQuery } from '@/store/services/userApi';
+import { setUserAuth } from '@/store/slices/userSlice';
 
 export default function Login() {
   //redux
-  /* const dispatch = useAppDispatch();
-  const { data: users, isFetching } = useGetUsersQuery(null); */
+  const dispatch = useAppDispatch();
+  const { data: users, isFetching } = useGetUsersQuery(null);
   //router
   const router = useRouter();
   const mail = useInput('mail');
@@ -28,44 +30,20 @@ export default function Login() {
     e.preventDefault();
     console.log(mail.value);
     console.log(password.value);
-  };
 
-  /* const initialValues = {
-    email: '',
-    password: ''
-  };
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Correo electrónico no válido').required('Correo necesario'),
-    password: Yup.string().required('Contraseña requerida')
-  });
-
-  const onSubmit = (
-    values: { email: string; password: string },
-    formikHelpers: FormikHelpers<{ email: string; password: string }>
-  ) => {
-    // Maneja la lógica de envío del formulario aquí
     if (!isFetching) {
       const user = users?.filter((user) => {
-        return values.email === user.email && user.password === values.password;
+        return mail.value === user.email && user.password === password.value;
       });
       const userIsAuth = user?.length === 1;
       if (userIsAuth) {
         dispatch(setUserAuth(userIsAuth));
         router.push('/');
       } else {
-        formikHelpers.setErrors({
-          email: 'Correo electrónico o contraseña incorrectos',
-          password: 'Correo electrónico o contraseña incorrectos'
-        });
+        console.error('error');
       }
     }
   };
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit
-  }); */
 
   const handleRegister = () => {
     router.push('/register');

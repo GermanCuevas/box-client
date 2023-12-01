@@ -9,6 +9,8 @@ import LemmonButton from '@/commons/LemmonButton';
 import { useRouter } from 'next/navigation';
 import useInput from '@/hooks/useInput';
 
+import { usePostUserMutation } from '@/store/services/userApi';
+
 export default function Register() {
   const name = useInput('name');
   const lastname = useInput('lastname');
@@ -16,13 +18,27 @@ export default function Register() {
   const password = useInput('password');
   const repeatPassword = useInput('password');
 
-  // const dispatch = useAppDispatch();
+  //const dispatch = useAppDispatch();
+  const [postUser] = usePostUserMutation();
   const router = useRouter();
 
-  const handleSessionInit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSessionInit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(name.value);
-    router.push('/login');
+
+    if (password.value === repeatPassword.value) {
+      const objToPush = {
+        name: name.value + ' ' + lastname.value,
+        email: mail.value,
+        password: password.value
+      };
+
+      try {
+        await postUser(objToPush).unwrap();
+        router.push('/login');
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   return (
