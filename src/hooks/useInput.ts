@@ -9,11 +9,31 @@ function useInput(type: string): any {
     name: [
       {
         condition: (valor: string) => valor.trim() !== '',
-        messageError: '*El nombre no puede estar vacío'
+        messageError: '*El campo no puede estar vacío'
       },
       {
         condition: (valor: string) => !/[0-9]/.test(valor),
-        messageError: '*El nombre solo puede contener letras'
+        messageError: '*El campo solo puede contener letras'
+      }
+    ],
+    package_weight: [
+      {
+        condition: (valor: string) => valor.trim() !== '',
+        messageError: '*El campo no puede estar vacío'
+      },
+      {
+        condition: (valor: string) => /^-?[\d.,]+$/.test(valor),
+        messageError: '*El campo solo acepta numeros'
+      }
+    ],
+    address: [
+      {
+        condition: (valor: string) => valor.trim() !== '',
+        messageError: '*El campo no puede estar vacío'
+      },
+      {
+        condition: (valor: string) => /^[a-zA-Z0-9\s]+$/.test(valor),
+        messageError: '*El campo solo acepta numeros y letras'
       }
     ],
     lastname: [

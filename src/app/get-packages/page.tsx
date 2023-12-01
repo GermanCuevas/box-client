@@ -9,7 +9,7 @@ import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 
 export default function GetPackages() {
   return (
-    <div className="w-full flex flex-col items-center justify-center py-2 h-screen">
+    <div className="w-full flex flex-col items-center justify-center mt-5 min-h-[calc(100vh-70px)]">
       <div className="w-full max-w-[300px]">
         <div className="mb-3 tracking-normal">
           <LemmonButton title={'obtener paquetes'} width={'w-full'} />
@@ -23,7 +23,14 @@ export default function GetPackages() {
             boxClasses={'justify-center h-10'}
           />
         </div>
-        <div className="w-[300px]">
+        <div className="w-[300px] h-[353.6px] overflow-y-scroll">
+          <Address />
+          <Address />
+          <Address />
+          <Address />
+          <Address />
+          <Address />
+          <Address />
           <Address />
           <Address />
           <Address />
@@ -36,7 +43,7 @@ export default function GetPackages() {
           <ChevronDownBig />
         </div>
       </div>
-      <div className="bg-lightGreen flex flex-col gap-y-3 mt-4 mb-8">
+      <div className="bg-lightGreen flex flex-col gap-y-3 mt-5 mb-8">
         <ButtonBottom
           titleButton={'iniciar jornada'}
           buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
