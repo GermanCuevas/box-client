@@ -10,6 +10,7 @@ export default function Header() {
   const { userAuth } = useAppSelector((state) => state.user);
   const router = useRouter();
   const path = usePathname();
+  //sd
 
   useEffect(() => {
     if (!userAuth && path !== '/login') {
