@@ -12,6 +12,7 @@ interface LemmonButtonProps {
   title?: string;
   subtitle?: string;
   tracking?: string;
+  classNameButton?: string;
   hanleLemmonButton?: () => void;
 }
 
@@ -22,6 +23,7 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
   title = 'repartos pendientes',
   subtitle = null,
   tracking = 'tracking-[.5px]',
+  classNameButton,
   hanleLemmonButton
 }) => {
   return (
@@ -31,7 +33,7 @@ const LemmonButton: React.FC<LemmonButtonProps> = ({
       className={`bg-lemonGreen flex justify-between items-center rounded-[15px] pl-5 pr-5 max-w-[300px] ${height} ${width} ${tracking}`}
     >
       <figcaption
-        className={`text-start flex flex-col justify-center ${saira.className} antialiased h-full text-darkGreen`}
+        className={`text-start flex flex-col justify-center ${saira.className} antialiased h-full text-darkGreen ${classNameButton}`}
       >
         <h3 className={'font-bold leading-4 tracking-[.5px] text-start text-lg uppercase'}>
           {title}
