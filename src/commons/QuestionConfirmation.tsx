@@ -44,7 +44,7 @@ export default function QuestionConfirmation({ question, text }: Question) {
               onClick={handleToggleCheck1}
             />{' '}
             Si
-            {isChecked1 && <CheckOn />}
+            {isChecked1 && <CheckOn classNameCheck="absolute mr-24 ml-2" />}
             <CheckOff
               classNameCheck={`border-darkGreen border-[1px] w-[19px] h-[19px] ${
                 isChecked2 ? 'active' : ''
@@ -52,7 +52,7 @@ export default function QuestionConfirmation({ question, text }: Question) {
               onClick={handleToggleCheck2}
             />
             No
-            {isChecked2 && <CheckOn />}
+            {isChecked2 && <CheckOn classNameCheck="absolute ml-6" />}
           </div>
         </div>
       </div>

@@ -13,7 +13,12 @@ export default function SwornDeclaration() {
     <div className="flex flex-col items-center justify-center py-4 h-[92.5]">
       <div className="w-full max-w-[300px]">
         <div className="text-center mb-2 mt-2 tracking-normal">
-          <LemmonButton title={'declaración jurada'} width={'w-full'} icon={''} />
+          <LemmonButton
+            classNameButton={'ml-7'}
+            title={'declaración jurada'}
+            width={'w-full'}
+            icon={''}
+          />
         </div>
         <div>
           <QuestionConfirmation

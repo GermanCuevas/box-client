@@ -6,6 +6,7 @@ import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import React from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
+import Link from 'next/link';
 
 export default function GetPackages() {
   return (
@@ -44,10 +45,12 @@ export default function GetPackages() {
         </div>
       </div>
       <div className="bg-lightGreen flex flex-col gap-y-3 mt-5 mb-8">
-        <ButtonBottom
-          titleButton={'iniciar jornada'}
-          buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
-        />
+        <Link href={'/sworn-declaration'}>
+          <ButtonBottom
+            titleButton={'iniciar jornada'}
+            buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+          />
+        </Link>
       </div>
     </div>
   );
