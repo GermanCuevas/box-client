@@ -13,14 +13,14 @@ import Input from '@/commons/Input';
 import ButtonBottom from '@/commons/ButtonBottom';
 
 import useInput from '@/hooks/useInput';
-import { useAppDispatch } from '@/store/hooks';
-import { useGetUsersQuery } from '@/store/services/userApi';
-import { setUserAuth } from '@/store/slices/userSlice';
+// import { useAppDispatch } from '@/store/hooks';
+// import { useGetUsersQuery } from '@/store/services/userApi';
+// import { setUserAuth } from '@/store/slices/userSlice';
 
 export default function Login() {
   //redux
-  const dispatch = useAppDispatch();
-  const { data: users, isFetching } = useGetUsersQuery(null);
+  //const dispatch = useAppDispatch();
+  // const { data: users, isFetching } = useGetUsersQuery(null);
   //router
   const router = useRouter();
   const mail = useInput('mail');
@@ -31,18 +31,18 @@ export default function Login() {
     console.log(mail.value);
     console.log(password.value);
 
-    if (!isFetching) {
-      const user = users?.filter((user) => {
-        return mail.value === user.email && user.password === password.value;
-      });
-      const userIsAuth = user?.length === 1;
-      if (userIsAuth) {
-        dispatch(setUserAuth(userIsAuth));
-        router.push('/');
-      } else {
-        console.error('error');
-      }
-    }
+    // if (!isFetching) {
+    //   const user = users?.filter((user) => {
+    //     return mail.value === user.email && user.password === password.value;
+    //   });
+    //   const userIsAuth = user?.length === 1;
+    //   if (userIsAuth) {
+    //     dispatch(setUserAuth(userIsAuth));
+    //     router.push('/');
+    //   } else {
+    //     console.error('error');
+    //   }
+    // }
   };
 
   const handleRegister = () => {

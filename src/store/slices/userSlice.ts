@@ -8,7 +8,7 @@ export interface userState {
 const loadUserAuthFromLocalStorage = () => {
   if (typeof window !== 'undefined') {
     const storedUserAuth = localStorage.getItem('userAuth');
-    return storedUserAuth ? JSON.parse(storedUserAuth) : false;
+    return storedUserAuth ? JSON.parse(storedUserAuth) : true;
   }
   return false;
 };
