@@ -2,15 +2,16 @@
 //router
 import { useRouter } from 'next/navigation';
 //redux
-import { useAppSelector } from '@/store/hooks';
+// import { useAppSelector } from '@/store/hooks';
 
 //commons
 import ButtonBottom from '@/commons/ButtonBottom';
 import Deliveries from '@/components/Deliveries';
 
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { feikDataACE } from '@/utils';
 import Link from 'next/link';
+import 'react-toastify/dist/ReactToastify.css';
 
 /* const fakeDataPendings = [
   {
@@ -48,15 +49,15 @@ const fakeDataHistory = [
 ];
  */
 export default function Home() {
-  const userAuth = useAppSelector((store) => store.user.userAuth);
+  // const userAuth = useAppSelector((store) => store.user.userAuth);
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (!userAuth) {
-      router.push('/login');
-    }
-  }, [router, userAuth]);
+  // useEffect(() => {
+  //   if (!userAuth) {
+  //     router.push('/login');
+  //   }
+  // }, [router, userAuth]);
 
   const handleButton = () => {
     router.push('/packages');

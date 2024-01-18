@@ -8,6 +8,7 @@ import useInput from '@/hooks/useInput';
 // import { usePostUserMutation } from '@/store/services/userApi';
 import toastAlert from '@/utils/toastifyAlert';
 import axios, { AxiosError } from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -142,14 +143,18 @@ export const RegisterClient = () => {
                   buttonClassName="uppercase bg-darkGreen w-[100%]"
                   titleButtonClasses={'text-lightGreen'}
                 />
-                <ButtonBottom
-                  titleButton="Iniciar sesión"
-                  buttonClassName="uppercase w-[100%]"
-                  titleButtonClasses="text-darkGreen "
-                />
-                <p className={'text-center text-darkGreen underline text-[14px]'}>
-                  ¿Ya tenés tu cuenta?
-                </p>
+                <Link href="/login">
+                  <ButtonBottom
+                    titleButton="Iniciar sesión"
+                    buttonClassName="uppercase w-[100%]"
+                    titleButtonClasses="text-darkGreen "
+                  />
+                </Link>
+                <Link href="/login">
+                  <p className={'text-center text-darkGreen underline text-[14px]'}>
+                    ¿Ya tenés tu cuenta?
+                  </p>
+                </Link>
               </div>
             </form>
           </div>
