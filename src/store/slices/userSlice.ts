@@ -5,17 +5,17 @@ export interface userState {
   userInfo: object | null;
   userAuth: boolean | null;
 }
-const loadUserAuthFromLocalStorage = () => {
-  if (typeof window !== 'undefined') {
-    const storedUserAuth = localStorage.getItem('userAuth');
-    return storedUserAuth ? JSON.parse(storedUserAuth) : true;
-  }
-  return false;
-};
+// const loadUserAuthFromLocalStorage = () => {
+//   if (typeof window !== 'undefined') {
+//     const storedUserAuth = localStorage.getItem('userAuth');
+//     return storedUserAuth ? JSON.parse(storedUserAuth) : true;
+//   }
+//   return false;
+// };
 
 const initialState: userState = {
   userInfo: null,
-  userAuth: loadUserAuthFromLocalStorage()
+  userAuth: false
 };
 
 export const userSlice = createSlice({
@@ -23,7 +23,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUserAuth: (state, { payload }: PayloadAction<boolean>) => {
-      state.userAuth = payload;
+      state.userAuth = true;
 
       localStorage.setItem('userAuth', JSON.stringify(payload));
     },

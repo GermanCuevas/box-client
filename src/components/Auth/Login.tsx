@@ -1,17 +1,21 @@
 'use client';
-
+import React from 'react';
+import Link from 'next/link';
+//*Toast
+import { useRouter } from 'next/navigation';
+import { ToastContainer } from 'react-toastify';
+import toastAlert from '@/utils/toastifyAlert';
+//*Redux
+import { useAppDispatch } from '@/store/hooks';
+import { setUserInfo } from '@/store/slices/userSlice';
+//*Commons
 import ButtonBottom from '@/commons/ButtonBottom';
 import Input from '@/commons/Input';
-import { BoxTitleLogin } from '@/commons/icons/BoxTitleLogin';
 import useInput from '@/hooks/useInput';
-// import { useAppDispatch } from '@/store/hooks';
-// import { setUserAuth } from '@/store/slices/userSlice';
-import toastAlert from '@/utils/toastifyAlert';
+//*Icons
+import { BoxTitleLogin } from '@/commons/icons/BoxTitleLogin';
+//*axios
 import axios, { AxiosError } from 'axios';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import { ToastContainer } from 'react-toastify';
 
 interface Message {
   statusCode: number;
@@ -20,7 +24,8 @@ interface Message {
 
 export default function LoginClient() {
   //redux
-  // const dispatch = useAppDispatch();
+  const dispatch: any = useAppDispatch();
+
   // const { data: users, isFetching } = useGetUsersQuery(null);
   //router
   const router = useRouter();
@@ -33,7 +38,7 @@ export default function LoginClient() {
       return toastAlert('error', '¡Completar todos los campos!');
     }
     try {
-      const userLogin = await axios.post(
+      const { data: userLogin } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/LoginUser`,
         {
           email: mail.value,
@@ -42,10 +47,10 @@ export default function LoginClient() {
         { withCredentials: true }
       );
 
-      //  dispatch(setUserAuth(userLogin));
+      dispatch(setUserInfo(userLogin));
 
       await toastAlert('success', 'Bienvenido!');
-      if (userLogin.data.isAdmin === true) {
+      if (userLogin.isAdmin === true) {
         setTimeout(() => {
           router.push('/admin-home');
         }, 2500);
@@ -54,8 +59,6 @@ export default function LoginClient() {
           router.push('/');
         }, 2500);
       }
-
-      console.log(userLogin);
     } catch (error: any) {
       console.error(error);
       const axiosError: AxiosError = error;

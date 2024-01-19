@@ -1,25 +1,47 @@
 'use client';
 import { useEffect } from 'react';
-import LogoutButton from '@/commons/LogoutButton';
-import { useAppSelector } from '@/store/hooks';
-
 import Image from 'next/image';
+//router
 import { usePathname, useRouter } from 'next/navigation';
+//*Redux
+import { useAppDispatch } from '@/store/hooks';
+import { setUserInfo } from '@/store/slices/userSlice';
+//*RTK QUERY
+import { useGetProfileQuery } from '@/store/services/userApi';
+//commons
+import LogoutButton from '@/commons/LogoutButton';
+
+// type User = {
+//   id_user: string;
+//   name: string;
+//   email: string;
+//   isAdmin: boolean;
+//   iat: number,
+//   exp: number
+// };
 
 export default function Header() {
-  const { userAuth } = useAppSelector((state) => state.user);
+  const dispatch: any = useAppDispatch();
   const router = useRouter();
   const path = usePathname();
+  const { data, isError, isSuccess, isLoading } = useGetProfileQuery(null);
+
+  const isAdmin: any = data?.isAdmin;
 
   useEffect(() => {
-    if (!userAuth && path !== '/login') {
-      router.push('/login');
-    }
-  }, [userAuth, router, path]);
+    if (isLoading) {
+      if (isError) {
+        router.push('/login');
+      }
+      if (isSuccess) dispatch(setUserInfo(data));
 
-  if (path === '/login') {
-    return null;
-  }
+      if (data) {
+        if (isAdmin) router.push('/admin-home');
+        else router.push('/');
+      }
+    }
+  }, [data, dispatch, isAdmin, isError, isSuccess, router, isLoading]);
+
   return (
     <header className=" w-full flex justify-center items-center pt-3">
       <div className="w-[300px] flex justify-between items-center">
