@@ -26,7 +26,7 @@ export default function Header() {
   const path = usePathname();
   const { data, isError, isSuccess, isLoading } = useGetProfileQuery(null);
 
-  const { isAdmin }: any = data;
+  const isAdmin: any = data?.isAdmin;
 
   useEffect(() => {
     if (isLoading) {
