@@ -43,13 +43,17 @@ export default function Header() {
   }, [data, dispatch, isAdmin, isError, isSuccess, router, isLoading]);
 
   return (
-    <header className=" w-full flex justify-center items-center pt-3">
-      <div className="w-[300px] flex justify-between items-center">
-        <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
-        {path === '/register' ? null : (
-          <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
-        )}
-      </div>
-    </header>
+    <>
+      {path !== '/login' && (
+        <header className="w-full flex justify-center items-center pt-3">
+          <div className="w-[300px] flex justify-between items-center">
+            <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
+            {path === '/register' ? null : (
+              <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
+            )}
+          </div>
+        </header>
+      )}
+    </>
   );
 }
