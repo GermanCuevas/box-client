@@ -3,19 +3,19 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface userState {
   userInfo: object | null;
-  userAuth: boolean | null;
+  // userAuth: boolean | null;
 }
-const loadUserAuthFromLocalStorage = () => {
-  if (typeof window !== 'undefined') {
-    const storedUserAuth = localStorage.getItem('userAuth');
-    return storedUserAuth ? JSON.parse(storedUserAuth) : true;
-  }
-  return false;
-};
+// const loadUserAuthFromLocalStorage = () => {
+//   if (typeof window !== 'undefined') {
+//     const storedUserAuth = localStorage.getItem('userAuth');
+//     return storedUserAuth ? JSON.parse(storedUserAuth) : true;
+//   }
+//   return false;
+// };
 
 const initialState: userState = {
-  userInfo: null,
-  userAuth: loadUserAuthFromLocalStorage()
+  userInfo: null
+  // userAuth: loadUserAuthFromLocalStorage()
 };
 
 export const userSlice = createSlice({

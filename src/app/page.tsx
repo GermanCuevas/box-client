@@ -2,7 +2,7 @@
 //router
 import { useRouter } from 'next/navigation';
 //redux
-// import { useAppSelector } from '@/store/hooks';
+import { useAppSelector } from '@/store/hooks';
 
 //commons
 import ButtonBottom from '@/commons/ButtonBottom';
@@ -12,6 +12,7 @@ import Deliveries from '@/components/Deliveries';
 import { feikDataACE } from '@/utils';
 import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 /* const fakeDataPendings = [
   {
@@ -49,15 +50,15 @@ const fakeDataHistory = [
 ];
  */
 export default function Home() {
-  // const userAuth = useAppSelector((store) => store.user.userAuth);
+  const { userInfo } = useAppSelector((store) => store.user);
 
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (!userAuth) {
-  //     router.push('/login');
-  //   }
-  // }, [router, userAuth]);
+  useEffect(() => {
+    if (!userInfo) {
+      router.push('/login');
+    }
+  }, [router, userInfo]);
 
   const handleButton = () => {
     router.push('/packages');
