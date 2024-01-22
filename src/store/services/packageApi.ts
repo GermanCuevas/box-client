@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 type Package = {
   address?: string;
@@ -36,3 +36,5 @@ export const packageApi = createApi({
     })
   })
 });
+
+export const { useGetPackagesByIdQuery, useGetPackagesQuery, usePostPackageMutation } = packageApi;
