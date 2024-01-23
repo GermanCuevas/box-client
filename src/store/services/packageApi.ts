@@ -15,6 +15,7 @@ type Package = {
   receptorName?: string;
   weight?: number;
   _id?: string;
+  toggleStatus?: boolean;
 };
 
 export const packageApi = createApi({
