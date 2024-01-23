@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 type Package = {
   address?: string;
+  addressNumber?: number;
+  postalCode?: number;
   status?: string;
   deliveryCode?: string;
   city?: string;
@@ -12,29 +14,30 @@ type Package = {
   coordinates?: number[];
   receptorName?: string;
   weight?: number;
+  _id?: string;
 };
 
 export const packageApi = createApi({
   reducerPath: 'packageAPI',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_API_URL + '/api/',
+    baseUrl: process.env.NEXT_PUBLIC_API_URL + '/api',
     credentials: 'include'
   }),
   endpoints: (builder) => ({
     getPackages: builder.query<Package[], null>({
-      query: () => 'packages'
-    }),
-    getPackagesById: builder.query<Package, { id: string }>({
-      query: ({ id }) => `packages/${id}`
-    }),
-    postPackage: builder.mutation<Package, Partial<Package>>({
-      query: (newPackageData) => ({
-        url: 'packages',
-        method: 'POST',
-        body: newPackageData
-      })
+      query: () => '/users/availablePackages'
     })
+    // getPackagesById: builder.query<Package, { id: string }>({
+    //   query: ({ id }) => `/packages/${id}`
+    // }),
+    // postPackage: builder.mutation<Package, Partial<Package>>({
+    //   query: (newPackageData) => ({
+    //     url: '/packages',
+    //     method: 'POST',
+    //     body: newPackageData
+    //   })
+    // })
   })
 });
 
-export const { useGetPackagesByIdQuery, useGetPackagesQuery, usePostPackageMutation } = packageApi;
+export const { useGetPackagesQuery } = packageApi;
