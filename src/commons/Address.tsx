@@ -3,17 +3,20 @@ import React from 'react';
 import { CheckOK } from './icons/CheckOK';
 import { CheckOff } from './icons/CheckOff';
 
-interface address {
-  status?: boolean;
+interface Props {
+  address?: string;
+  addressNumber?: number;
+  city?: string;
+  status?: boolean | number;
   onClickButton?(): void;
 }
 
-export default function Address({ status, onClickButton }: address) {
+export default function Address({ status, onClickButton, address, city, addressNumber }: Props) {
   return (
     <div className="bg-white flex justify-start items-center border-b-[1px] border-darkGreen">
       <div
         className={'w-[30rem] h-[3.1rem] flex items-center gap-x-4 ml-6 font-Roboto text-darkGreen'}
-        onClick={() => onClickButton?.()}
+        onClick={onClickButton}
       >
         {status ? (
           <CheckOK
@@ -25,7 +28,9 @@ export default function Address({ status, onClickButton }: address) {
         ) : (
           <CheckOff classNameCheck="border-darkGreen border-[1px] w-[27px] h-[27px]" />
         )}
-        <h2>Amenabar 2356, CABA</h2>
+        <h2>
+          {address} {addressNumber}, {city}
+        </h2>
       </div>
     </div>
   );
