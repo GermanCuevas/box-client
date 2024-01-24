@@ -27,18 +27,22 @@ export const packageApi = createApi({
   endpoints: (builder) => ({
     getPackages: builder.query<Package[], null>({
       query: () => '/users/availablePackages'
+    }),
+
+    postPackage: builder.mutation<void, { packagesIds: any; userId: any }>({
+      query: ({ packagesIds, userId }) => ({
+        url: '/users/assignPackage',
+        method: 'POST',
+        body: { packagesIds, userId }
+      })
+      // getPackagesByStatus: builder.query<Package[], string>({
+      //   query: (status) => `/packages?status=${status}`
+      // }),
+      // getPackagesById: builder.query<Package, { id: string }>({
+      //   query: ({ id }) => `/packages/${id}`
+      // }),
     })
-    // getPackagesById: builder.query<Package, { id: string }>({
-    //   query: ({ id }) => `/packages/${id}`
-    // }),
-    // postPackage: builder.mutation<Package, Partial<Package>>({
-    //   query: (newPackageData) => ({
-    //     url: '/packages',
-    //     method: 'POST',
-    //     body: newPackageData
-    //   })
-    // })
   })
 });
 
-export const { useGetPackagesQuery } = packageApi;
+export const { useGetPackagesQuery, usePostPackageMutation } = packageApi;

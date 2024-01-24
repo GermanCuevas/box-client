@@ -6,12 +6,16 @@ import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import React, { useEffect, useState } from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
-
-import { useGetPackagesQuery } from '@/store/services/packageApi';
+import { useGetPackagesQuery, usePostPackageMutation } from '@/store/services/packageApi';
+import { useRouter } from 'next/navigation';
+import { useGetProfileQuery } from '@/store/services/userApi';
 
 export default function GetPackages() {
   const { data: packages } = useGetPackagesQuery(null);
+  const { data: userData } = useGetProfileQuery(null);
+  const [postPackage] = usePostPackageMutation();
   const [packagesUser, setpackagesUser] = useState(packages);
+  const router = useRouter();
 
   useEffect(() => {
     if (packages) {
@@ -28,22 +32,21 @@ export default function GetPackages() {
   }
   const handleButtonStart = () => {
     const packages = packagesUser?.filter((idem) => idem.toggleStatus);
-
-    if (packages?.length == 0) return alert('Anda Laburaaaaar');
-    //rtk query, agregar paquetes al usuario con el array de packages
+    if (packages?.length == 0) return;
     console.log(packages);
-    alert('Lindo día para laburar');
+    const packagesFilter = packages?.map((idem) => {
+      return idem._id;
+    });
+    console.log(packagesFilter);
+
+    // const packagesIds: string[] = packagesFilter?.map((idem: any) => idem?.id) || [];
+    try {
+      postPackage({ packagesIds: packagesFilter, userId: userData?.id_user });
+      router.push('/sworn-declaration');
+    } catch (error) {
+      console.error(error);
+    }
   };
-  // function togglePackageSelection(index: number) {
-  //   // Copiar el array de estados seleccionados
-  //   const updatedSelectedPackages = [...selectedPackages];
-
-  //   // Cambiar el estado del paquete individual
-  //   updatedSelectedPackages[index] = !updatedSelectedPackages[index];
-
-  //   // Actualizar el estado con el nuevo array
-  //   setSelectedPackages(updatedSelectedPackages);
-  // }
 
   return (
     <div className="w-full flex flex-col items-center justify-center mt-5 min-h-[calc(100vh-70px)]">
