@@ -4,13 +4,50 @@ import Address from '@/commons/Address';
 import ButtonBottom from '@/commons/ButtonBottom';
 import BoxTitle from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
-import Link from 'next/link';
+
+import { useGetPackagesQuery } from '@/store/services/packageApi';
 
 export default function GetPackages() {
+  const { data: packages } = useGetPackagesQuery(null);
+  const [packagesUser, setpackagesUser] = useState(packages);
+
+  useEffect(() => {
+    if (packages) {
+      setpackagesUser(packages.map((item) => ({ ...item, toggleStatus: false })));
+    }
+  }, [packages]);
+
+  function onClickButton(id: any) {
+    setpackagesUser((prevCart: any) =>
+      prevCart.map((item: any) =>
+        item._id === id ? { ...item, toggleStatus: !item.toggleStatus } : item
+      )
+    );
+  }
+  const handleButtonStart = () => {
+    const packages = packagesUser?.filter((idem) => idem.toggleStatus);
+
+    if (packages?.length == 0) return alert('Anda Laburaaaaar');
+    //rtk query, agregar paquetes al usuario con el array de packages
+    console.log(packages);
+    alert('Lindo día para laburar');
+  };
+  // function togglePackageSelection(index: number) {
+  //   // Copiar el array de estados seleccionados
+  //   const updatedSelectedPackages = [...selectedPackages];
+
+  //   // Cambiar el estado del paquete individual
+  //   updatedSelectedPackages[index] = !updatedSelectedPackages[index];
+
+  //   // Actualizar el estado con el nuevo array
+  //   setSelectedPackages(updatedSelectedPackages);
+  // }
+
   return (
     <div className="w-full flex flex-col items-center justify-center mt-5 min-h-[calc(100vh-70px)]">
+      {JSON.stringify(packagesUser?.map((e) => e.toggleStatus))}
       <div className="w-full max-w-[300px]">
         <div className="mb-3 tracking-normal">
           <LemmonButton title={'obtener paquetes'} width={'w-full'} />
@@ -25,32 +62,31 @@ export default function GetPackages() {
           />
         </div>
         <div className="w-[300px] h-[353.6px] overflow-y-scroll">
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
-          <Address />
+          {packagesUser?.map((item) => {
+            return (
+              <Address
+                key={item._id}
+                address={item.address}
+                city={item.city}
+                addressNumber={item.addressNumber}
+                onClickButton={() => {
+                  onClickButton(item._id);
+                }}
+                status={item.toggleStatus}
+              />
+            );
+          })}
         </div>
         <div className="bg-white flex justify-center items-center rounded-b-[15px] h-[3rem] w-[300px]">
           <ChevronDownBig />
         </div>
       </div>
       <div className="bg-lightGreen flex flex-col gap-y-3 mt-5 mb-8">
-        <Link href={'/sworn-declaration'}>
-          <ButtonBottom
-            titleButton={'iniciar jornada'}
-            buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
-          />
-        </Link>
+        <ButtonBottom
+          handleButton={handleButtonStart}
+          titleButton={'iniciar jornada'}
+          buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+        />
       </div>
     </div>
   );
