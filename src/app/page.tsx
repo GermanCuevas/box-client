@@ -14,6 +14,8 @@ import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 
+import { useGetPackagesQuery } from '@/store/services/packageApi';
+
 /* const fakeDataPendings = [
   {
     packageID: '#0A235',
@@ -50,7 +52,10 @@ const fakeDataHistory = [
 ];
  */
 export default function Home() {
+  const { data: packages } = useGetPackagesQuery(null);
   const { userInfo } = useAppSelector((store) => store.user);
+
+  console.log(packages);
 
   const router = useRouter();
 
