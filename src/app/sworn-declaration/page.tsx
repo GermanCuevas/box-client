@@ -7,6 +7,7 @@ import ButtonBottom from '@/commons/ButtonBottom';
 //icons
 // import Link from 'next/link';
 import QuestionConfirmation from '@/commons/QuestionConfirmation';
+import Link from 'next/link';
 
 export default function SwornDeclaration() {
   const [isCheck, setIsCheck] = useState({
@@ -54,10 +55,12 @@ export default function SwornDeclaration() {
         </div>
         <div className="w-[300px] rounded-[15px]">
           <div className="bg-lightGreen gap-y-3 mt-[30px] relative">
-            <ButtonBottom
-              titleButton={'continuar'}
-              buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
-            />
+            <Link href="/">
+              <ButtonBottom
+                titleButton={'continuar'}
+                buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+              />
+            </Link>
           </div>
         </div>
       </div>
