@@ -5,9 +5,10 @@ import React from 'react';
 interface LogoutButtonProps {
   classNameButton?: string;
   text?: string;
+  handleLogout?: () => void;
 }
 
-export default function LogoutButton({ text, classNameButton }: LogoutButtonProps) {
+export default function LogoutButton({ text, classNameButton, handleLogout }: LogoutButtonProps) {
   // const dispatch = useAppDispatch();
   // const handleLogout = () => {
   //   dispatch(setUserAuth(false));
@@ -15,7 +16,7 @@ export default function LogoutButton({ text, classNameButton }: LogoutButtonProp
 
   return (
     <button
-      // onClick={handleLogout}
+      onClick={handleLogout}
       className={`bg-lightGreen text-sm text-darkGreen rounded-xl border-darkGreen border-2 ${classNameButton}`}
     >
       {text}

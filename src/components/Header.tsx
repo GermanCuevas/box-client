@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAppDispatch } from '@/store/hooks';
 import { setUserInfo } from '@/store/slices/userSlice';
 //*RTK QUERY
-import { useGetProfileQuery } from '@/store/services/userApi';
+import { useGetProfileQuery, useLogoutUserMutation } from '@/store/services/userApi';
 //commons
 import LogoutButton from '@/commons/LogoutButton';
 
@@ -24,6 +24,7 @@ export default function Header() {
   const dispatch: any = useAppDispatch();
   const router = useRouter();
   const path = usePathname();
+  const [logoutUser] = useLogoutUserMutation();
   const { data, isError, isSuccess, isLoading } = useGetProfileQuery(null);
 
   const isAdmin: any = data?.isAdmin;
@@ -42,6 +43,15 @@ export default function Header() {
     }
   }, [data, dispatch, isAdmin, isError, isSuccess, router, isLoading]);
 
+  const handleButtonLogout = async () => {
+    try {
+      logoutUser({});
+      router.push('/login');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       {path !== '/login' && (
@@ -49,7 +59,11 @@ export default function Header() {
           <div className="w-[300px] flex justify-between items-center">
             <Image src={'/img/box.svg'} width={80} height={30} alt="Logo box" />
             {path === '/register' ? null : (
-              <LogoutButton text={'CERRAR SESIÓN'} classNameButton={'py-0.5 px-2.5'} />
+              <LogoutButton
+                handleLogout={handleButtonLogout}
+                text={'CERRAR SESIÓN'}
+                classNameButton={'py-0.5 px-2.5'}
+              />
             )}
           </div>
         </header>
