@@ -50,7 +50,7 @@ export default function GetPackages() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center mt-5 min-h-[calc(100vh-70px)]">
-      {JSON.stringify(packagesUser?.map((e) => e.toggleStatus))}
+      {/* {JSON.stringify(packagesUser?.map((e) => e.toggleStatus))} */}
       <div className="w-full max-w-[300px]">
         <div className="mb-3 tracking-normal">
           <LemmonButton title={'obtener paquetes'} width={'w-full'} />

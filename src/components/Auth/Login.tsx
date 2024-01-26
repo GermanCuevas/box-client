@@ -47,17 +47,22 @@ export default function LoginClient() {
         { withCredentials: true }
       );
 
-      dispatch(setUserInfo(userLogin));
-
-      await toastAlert('success', 'Bienvenido!');
-      if (userLogin.isAdmin === true) {
-        setTimeout(() => {
-          router.push('/admin-home');
-        }, 2500);
+      if (userLogin.isDisabled || userLogin.isSuitable === false) {
+        await toastAlert('error', 'No estas habilitado para trabajar hoy!');
+        return;
       } else {
-        setTimeout(() => {
-          router.push('/');
-        }, 2500);
+        dispatch(setUserInfo(userLogin));
+
+        await toastAlert('success', 'Bienvenido!');
+        if (userLogin.isAdmin === true) {
+          setTimeout(() => {
+            router.push('/admin-home');
+          }, 2500);
+        } else {
+          setTimeout(() => {
+            router.push('/');
+          }, 2500);
+        }
       }
     } catch (error: any) {
       console.error(error);
