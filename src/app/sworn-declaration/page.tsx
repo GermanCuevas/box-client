@@ -7,19 +7,51 @@ import ButtonBottom from '@/commons/ButtonBottom';
 //icons
 // import Link from 'next/link';
 import QuestionConfirmation from '@/commons/QuestionConfirmation';
-import Link from 'next/link';
+import { ToastContainer } from 'react-toastify';
+import toastAlert from '@/utils/toastifyAlert';
+import {
+  useGetProfileQuery,
+  useLogoutUserMutation,
+  useUpdateIsSuitableMutation
+} from '@/store/services/userApi';
+import { useRouter } from 'next/navigation';
 
 export default function SwornDeclaration() {
   const [isCheck, setIsCheck] = useState({
-    drinkAlcohol: false,
-    psychoactiveDrug: false,
-    familyIssues: false
+    drinkAlcohol: true,
+    psychoactiveDrug: true,
+    familyIssues: true
   });
+  const [updateIsSuitable] = useUpdateIsSuitableMutation();
+  const [logoutUser] = useLogoutUserMutation();
+  const { data: userData } = useGetProfileQuery(null);
+  const router = useRouter();
 
-  // const canContinue = Object.values(isCheck).every(e => e)
+  console.log(isCheck);
+  console.log(userData);
+
+  const handleButtonStart = async () => {
+    if (isCheck.drinkAlcohol || isCheck.familyIssues || isCheck.psychoactiveDrug) {
+      await toastAlert('error', 'No estas apto para trabajar!');
+      try {
+        updateIsSuitable({ id_user: userData?.id_user, isSuitable: false });
+        logoutUser({});
+        setTimeout(() => {
+          router.push('/login');
+        }, 2500);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      router.push('/');
+    }
+  };
+
+  // const canContinue = !Object.values(isCheck).every((e) => e);
 
   return (
     <div className="flex flex-col items-center justify-center py-4 h-[92.5]">
+      <ToastContainer />
       <div className="w-full max-w-[300px]">
         <div className="text-center mb-2 mt-2 tracking-normal">
           <LemmonButton
@@ -55,12 +87,11 @@ export default function SwornDeclaration() {
         </div>
         <div className="w-[300px] rounded-[15px]">
           <div className="bg-lightGreen gap-y-3 mt-[30px] relative">
-            <Link href="/">
-              <ButtonBottom
-                titleButton={'continuar'}
-                buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
-              />
-            </Link>
+            <ButtonBottom
+              handleButton={handleButtonStart}
+              titleButton={'continuar'}
+              buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+            />
           </div>
         </div>
       </div>
