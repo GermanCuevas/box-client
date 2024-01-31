@@ -6,7 +6,27 @@ function useInput(type: string): any {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value);
 
   const validations_types: any = {
+    deliveryCode: [
+      {
+        condition: (valor: string) => valor.trim() !== '',
+        messageError: '*El campo no puede estar vacío'
+      },
+      {
+        condition: (valor: string) => !/[0-9]/.test(valor),
+        messageError: '*El campo solo puede contener letras'
+      }
+    ],
     name: [
+      {
+        condition: (valor: string) => valor.trim() !== '',
+        messageError: '*El campo no puede estar vacío'
+      },
+      {
+        condition: (valor: string) => !/[0-9]/.test(valor),
+        messageError: '*El campo solo puede contener letras'
+      }
+    ],
+    city: [
       {
         condition: (valor: string) => valor.trim() !== '',
         messageError: '*El campo no puede estar vacío'
