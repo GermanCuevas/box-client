@@ -4,6 +4,7 @@ import LemmonButton from '@/commons/LemmonButton';
 
 import { MapComponent } from '@/components/maps';
 import { FakeDataAll, PackageData, feikDataACE } from '@/utils';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface ParamsObject {
@@ -16,17 +17,27 @@ interface ParamsObject {
 export default function Pending({ params }: ParamsObject) {
   const { id, type } = params;
   const [userData, setUserdata] = useState<PackageData>();
+  const router = useRouter();
+
   useEffect(() => {
     const dataBase = feikDataACE.fakeDataAll[type as keyof FakeDataAll];
     const search = dataBase.find((data) => data.id === id);
     setUserdata(search);
   }, [id, type]);
 
+  const hanleNavigateToPackagesInCourses = () => {
+    router.push('/');
+  };
+
   return (
     <section className="w-full flex flex-col items-center justify-start min-h-[calc(100vh-50px)] py-4 ">
       <div className={'w-full max-w-[300px]'}>
         <div className="mb-3 mt-[.4rem]  tracking-normal w-full">
-          <LemmonButton title="Reparto en curso" width={'w-full'} />
+          <LemmonButton
+            hanleLemmonButton={hanleNavigateToPackagesInCourses}
+            title="Reparto en curso"
+            width={'w-full'}
+          />
         </div>
 
         <div className="w-full">

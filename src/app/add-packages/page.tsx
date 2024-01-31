@@ -8,6 +8,7 @@ import Input from '@/commons/Input';
 import ButtonBottom from '@/commons/ButtonBottom';
 import LemmonButton from '@/commons/LemmonButton';
 import useInput from '@/hooks/useInput';
+import { usePostAddPackageMutation } from '@/store/services/adminApi';
 
 interface AddPackageProps {
   // props?
@@ -16,8 +17,44 @@ interface AddPackageProps {
 const AddPackage: React.FC<AddPackageProps> = () => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const address = useInput('address');
+  const city = useInput('city');
   const name = useInput('name');
+  const deliveryCode = useInput('deliveryCode');
   const package_weight = useInput('package_weight');
+
+  const [postPackage] = usePostAddPackageMutation();
+
+  const handleAddPackage = async () => {
+    type createPackage = {
+      city: string;
+      address: string;
+      package_weight: number;
+      startDate: Date | null;
+      deliveryCode: string;
+      receptorName: string;
+    };
+
+    try {
+      // Crear el objeto de datos para la mutación
+      const body: createPackage = {
+        startDate,
+        address,
+        receptorName: name,
+        package_weight: parseInt(package_weight),
+        city,
+        deliveryCode
+      };
+
+      // Llamar a la mutación
+      await postPackage(body);
+
+      // La mutación fue exitosa
+      console.log('Paquete añadido con éxito!');
+    } catch (error) {
+      // Manejar errores de la mutación
+      console.error('Error al añadir el paquete:', error);
+    }
+  };
 
   return (
     <div className="w-full flex flex-col items-center justify-start pt-2 px-7">
@@ -28,6 +65,18 @@ const AddPackage: React.FC<AddPackageProps> = () => {
         <div className="w-full ">
           <div className="bg-white  pt-[35px] pr-[20px] pb-[187px] pl-[20px] rounded-[13px] ">
             <form action="" className="flex flex-col gap-y-4">
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={city.value}
+                  onChange={city.onChange}
+                  onBlur={city.blur}
+                  onFocus={city.focus}
+                  placeholder="City"
+                  type="text"
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{address.message}</p>
+              </div>
+
               <div className="flex flex-col gap-y-[5px]">
                 <Input
                   value={address.value}
@@ -64,6 +113,18 @@ const AddPackage: React.FC<AddPackageProps> = () => {
                 <p className="h-[5px] text-[12px] text-[#B6371C]">{package_weight.message}</p>
               </div>
 
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={deliveryCode.value}
+                  onChange={deliveryCode.onChange}
+                  onBlur={deliveryCode.blur}
+                  onFocus={deliveryCode.focus}
+                  placeholder="Código de entrega"
+                  type="text"
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{deliveryCode.message}</p>
+              </div>
+
               <div className="relative mt-1">
                 <span>Fecha de entrega</span>
                 <div className="border border-black rounded-md pt-[6px] pr-[11px] pb-[5px] pl-[15px] ">
@@ -83,7 +144,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
             <ButtonBottom
               titleButton={'AGREGAR'}
               buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
-              handleButton={() => alert('Paquete agregado')}
+              handleButton={handleAddPackage}
             />
           </div>
         </div>
