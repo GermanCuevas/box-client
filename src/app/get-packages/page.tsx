@@ -13,8 +13,10 @@ import { useGetProfileQuery } from '@/store/services/userApi';
 export default function GetPackages() {
   const { data: packages } = useGetPackagesQuery(null);
   const { data: userData } = useGetProfileQuery(null);
+
   const [postPackage] = usePostPackageMutation();
   const [packagesUser, setpackagesUser] = useState(packages);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function GetPackages() {
       )
     );
   }
-  const handleButtonStart = () => {
+  const handleButtonStart = async () => {
     const packages = packagesUser?.filter((idem) => idem.toggleStatus);
     if (packages?.length == 0) return;
     console.log(packages);
@@ -41,7 +43,7 @@ export default function GetPackages() {
 
     // const packagesIds: string[] = packagesFilter?.map((idem: any) => idem?.id) || [];
     try {
-      postPackage({ packagesIds: packagesFilter, userId: userData?.id_user });
+      await postPackage({ packagesIds: packagesFilter, userId: userData?.id_user }).unwrap();
       router.push('/sworn-declaration');
     } catch (error) {
       console.error(error);

@@ -1,12 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-type createPackage = {
-  city: string;
+type PackageStructure = {
   address: string;
-  package_weight: number;
-  startDate: Date | null;
   deliveryCode: string;
+  city: string;
+  deadLine: string | Date; // O podrías usar tipo Date si prefieres
   receptorName: string;
+  weight: number;
+  postalCode: number;
+  addressNumber: number;
 };
 
 export const adminApi = createApi({
@@ -16,12 +18,14 @@ export const adminApi = createApi({
     credentials: 'include'
   }),
   endpoints: (builder) => ({
-    postAddPackage: builder.mutation<void, createPackage>({
-      query: (body) => ({
-        url: '/addPackage',
-        method: 'POST',
-        body: body
-      })
+    postAddPackage: builder.mutation<void, PackageStructure>({
+      query: (body) => {
+        return {
+          url: 'addPackage',
+          method: 'POST',
+          body: body
+        };
+      }
     })
   })
 });
