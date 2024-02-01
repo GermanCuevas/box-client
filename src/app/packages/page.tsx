@@ -94,7 +94,7 @@ export default function Package({}: packageProps) {
                     status={status}
                     location={location}
                     direction={direction}
-                    packageID={packageID}
+                    packageId={packageID}
                   />
                   {index !== array.length - 1 && (
                     <li
