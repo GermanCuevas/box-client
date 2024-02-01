@@ -10,9 +10,22 @@ import LemmonButton from '@/commons/LemmonButton';
 import useInput from '@/hooks/useInput';
 import { usePostAddPackageMutation } from '@/store/services/adminApi';
 
+import toastAlert from '@/utils/toastifyAlert';
+
 interface AddPackageProps {
   // props?
 }
+
+type PackageStructure = {
+  address: string;
+  addressNumber: number;
+  deliveryCode: string;
+  city: string;
+  deadLine: string | Date; // O podrías usar tipo Date si prefieres
+  receptorName: string;
+  weight: number;
+  postalCode: number;
+};
 
 const AddPackage: React.FC<AddPackageProps> = () => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
@@ -21,38 +34,28 @@ const AddPackage: React.FC<AddPackageProps> = () => {
   const name = useInput('name');
   const deliveryCode = useInput('deliveryCode');
   const package_weight = useInput('package_weight');
+  const postalCode = useInput('postalCode');
+  const addressNumber = useInput('addressNumber');
 
   const [postPackage] = usePostAddPackageMutation();
 
   const handleAddPackage = async () => {
-    type createPackage = {
-      city: string;
-      address: string;
-      package_weight: number;
-      startDate: Date | null;
-      deliveryCode: string;
-      receptorName: string;
+    const packageStructure: PackageStructure = {
+      city: city.value,
+      address: address.value,
+      addressNumber: parseInt(addressNumber.value),
+      deliveryCode: deliveryCode.value,
+      deadLine: deliveryCode.value,
+      receptorName: name.value,
+      weight: parseInt(package_weight.value),
+      postalCode: parseInt(postalCode.value)
     };
-
     try {
-      // Crear el objeto de datos para la mutación
-      const body: createPackage = {
-        startDate,
-        address,
-        receptorName: name,
-        package_weight: parseInt(package_weight),
-        city,
-        deliveryCode
-      };
-
-      // Llamar a la mutación
-      await postPackage(body);
-
-      // La mutación fue exitosa
-      console.log('Paquete añadido con éxito!');
-    } catch (error) {
-      // Manejar errores de la mutación
-      console.error('Error al añadir el paquete:', error);
+      await postPackage(packageStructure).unwrap();
+      await toastAlert('success', 'Paquete agregado correctamente');
+    } catch (err) {
+      console.error(err);
+      await toastAlert('error', 'No estas habilitado para trabajar hoy!');
     }
   };
 
@@ -63,7 +66,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
           <LemmonButton title="agregar paquetes" width={'w-full'} />
         </div>
         <div className="w-full ">
-          <div className="bg-white  pt-[35px] pr-[20px] pb-[187px] pl-[20px] rounded-[13px] ">
+          <div className="bg-white  pt-[35px] pr-[20px] pb-5 pl-[20px] rounded-[13px] ">
             <form action="" className="flex flex-col gap-y-4">
               <div className="flex flex-col gap-y-[5px]">
                 <Input
@@ -87,6 +90,29 @@ const AddPackage: React.FC<AddPackageProps> = () => {
                   type="text"
                 />
                 <p className="h-[5px] text-[12px] text-[#B6371C]">{address.message}</p>
+              </div>
+
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={addressNumber.value}
+                  onChange={addressNumber.onChange}
+                  onBlur={addressNumber.blur}
+                  onFocus={addressNumber.focus}
+                  placeholder="Numero de dirección"
+                  type="text"
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{address.message}</p>
+              </div>
+              <div className="flex flex-col gap-y-[5px]">
+                <Input
+                  value={postalCode.value}
+                  onChange={postalCode.onChange}
+                  onBlur={postalCode.blur}
+                  onFocus={postalCode.focus}
+                  placeholder="Código postal"
+                  type="text"
+                />
+                <p className="h-[5px] text-[12px] text-[#B6371C]">{postalCode.message}</p>
               </div>
 
               <div className="flex flex-col gap-y-[5px]">
@@ -140,7 +166,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
               </div>
             </form>
           </div>
-          <div className="bg-lightGreen flex flex-col gap-y-3 mt-[10px] mb-10 relative">
+          <div className="bg-lightGreen flex flex-col gap-y-3 mt-[10px] relative">
             <ButtonBottom
               titleButton={'AGREGAR'}
               buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
