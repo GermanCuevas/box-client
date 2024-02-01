@@ -4,9 +4,9 @@ import React, { useEffect } from 'react';
 import { Box } from './icons/Box';
 import { Trash } from './icons/Trash';
 import { usePathname } from 'next/navigation';
-// import { usePutPackageInCourseMutation } from '@/store/services/packageApi';
 import { useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/navigation';
+import { usePutPackageInCourseMutation } from '@/store/services/packageApi';
 
 interface packageDetailsList {
   deliveryCode?: string;
@@ -23,8 +23,8 @@ export default function PackageDetailsList({
   deliveryCode = '#0A235',
   direction = 'Amenabar 2356,',
   location = 'CABA',
-  status = 'pending'
-  // _id = ''
+  status = 'pending',
+  _id
 }: packageDetailsList) {
   const pathName = usePathname();
 
@@ -35,7 +35,7 @@ export default function PackageDetailsList({
   };
 
   const { userInfo } = useAppSelector((store) => store.user);
-  // const [putPackageInCourse] = usePutPackageInCourseMutation();
+  const [putPackageInCourse] = usePutPackageInCourseMutation();
 
   const router = useRouter();
 
@@ -47,8 +47,10 @@ export default function PackageDetailsList({
 
   const handleStartClick = async () => {
     try {
-      // putPackageInCourse({ packageId: _id, userId: userInfo?.id_user });
+      const res = await putPackageInCourse({ packageId: _id, userId: userInfo?.id_user }).unwrap();
+      console.log('status changed', res);
     } catch (error) {
+      console.log('errrrrrorr--->', error);
       console.error(error);
     }
   };
