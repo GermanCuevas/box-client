@@ -6,6 +6,26 @@ function useInput(type: string): any {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value);
 
   const validations_types: any = {
+    addressNumber: [
+      {
+        condition: (valor: string) => valor.trim() !== '',
+        messageError: '*El campo no puede estar vacío'
+      },
+      {
+        condition: (valor: string) => /^-?[\d.,]+$/.test(valor),
+        messageError: '*El campo solo acepta numeros'
+      }
+    ],
+    postalCode: [
+      {
+        condition: (valor: string) => valor.trim() !== '',
+        messageError: '*El campo no puede estar vacío'
+      },
+      {
+        condition: (valor: string) => /^-?[\d.,]+$/.test(valor),
+        messageError: '*El campo solo acepta numeros'
+      }
+    ],
     deliveryCode: [
       {
         condition: (valor: string) => valor.trim() !== '',
