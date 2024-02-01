@@ -5,14 +5,14 @@ import { ChevronDownSmall } from '@/commons/icons/ChevronDownSmall';
 //commons
 import LemmonButton from '@/commons/LemmonButton';
 import PackageDetailsList from '@/commons/PackageDetailsList';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 interface data {
-  packageID?: string;
-  direction?: string;
-  location?: string;
+  deliveryCode?: string;
+  address?: string;
+  city?: string;
   status?: 'in course' | 'pending' | 'delivered';
-  id?: string;
+  _id?: string;
 }
 
 interface deliveries {
@@ -56,24 +56,24 @@ export default function Deliveries({
         )}
 
         {data?.map(
-          ({ packageID, location, status, direction, id = '' }: data, index: number, array) => (
+          ({ deliveryCode, city, status, address, _id = '' }: data, index: number, array) => (
             <React.Fragment key={index}>
-              <Link href={`/shipment/${deliveryType}/${id}`} className="w-full">
-                <PackageDetailsList
-                  status={status}
-                  location={location}
-                  direction={direction}
-                  packageID={packageID}
-                  id={id}
-                  type={deliveryType}
-                />
-              </Link>
+              {/* <Link href={`/shipment/${deliveryType}/${_id}`} className="w-full"> */}
+              <PackageDetailsList
+                status={status}
+                location={city}
+                direction={address}
+                deliveryCode={deliveryCode}
+                _id={_id}
+                type={deliveryType}
+              />
+              {/* </Link> */}
               {/* <PackageDetailsList
                 status={status}
-                location={location}
-                direction={direction}
-                packageID={packageID}
-                id={id}
+                city={city}
+                address={address}
+                deliveryCode={deliveryCode}
+                _id={_id}
                 type={deliveryType}
               /> */}
               {index !== array.length - 1 && (
