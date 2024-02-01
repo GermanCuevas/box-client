@@ -1,25 +1,30 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box } from './icons/Box';
 import { Trash } from './icons/Trash';
 import { usePathname } from 'next/navigation';
+// import { usePutPackageInCourseMutation } from '@/store/services/packageApi';
+import { useAppSelector } from '@/store/hooks';
+import { useRouter } from 'next/navigation';
 
 interface packageDetailsList {
-  packageID?: string;
+  deliveryCode?: string;
   direction?: string;
   location?: string;
   status?: 'in course' | 'pending' | 'delivered';
   icon?: any;
-  id?: string;
+  _id?: string;
   type?: string;
+  packageId?: string;
 }
 
 export default function PackageDetailsList({
-  packageID = '#0A235',
+  deliveryCode = '#0A235',
   direction = 'Amenabar 2356,',
   location = 'CABA',
   status = 'pending'
+  // _id = ''
 }: packageDetailsList) {
   const pathName = usePathname();
 
@@ -27,6 +32,25 @@ export default function PackageDetailsList({
     'in course': { bgCircle: 'bg-lightGreen', textStatus: 'en curso' },
     pending: { bgCircle: 'bg-orange', textStatus: 'pendiente' },
     delivered: { bgCircle: 'bg-darkGreen', textStatus: 'entregado' }
+  };
+
+  const { userInfo } = useAppSelector((store) => store.user);
+  // const [putPackageInCourse] = usePutPackageInCourseMutation();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!userInfo) {
+      router.push('/login');
+    }
+  }, [router, userInfo]);
+
+  const handleStartClick = async () => {
+    try {
+      // putPackageInCourse({ packageId: _id, userId: userInfo?.id_user });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -44,7 +68,7 @@ export default function PackageDetailsList({
             'leading-[15px] h-full text-[12px] flex flex-col  justify-center  text-darkGreen font-[400] w-[55%] p-2'
           }
         >
-          <h4 className={'font-[500]  '}>{packageID}</h4>
+          <h4 className={'font-[500]  '}>{deliveryCode}</h4>
           <p>{direction}</p>
           <p>{location}</p>
         </div>
@@ -73,6 +97,7 @@ export default function PackageDetailsList({
                   <Trash />
                 ) : status === 'pending' ? (
                   <button
+                    onClick={handleStartClick}
                     className={
                       'font-[400] min-w-[62px] w-[62px] uppercase text-darkGreen border-x-darkGreen border rounded-[5px] text-[12px]'
                     }

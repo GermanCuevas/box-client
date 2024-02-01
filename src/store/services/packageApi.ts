@@ -37,46 +37,40 @@ export const packageApi = createApi({
       })
     }),
 
-    putCancelAssignedPackage: builder.mutation<Package, { packageSingleStatusDto: any }>({
-      query: ({ packageSingleStatusDto }) => ({
-        url: '/users/cancelAssignedPackage',
-        method: 'PUT',
-        body: packageSingleStatusDto
-      })
-    }),
-    putPackageInCourse: builder.mutation<void, { PackageSingleStatusDto: any }>({
-      query: (packageSingleStatusDto) => ({
+    // putCancelAssignedPackage: builder.mutation<Package, { packageSingleStatusDto: any }>({
+    //   query: ({ packageSingleStatusDto }) => ({
+    //     url: '/users/cancelAssignedPackage',
+    //     method: 'PUT',
+    //     body: packageSingleStatusDto
+    //   })
+    // }),
+    putPackageInCourse: builder.mutation<void, { packageId: any; userId: any }>({
+      query: ({ packageId, userId }) => ({
         url: '/users/putPackageInCourse',
         method: 'PUT',
-        body: packageSingleStatusDto
+        body: { packageId, userId }
       })
     }),
-    putPackageInDelivered: builder.mutation<void, { PackageSingleStatusDto: any }>({
-      query: (packageSingleStatusDto) => ({
-        url: '/users/putPackageInDelivered',
-        method: 'PUT',
-        body: packageSingleStatusDto
-      })
-    }),
-    packagePendingAndInCourse: builder.query<Package[], { userId: any }>({
-      query: () => ({
-        url: '/users/packagePendingAndInCourse'
+    // putPackageInDelivered: builder.mutation<void, { PackageSingleStatusDto: any }>({
+    //   query: (packageSingleStatusDto) => ({
+    //     url: '/users/putPackageInDelivered',
+    //     method: 'PUT',
+    //     body: packageSingleStatusDto
+    //   })
+    // }),
+    packagePendingAndInCourse: builder.query<Package[], { userId: string }>({
+      query: ({ userId }) => ({
+        url: `/users/packagePendingAndInCourse/${userId}`
       })
     })
-    // packagePendingAndInCourse: builder.query<Package[], { userId: any }>({
-    //   query: ({ userId }) => ({
-    //     url: '/users/packagePendingAndInCourse',
-    //     method: 'GET',
-    //     body: { userId }
-    //   })
-    // })
   })
 });
 
 export const {
   useGetPackagesQuery,
   usePostPackageMutation,
-  usePutCancelAssignedPackageMutation,
-  usePutPackageInDeliveredMutation,
+  // usePutCancelAssignedPackageMutation,
+  // usePutPackageInDeliveredMutation,
+  usePutPackageInCourseMutation,
   usePackagePendingAndInCourseQuery
 } = packageApi;

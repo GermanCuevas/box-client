@@ -14,51 +14,11 @@ import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 
-import { usePackagePendingAndInCourseQuery } from '@/store/services/packageApi';
+// import { usePackagePendingAndInCourseQuery } from '@/store/services/packageApi';
 
-/* const fakeDataPendings = [
-  {
-    packageID: '#0A235',
-    direction: 'Amenabar 2356',
-    location: 'CABA',
-    status: 'in course'
-  },
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'pending'
-  }
-];
-const fakeDataHistory = [
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'delivered'
-  },
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'delivered'
-  },
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'delivered'
-  }
-];
- */
 export default function Home() {
   // const { data: packages } = usePackagePendingAndInCourseQuery(null);
-  const { data: packages } = usePackagePendingAndInCourseQuery({
-    userId: '65baae0dd7ebb9adbc41b25b'
-  });
   const { userInfo } = useAppSelector((store) => store.user);
-
-  console.log(packages);
 
   const router = useRouter();
 
@@ -68,14 +28,23 @@ export default function Home() {
     }
   }, [router, userInfo]);
 
+  // console.log('UserInfo:', userInfo?.id_user);
+
+  // descomentar esto
+  // const { data: packages } = usePackagePendingAndInCourseQuery({
+  //   userId: userInfo?.id_user
+  // });
+
+  // console.log(packages);
+
   const handleButton = () => {
     router.push('/packages');
   };
   return (
     <main className=" h-[92.5vh] flex flex-col justify-between">
       <div className="h-[80%] mt-4 w-full flex flex-col justify-evenly">
-        <div className="h-[40%] ">
-          <Deliveries data={feikDataACE.fakeDataAll['pending']} deliveryType={'pending'} />
+        <div className="h-[40%] overflow-y-scroll">
+          {/* <Deliveries data={packages} deliveryType={'pending'} /> */}
         </div>
         <div className="h-[50%] ">
           <Deliveries
