@@ -14,7 +14,7 @@ import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 
-import { useGetPackagesQuery } from '@/store/services/packageApi';
+import { usePackagePendingAndInCourseQuery } from '@/store/services/packageApi';
 
 /* const fakeDataPendings = [
   {
@@ -52,7 +52,10 @@ const fakeDataHistory = [
 ];
  */
 export default function Home() {
-  const { data: packages } = useGetPackagesQuery(null);
+  // const { data: packages } = usePackagePendingAndInCourseQuery(null);
+  const { data: packages } = usePackagePendingAndInCourseQuery({
+    userId: '65baae0dd7ebb9adbc41b25b'
+  });
   const { userInfo } = useAppSelector((store) => store.user);
 
   console.log(packages);
