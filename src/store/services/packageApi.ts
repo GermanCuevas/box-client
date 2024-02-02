@@ -1,22 +1,23 @@
+import { Package } from '@/commons/interfaces/PackagesInterface';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-type Package = {
-  address?: string;
-  addressNumber?: number;
-  postalCode?: number;
-  status?: string;
-  deliveryCode?: string;
-  city?: string;
-  deadline?: Date;
-  deliveriedDate?: Date;
-  createdAt?: Date;
-  assignedDate?: Date;
-  coordinates?: number[];
-  receptorName?: string;
-  weight?: number;
-  _id?: string;
-  toggleStatus?: boolean;
-};
+// type Package = {
+//   address?: string;
+//   addressNumber?: number;
+//   postalCode?: number;
+//   status?: string;
+//   deliveryCode?: string;
+//   city?: string;
+//   deadline?: Date;
+//   deliveriedDate?: Date;
+//   createdAt?: Date;
+//   assignedDate?: Date;
+//   coordinates?: number[];
+//   receptorName?: string;
+//   weight?: number;
+//   _id?: string;
+//   toggleStatus?: boolean;
+// };
 
 export const packageApi = createApi({
   reducerPath: 'packageAPI',

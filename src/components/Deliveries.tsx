@@ -5,19 +5,20 @@ import { ChevronDownSmall } from '@/commons/icons/ChevronDownSmall';
 //commons
 import LemmonButton from '@/commons/LemmonButton';
 import PackageDetailsList from '@/commons/PackageDetailsList';
+import { Package } from '@/commons/interfaces/PackagesInterface';
 // import Link from 'next/link';
 
-interface data {
-  deliveryCode?: string;
-  address?: string;
-  city?: string;
-  status?: 'in course' | 'pending' | 'delivered';
-  _id?: string;
-}
+// interface Data {
+//   deliveryCode?: string;
+//   address?: string;
+//   city?: string;
+//   status?: 'in course' | 'pending' | 'delivered';
+//   _id?: string;
+// }
 
 interface deliveries {
   lemmonTitle?: string;
-  data?: Array<object>;
+  data?: Package[];
   deliveryType?: string;
   roundedClass?: string;
 }
@@ -34,6 +35,7 @@ export default function Deliveries({
     setToggleList((prev) => !prev);
   };
 
+  // console.log('ver esta data', data);
   return (
     <section
       className={`w-[300px] min-h-[100px] ${roundedClass} m-auto ${!toggleList ? 'bg-white' : ''}`}
@@ -56,7 +58,7 @@ export default function Deliveries({
         )}
 
         {data?.map(
-          ({ deliveryCode, city, status, address, _id = '' }: data, index: number, array) => (
+          ({ deliveryCode, city, status, address, _id }: Package, index: number, array) => (
             <React.Fragment key={index}>
               {/* <Link href={`/shipment/${deliveryType}/${_id}`} className="w-full"> */}
               <PackageDetailsList

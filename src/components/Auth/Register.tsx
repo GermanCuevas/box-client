@@ -50,7 +50,7 @@ export const RegisterClient = () => {
       const axiosError: AxiosError = error;
       const message = axiosError.response?.data as unknown as Message;
 
-      switch (message.message) {
+      switch (message?.message) {
         case 'Email already exist':
           toastAlert('error', 'Este mail ya esta registrado!');
           break;

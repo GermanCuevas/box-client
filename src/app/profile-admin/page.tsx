@@ -9,26 +9,26 @@ import HelloAdmin from '@/commons/HelloAdmin';
 //components
 import Deliveries from '@/components/Deliveries';
 
-const fakeDataHistory = [
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'delivered'
-  },
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'delivered'
-  },
-  {
-    packageID: '#0G370',
-    direction: 'Heredia 785',
-    location: 'CABA',
-    status: 'delivered'
-  }
-];
+// const fakeDataHistory = [
+//   {
+//     packageID: '#0G370',
+//     direction: 'Heredia 785',
+//     location: 'CABA',
+//     status: 'delivered'
+//   },
+//   {
+//     packageID: '#0G370',
+//     direction: 'Heredia 785',
+//     location: 'CABA',
+//     status: 'delivered'
+//   },
+//   {
+//     packageID: '#0G370',
+//     direction: 'Heredia 785',
+//     location: 'CABA',
+//     status: 'delivered'
+//   }
+// ];
 
 export default function ProfileAdmin() {
   return (
@@ -52,7 +52,7 @@ export default function ProfileAdmin() {
           <div className="w-[300px]">
             <Deliveries
               lemmonTitle={'historial de repartos'}
-              data={fakeDataHistory}
+              // data={fakeDataHistory}
               deliveryType={'history'}
               roundedClass="rounded-t-[15px]"
             />

@@ -1,8 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface userState {
-  userInfo: object | null;
+export interface UserInfo {
+  id_user: string;
+  name: string;
+  mail: string;
+  isAdmin: boolean;
+  isDisabled: boolean;
+}
+
+export interface UserState {
+  userInfo: UserInfo | null;
   userAuth: boolean | null;
 }
 // const loadUserAuthFromLocalStorage = () => {
@@ -13,7 +21,7 @@ export interface userState {
 //   return false;
 // };
 
-const initialState: userState = {
+const initialState: UserState = {
   userInfo: null,
   userAuth: false
 };
@@ -27,9 +35,8 @@ export const userSlice = createSlice({
 
       localStorage.setItem('userAuth', JSON.stringify(payload));
     },
-    setUserInfo: (state, { payload }: PayloadAction<object>) => {
+    setUserInfo: (state, { payload }: PayloadAction<UserInfo>) => {
       state.userInfo = payload;
-
       state.userAuth = true;
     }
   }
