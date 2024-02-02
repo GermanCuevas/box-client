@@ -5,19 +5,13 @@ import Input from '@/commons/Input';
 import LemmonButton from '@/commons/LemmonButton';
 import { CameraPlus } from '@/commons/icons/CameraPlus';
 import useInput from '@/hooks/useInput';
-// import { usePostUserMutation } from '@/store/services/userApi';
+import { useRegisterUserMutation } from '@/store/services/userApi';
 import toastAlert from '@/utils/toastifyAlert';
-import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-interface Message {
-  statusCode: number;
-  message: string;
-}
 
 export const RegisterClient = () => {
   const name = useInput('name');
@@ -25,8 +19,7 @@ export const RegisterClient = () => {
   const mail = useInput('mail');
   const password = useInput('password');
   const repeatPassword = useInput('password');
-
-  // const [postUser] = usePostUserMutation();
+  const [registerUser] = useRegisterUserMutation();
   const router = useRouter();
 
   const handleSessionInit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,27 +28,26 @@ export const RegisterClient = () => {
       return toastAlert('error', 'Las contraseñas deben coincidir!');
     }
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/AddUser`, {
+      const res = await registerUser({
         name: name.value,
         lastname: lastname.value,
         email: mail.value,
         password: password.value
       });
 
+      console.log('REESSSS', res);
+
       await toastAlert('success', 'Usuario creado exitosamente!');
       setTimeout(() => {
         router.push('/login');
       }, 2500);
     } catch (error: any) {
-      const axiosError: AxiosError = error;
-      const message = axiosError.response?.data as unknown as Message;
-
-      switch (message?.message) {
+      switch (error.data.message) {
         case 'Email already exist':
           toastAlert('error', 'Este mail ya esta registrado!');
           break;
         default:
-          console.error(error);
+          console.error('Register error:', error);
           break;
       }
     }
