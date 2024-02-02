@@ -39,13 +39,13 @@ export const packageApi = createApi({
       })
     }),
 
-    // putCancelAssignedPackage: builder.mutation<Package, { packageSingleStatusDto: any }>({
-    //   query: ({ packageSingleStatusDto }) => ({
-    //     url: '/users/cancelAssignedPackage',
-    //     method: 'PUT',
-    //     body: packageSingleStatusDto
-    //   })
-    // }),
+    putCancelAssignedPackage: builder.mutation<Package, { packageId: any; userId: any }>({
+      query: ({ packageId, userId }) => ({
+        url: '/users/cancelAssignedPackage',
+        method: 'PUT',
+        body: { packageId, userId }
+      })
+    }),
     putPackageInCourse: builder.mutation<void, { packageId: any; userId: any }>({
       query: ({ packageId, userId }) => ({
         url: '/users/putPackageInCourse',
@@ -71,7 +71,7 @@ export const packageApi = createApi({
 export const {
   useGetPackagesQuery,
   usePostPackageMutation,
-  // usePutCancelAssignedPackageMutation,
+  usePutCancelAssignedPackageMutation,
   // usePutPackageInDeliveredMutation,
   usePutPackageInCourseMutation,
   usePackagePendingAndInCourseQuery

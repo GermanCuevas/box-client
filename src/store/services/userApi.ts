@@ -10,6 +10,7 @@ type User = {
   iat?: number;
   exp?: number;
   isSuitable?: boolean;
+  isDisabled?: boolean;
 };
 
 export const userApi = createApi({
@@ -30,6 +31,14 @@ export const userApi = createApi({
         url: '/auth/AddUser',
         method: 'POST',
         body: newUserData
+      })
+    }),
+    loginUser: builder.mutation<User, Partial<User>>({
+      query: (userLogin) => ({
+        url: '/auth/LoginUser',
+        method: 'POST',
+        body: userLogin,
+        credentials: 'include'
       })
     }),
     getProfile: builder.query<User, null>({
@@ -58,5 +67,6 @@ export const {
   useRegisterUserMutation,
   useGetProfileQuery,
   useUpdateIsSuitableMutation,
-  useLogoutUserMutation
+  useLogoutUserMutation,
+  useLoginUserMutation
 } = userApi;

@@ -1,12 +1,17 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from './icons/Box';
 import { Trash } from './icons/Trash';
 import { usePathname } from 'next/navigation';
 import { useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/navigation';
-import { usePutPackageInCourseMutation } from '@/store/services/packageApi';
+import {
+  usePutCancelAssignedPackageMutation,
+  usePutPackageInCourseMutation
+} from '@/store/services/packageApi';
+import toastAlert from '@/utils/toastifyAlert';
+import { ToastContainer } from 'react-toastify';
 
 interface packageDetailsList {
   deliveryCode?: string;
@@ -35,6 +40,10 @@ export default function PackageDetailsList({
 
   const { userInfo } = useAppSelector((store) => store.user);
   const [putPackageInCourse] = usePutPackageInCourseMutation();
+  const [putCancelAssignedPackage] = usePutCancelAssignedPackageMutation();
+  const [packageState, setPackageState] = useState(status);
+
+  console.log(packageState);
 
   const router = useRouter();
 
@@ -46,15 +55,26 @@ export default function PackageDetailsList({
 
   const handleStartClick = async () => {
     try {
-      const res = await putPackageInCourse({ packageId: _id, userId: userInfo?.id_user }).unwrap();
-      console.log('status changed', res);
-    } catch (error) {
-      console.log('errrrrrorr--->', error);
-      console.error(error);
+      await putPackageInCourse({ packageId: _id, userId: userInfo?.id_user }).unwrap();
+      setPackageState('in course');
+    } catch (error: any) {
+      if (error.data.message === 'User already has package in course') {
+        toastAlert('error', 'No puedes tener mas de un paquete en curso!');
+      } else {
+        console.error(error);
+      }
     }
   };
 
-  console.log('STATUS', status);
+  const handleDeleteClick = async () => {
+    try {
+      await putCancelAssignedPackage({ packageId: _id, userId: userInfo?.id_user }).unwrap();
+      console.log('estoy en el TRYYYY');
+    } catch (error: any) {
+      console.error(error);
+      console.log('estoy en el CATCHHHH');
+    }
+  };
 
   return (
     <li
@@ -62,6 +82,7 @@ export default function PackageDetailsList({
         'list-none flex justify-between items-center  max-w-[300px] w-full h-[75px] m-auto  pl-3'
       }
     >
+      <ToastContainer />
       <figure className="bg-lightPurple w-[50px] h-[50px] grid place-content-center rounded-2xl">
         <Box width="45" height="45" />
       </figure>
@@ -89,16 +110,18 @@ export default function PackageDetailsList({
                 className={'flex h-[15px] items-center min-w-[78px] bg-lightWhite rounded-s-[5px]'}
               >
                 <div
-                  className={`w-[7px] h-[7px] rounded-full ${statusChanges[status]?.bgCircle} mx-1.5`}
+                  className={`w-[7px] h-[7px] rounded-full ${statusChanges[packageState]?.bgCircle} mx-1.5`}
                 />
                 <h4 className={'font-[500] uppercase text-[10px] '}>
-                  {statusChanges[status]?.textStatus}
+                  {statusChanges[packageState]?.textStatus}
                 </h4>
               </div>
               <figure className={'pr-3 w-full flex justify-end'}>
-                {status === 'in course' ? (
-                  <Trash />
-                ) : status === 'pending' ? (
+                {packageState === 'in course' ? (
+                  <button onClick={handleDeleteClick}>
+                    <Trash />
+                  </button>
+                ) : packageState === 'pending' ? (
                   <button
                     onClick={handleStartClick}
                     className={
