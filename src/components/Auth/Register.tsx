@@ -24,32 +24,28 @@ export const RegisterClient = () => {
 
   const handleSessionInit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password.value != repeatPassword.value) {
+    if (password.value !== repeatPassword.value) {
       return toastAlert('error', 'Las contraseñas deben coincidir!');
     }
     try {
-      const res = await registerUser({
+      const response = await registerUser({
         name: name.value,
         lastname: lastname.value,
         email: mail.value,
         password: password.value
       });
-
-      console.log('REESSSS', res);
-
-      await toastAlert('success', 'Usuario creado exitosamente!');
-      setTimeout(() => {
-        router.push('/login');
-      }, 2500);
-    } catch (error: any) {
-      switch (error.data.message) {
-        case 'Email already exist':
-          toastAlert('error', 'Este mail ya esta registrado!');
-          break;
-        default:
-          console.error('Register error:', error);
-          break;
+      if ('data' in response) {
+        toastAlert('success', 'Usuario creado exitosamente!');
+        setTimeout(() => {
+          router.push('/login');
+        }, 2500);
+      } else {
+        toastAlert('error', 'Este mail ya está registrado!');
+        console.error('Error, Este mail ya está registrado!', response);
       }
+      //}
+    } catch (error) {
+      console.error('Error al procesar el registro:', error);
     }
   };
 
