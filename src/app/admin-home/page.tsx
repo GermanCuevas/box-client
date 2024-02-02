@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 //commons
 import LemmonButton from '@/commons/LemmonButton';
 import HelloAdmin from '@/commons/HelloAdmin';
@@ -10,8 +10,30 @@ import ButtonBottom from '@/commons/ButtonBottom';
 import { Plus } from '@/commons/icons/Plus';
 import DeliveriesAdmin from '@/components/DeliveriesAdmin';
 import Link from 'next/link';
+//redux
+import { useGetDeliveryDetailsQuery } from '@/store/services/adminApi';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { setDeliveryDetails } from '@/store/slices/adminSlice';
 
 export default function AdminHome() {
+  const dispatch = useAppDispatch();
+  const adminState = useAppSelector((state) => state.adminState);
+  const { data, error, isLoading } = useGetDeliveryDetailsQuery(adminState.selectedDateCalendar);
+
+  useEffect(() => {
+    if (data && !error) {
+      dispatch(setDeliveryDetails(data));
+    }
+  }, [data, error, dispatch]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    console.log('error', error);
+  }
+
   return (
     <div className="flex flex-col items-center justify-center py-4 h-[92.5]">
       <div className="w-full max-w-[300px]">
@@ -30,7 +52,7 @@ export default function AdminHome() {
         </div>
         <div className="px-3 max-w-[300px] max-h-[332px] bg-lightGreen text-xs flex flex-col justify-center items-center">
           <div className="w-[300px] rounded-[15px]">
-            <DeliveriesAdmin />
+            <DeliveriesAdmin data={data} />
             <div className="bg-lightGreen gap-y-3 mt-[10px] relative">
               <Link href={'/add-packages'}>
                 <ButtonBottom
