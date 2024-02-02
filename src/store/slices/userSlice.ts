@@ -13,17 +13,17 @@ export interface UserState {
   userInfo: UserInfo | null;
   userAuth: boolean | null;
 }
-// const loadUserAuthFromLocalStorage = () => {
-//   if (typeof window !== 'undefined') {
-//     const storedUserAuth = localStorage.getItem('userAuth');
-//     return storedUserAuth ? JSON.parse(storedUserAuth) : true;
-//   }
-//   return false;
-// };
+const loadUserAuthFromLocalStorage = () => {
+  if (typeof window !== 'undefined') {
+    const storedUserAuth = localStorage.getItem('userAuth');
+    return storedUserAuth ? JSON.parse(storedUserAuth) : true;
+  }
+  return false;
+};
 
 const initialState: UserState = {
   userInfo: null,
-  userAuth: false
+  userAuth: loadUserAuthFromLocalStorage() || null
 };
 
 export const userSlice = createSlice({

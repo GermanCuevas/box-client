@@ -6,12 +6,17 @@ import { ArrowRightBox } from './icons/ArrowRightBox';
 //font
 import { saira } from '../../public/fonts/fonts';
 import BoxTitle from '../commons/BoxTitle';
+import { useAppDispatch } from '@/store/hooks';
+import { setSelectedDateCalendar } from '@/store/slices/adminSlice';
+import { convertDateToString } from '@/utils/convertDateToString';
 
 export default function DateDetail() {
   const todayDate = new Date();
   const weekDays = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
   const [selectedDate, setSelectedDate] = useState(todayDate);
   const dates = [];
+
+  const dispatch = useAppDispatch();
 
   for (let i = -2; i <= 2; i++) {
     const date = new Date(selectedDate);
@@ -21,6 +26,9 @@ export default function DateDetail() {
 
   const handleDateClick = (date: Date) => {
     if (date <= todayDate) {
+      const dateToString: string = convertDateToString(date);
+
+      dispatch(setSelectedDateCalendar(dateToString));
       setSelectedDate(date);
     }
   };

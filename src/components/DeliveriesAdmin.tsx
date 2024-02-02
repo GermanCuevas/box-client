@@ -18,7 +18,7 @@ import DeliveryAvailability from '@/commons/DeliveryAvailability';
 
 interface deliveriesAdmin {
   lemmonTitle?: string;
-  data?: Array<object>;
+  data?: object | undefined;
   deliveryType?: string;
   roundedClass?: string;
 }
@@ -26,13 +26,17 @@ interface deliveriesAdmin {
 export default function DeliveriesAdmin({
   lemmonTitle = 'detalles',
   deliveryType,
-  roundedClass = 'rounded-[15px]'
+  roundedClass = 'rounded-[15px]',
+  data
 }: deliveriesAdmin) {
   const [toggleList, setToggleList] = useState(false);
 
   const useHandleLemmonToggle = () => {
     setToggleList((prev) => !prev);
   };
+
+  const usersData = (data as { users?: any })?.users;
+  const packageData = (data as { packages?: any })?.packages;
 
   return (
     <section
@@ -55,30 +59,20 @@ export default function DeliveriesAdmin({
           </>
         )}
         <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '}>
-          <DeliveryAvailability title={'Repartidores'} enabledDeliveries={2} percentage={20} />
+          <DeliveryAvailability
+            title={'Repartidores'}
+            enabledDeliveries={usersData.availablesLength}
+            percentage={usersData.percentage}
+            totalDeliveries={usersData.totalUsersLength}
+          />
           <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
-          <DeliveryAvailability title={'Paquetes'} percentage={80} />
+          <DeliveryAvailability
+            totalPackages={packageData.totalPackagesLength}
+            packagesDistributed={packageData.packagesDeliveredLength}
+            title={'Paquetes'}
+            percentage={packageData.percentage ? packageData.percentage : 0}
+          />
         </div>
-
-        {/* {data?.map(
-          ({ imgDeliveries,title, percentage, enabledDeliveries, totalDeliveries, packagesDistributed, totalPackages   id = '' }: data, index: number, array) => (
-            <React.Fragment key={index}>
-              <Link href={`/shipment/${deliveryType}/${id}`} className="w-full">
-                <DeliveryAvailability
-                  title={'Repartidores'}
-                  enabledDeliveries={2}
-                  percentage={20}
-                />
-              </Link>
-              {index !== array.length - 1 && (
-                <li
-                  key={`separator-${index}`}
-                  className={'w-[275px] border-b-[.1px] border-b-darkGreen '}
-                />
-              )}
-            </React.Fragment>
-          )
-        )} */}
       </ul>
     </section>
   );

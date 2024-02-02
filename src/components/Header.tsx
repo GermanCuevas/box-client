@@ -22,6 +22,8 @@ import LogoutButton from '@/commons/LogoutButton';
 
 export default function Header() {
   const dispatch: any = useAppDispatch();
+  // const { userInfo } = useAppSelector((state) => state.user);
+
   const router = useRouter();
   const path = usePathname();
   const [logoutUser] = useLogoutUserMutation();

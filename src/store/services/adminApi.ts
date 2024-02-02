@@ -26,8 +26,16 @@ export const adminApi = createApi({
           body: body
         };
       }
+    }),
+    getDeliveryDetails: builder.query<any, any>({
+      query: (date) => {
+        return {
+          url: `deliveryDetails/${date}`,
+          method: 'GET'
+        };
+      }
     })
   })
 });
 
-export const { usePostAddPackageMutation } = adminApi;
+export const { usePostAddPackageMutation, useGetDeliveryDetailsQuery } = adminApi;

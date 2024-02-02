@@ -4,9 +4,10 @@ import { userApi } from './services/userApi';
 import { packageApi } from './services/packageApi';
 import { adminApi } from './services/adminApi';
 // import { setupListeners } from '@reduxjs/toolkit/query';
-
+import { adminSlice } from './slices/adminSlice';
 const rootReducer = combineReducers({
   user: userSlice.reducer,
+  adminState: adminSlice.reducer,
   [userApi.reducerPath]: userApi.reducer,
   [packageApi.reducerPath]: packageApi.reducer,
   [adminApi.reducerPath]: adminApi.reducer
