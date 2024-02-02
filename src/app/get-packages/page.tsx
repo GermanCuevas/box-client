@@ -15,6 +15,7 @@ export default function GetPackages() {
   const { data: userData } = useGetProfileQuery(null);
 
   console.log(packages);
+  console.log('USUARIO', userData);
 
   const [postPackage] = usePostPackageMutation();
   const [packagesUser, setpackagesUser] = useState(packages);

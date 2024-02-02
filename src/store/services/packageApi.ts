@@ -34,7 +34,8 @@ export const packageApi = createApi({
       query: ({ packagesIds, userId }) => ({
         url: '/users/assignPackage',
         method: 'POST',
-        body: { packagesIds, userId }
+        body: { packagesIds, userId },
+        credentials: 'include'
       })
     }),
 

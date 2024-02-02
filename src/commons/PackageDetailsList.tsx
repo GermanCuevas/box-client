@@ -27,7 +27,6 @@ export default function PackageDetailsList({
   _id
 }: packageDetailsList) {
   const pathName = usePathname();
-
   const statusChanges = {
     'in course': { bgCircle: 'bg-lightGreen', textStatus: 'en curso' },
     pending: { bgCircle: 'bg-orange', textStatus: 'pendiente' },
@@ -54,6 +53,8 @@ export default function PackageDetailsList({
       console.error(error);
     }
   };
+
+  console.log('STATUS', status);
 
   return (
     <li
@@ -88,10 +89,10 @@ export default function PackageDetailsList({
                 className={'flex h-[15px] items-center min-w-[78px] bg-lightWhite rounded-s-[5px]'}
               >
                 <div
-                  className={`w-[7px] h-[7px] rounded-full ${statusChanges[status].bgCircle} mx-1.5`}
+                  className={`w-[7px] h-[7px] rounded-full ${statusChanges[status]?.bgCircle} mx-1.5`}
                 />
                 <h4 className={'font-[500] uppercase text-[10px] '}>
-                  {statusChanges[status].textStatus}
+                  {statusChanges[status]?.textStatus}
                 </h4>
               </div>
               <figure className={'pr-3 w-full flex justify-end'}>

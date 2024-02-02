@@ -3,6 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 type User = {
   id_user?: string;
   name?: string;
+  lastname?: string;
+  password?: string;
   email?: string;
   isAdmin?: boolean;
   iat?: number;
@@ -23,9 +25,9 @@ export const userApi = createApi({
     getUserById: builder.query<User, { id: string }>({
       query: ({ id }) => `/users/${id}`
     }),
-    postUser: builder.mutation<User, Partial<User>>({
+    registerUser: builder.mutation<User, Partial<User>>({
       query: (newUserData) => ({
-        url: '/users',
+        url: '/auth/AddUser',
         method: 'POST',
         body: newUserData
       })
@@ -53,7 +55,7 @@ export const userApi = createApi({
 export const {
   useGetUsersQuery,
   useGetUserByIdQuery,
-  usePostUserMutation,
+  useRegisterUserMutation,
   useGetProfileQuery,
   useUpdateIsSuitableMutation,
   useLogoutUserMutation

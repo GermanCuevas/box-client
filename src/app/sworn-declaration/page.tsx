@@ -32,6 +32,7 @@ export default function SwornDeclaration() {
 
   const handleButtonStart = async () => {
     if (isCheck.drinkAlcohol || isCheck.familyIssues || isCheck.psychoactiveDrug) {
+      console.log('esta entrando aca al IF');
       await toastAlert('error', 'No estas apto para trabajar!');
       try {
         updateIsSuitable({ id_user: userData?.id_user, isSuitable: false });
@@ -43,6 +44,7 @@ export default function SwornDeclaration() {
         console.error(error);
       }
     } else {
+      console.log('Esta entrando al ELSE');
       router.push('/');
     }
   };

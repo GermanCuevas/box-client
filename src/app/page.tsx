@@ -19,7 +19,7 @@ import { usePackagePendingAndInCourseQuery } from '@/store/services/packageApi';
 
 export default function Home() {
   const { userInfo } = useAppSelector((store) => store.user);
-  // const [packages, setPackages] = useState<Package[] | undefined>();
+  // const [packagesStatus, setPackagesStatus] = useState<Package[] | undefined>();
   const router = useRouter();
   const { data: packages } = usePackagePendingAndInCourseQuery({
     userId: userInfo?.id_user || ''
