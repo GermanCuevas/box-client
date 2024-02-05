@@ -1,11 +1,14 @@
 'use client';
-import ButtonBottom from '@/commons/ButtonBottom';
+// import ButtonBottom from '@/commons/ButtonBottom';
 import LemmonButton from '@/commons/LemmonButton';
 
-import { MapComponent } from '@/components/maps';
-import { FakeDataAll, PackageData, feikDataACE } from '@/utils';
+// import { MapComponent } from '@/components/maps';
+import { useAppSelector } from '@/store/hooks';
+// import { usePackageInfoQuery } from '@/store/services/packageApi';
+// import { PackageData } from '@/utils';
+// import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+// import { useEffect } from 'react';
 
 interface ParamsObject {
   params: {
@@ -13,17 +16,48 @@ interface ParamsObject {
     type: string;
   };
 }
+// interface TextStatus {
+//   textStatus: string;
+// }
+// interface StatusChanges {
+//   'in course': TextStatus;
+//   pending: TextStatus;
+//   delivered: TextStatus;
+// }
 
 export default function Pending({ params }: ParamsObject) {
   const { id, type } = params;
-  const [userData, setUserdata] = useState<PackageData>();
+  // const [userData, setUserdata] = useState<PackageData>();
   const router = useRouter();
+  const { userInfo } = useAppSelector((store) => store.user);
+  // const { data: packageInfo, isSuccess } = usePackageInfoQuery({ packageId: id || '' });
 
-  useEffect(() => {
-    const dataBase = feikDataACE.fakeDataAll[type as keyof FakeDataAll];
-    const search = dataBase.find((data) => data.id === id);
-    setUserdata(search);
-  }, [id, type]);
+  const statusChanges: any = {
+    'in course': { textStatus: 'en curso' },
+    pending: { textStatus: 'pendiente' },
+    delivered: { textStatus: 'entregado' }
+  };
+
+  console.log(userInfo);
+
+  // const fetchAdress = async () => {
+  //   const adress = `${packageInfo?.address} ${packageInfo?.addressNumber} ${packageInfo?.city} ${packageInfo?.postalCode}`;
+  //   const coordinates = await axios.get(
+  //     `https://api.opencagedata.com/geocode/v1/json?key=fa02162234354fcaab9d370c6ca65f8e&q=${adress}&pretty=1&no_annotations=1`
+  //   );
+  //   const response = coordinates.data.results[0].geometry;
+  //   console.log(response);
+  //   console.log(coordinates);
+  // };
+
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     // fetchAdress();
+  //   }
+  // }, [id, type, isSuccess]);
+
+  console.log(id);
+  console.log(type);
 
   const hanleNavigateToPackagesInCourses = () => {
     router.push('/');
@@ -35,12 +69,12 @@ export default function Pending({ params }: ParamsObject) {
         <div className="mb-3 mt-[.4rem]  tracking-normal w-full">
           <LemmonButton
             hanleLemmonButton={hanleNavigateToPackagesInCourses}
-            title="Reparto en curso"
+            title={`Reparto ${statusChanges[type.replace(/%20/g, ' ')]?.textStatus}`}
             width={'w-full'}
           />
         </div>
 
-        <div className="w-full">
+        {/* <div className="w-full">
           {userData && (
             <MapComponent
               destino={userData.direction}
@@ -61,7 +95,7 @@ export default function Pending({ params }: ParamsObject) {
               titleButtonClasses="text-darkGreen "
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

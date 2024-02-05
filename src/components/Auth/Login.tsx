@@ -47,13 +47,13 @@ export default function LoginClient() {
         { withCredentials: true }
       );
 
-      if (userLogin.isDisabled || userLogin.isSuitable === false) {
+      if (userLogin.isDisabled || !userLogin.isSuitable) {
         await toastAlert('error', 'No estas habilitado para trabajar hoy!');
         return;
       } else {
         dispatch(setUserInfo(userLogin));
-
         await toastAlert('success', 'Bienvenido!');
+
         if (userLogin.isAdmin === true) {
           setTimeout(() => {
             router.push('/admin-home');

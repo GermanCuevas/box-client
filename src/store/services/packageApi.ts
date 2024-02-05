@@ -64,6 +64,11 @@ export const packageApi = createApi({
       query: ({ userId }) => ({
         url: `/users/packagePendingAndInCourse/${userId}`
       })
+    }),
+    packageInfo: builder.query<Package, { packageId: string }>({
+      query: ({ packageId }) => ({
+        url: `/users/packages/${packageId}`
+      })
     })
   })
 });
@@ -74,5 +79,6 @@ export const {
   usePutCancelAssignedPackageMutation,
   // usePutPackageInDeliveredMutation,
   usePutPackageInCourseMutation,
-  usePackagePendingAndInCourseQuery
+  usePackagePendingAndInCourseQuery,
+  usePackageInfoQuery
 } = packageApi;
