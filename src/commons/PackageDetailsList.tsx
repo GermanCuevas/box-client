@@ -12,6 +12,7 @@ import {
 } from '@/store/services/packageApi';
 import toastAlert from '@/utils/toastifyAlert';
 import { ToastContainer } from 'react-toastify';
+import Link from 'next/link';
 
 interface packageDetailsList {
   deliveryCode?: string;
@@ -84,12 +85,14 @@ export default function PackageDetailsList({
     >
       <ToastContainer />
       <figure className="bg-lightPurple w-[50px] h-[50px] grid place-content-center rounded-2xl">
-        <Box width="45" height="45" />
+        <Link href={`/shipment/${status}/${_id}`}>
+          <Box width="45" height="45" />
+        </Link>
       </figure>
-      <div className={'w-[85%] h-full flex items-center justify-between '}>
+      <div className={'w-[85%] h-full flex items-center justify-betweenn'}>
         <div
           className={
-            'leading-[15px] h-full text-[12px] flex flex-col  justify-center  text-darkGreen font-[400] w-[55%] p-2'
+            'leading-[15px] h-full text-[12px] flex flex-col  justify-center  text-darkGreen  font-[400] w-[55%] p-2'
           }
         >
           <h4 className={'font-[500]  '}>{deliveryCode}</h4>

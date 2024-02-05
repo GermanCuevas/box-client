@@ -44,11 +44,11 @@ export default function Home() {
           <Deliveries data={packages} deliveryType={'pending'} />
         </div>
         <div className="h-[50%] ">
-          {/* <Deliveries
+          <Deliveries
             lemmonTitle={'historial de repartos'}
             deliveryType={'history'}
-            data={feikDataACE.fakeDataAll['history']}
-          /> */}
+            // data={feikDataACE.fakeDataAll['history']}
+          />
         </div>
       </div>
       <Link href={'/get-packages'}>

@@ -25,6 +25,7 @@ type PackageStructure = {
   receptorName: string;
   weight: number;
   postalCode: number;
+  // coordinates: number[];
 };
 
 const AddPackage: React.FC<AddPackageProps> = () => {
@@ -49,6 +50,7 @@ const AddPackage: React.FC<AddPackageProps> = () => {
       receptorName: name.value,
       weight: parseInt(package_weight.value),
       postalCode: parseInt(postalCode.value)
+      // coordinates: [-1.7667, -2.09878]
     };
     try {
       await postPackage(packageStructure).unwrap();
