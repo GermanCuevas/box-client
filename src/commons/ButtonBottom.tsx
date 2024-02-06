@@ -6,6 +6,7 @@ interface button {
   typeButton?: boolean;
   icon?: React.ReactNode;
   handleButton?: () => void;
+  isDisabled?: boolean;
 }
 
 export default function ButtonBottom({
@@ -14,10 +15,12 @@ export default function ButtonBottom({
   titleButton,
   icon,
   titleButtonClasses,
-  buttonClassName
+  buttonClassName,
+  isDisabled = false
 }: button) {
   return (
     <button
+      disabled={isDisabled}
       type={typeButton ? 'submit' : 'button'}
       onClick={handleButton}
       className={`h-[30px] m-auto  border border-solid border-darkGreen flex justify-center items-center rounded-[10px] ${buttonClassName}`}

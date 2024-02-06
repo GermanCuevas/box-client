@@ -11,6 +11,8 @@ import useInput from '@/hooks/useInput';
 import { usePostAddPackageMutation } from '@/store/services/adminApi';
 
 import toastAlert from '@/utils/toastifyAlert';
+import { convertDateToString } from '@/utils/convertDateToString';
+import { ToastContainer } from 'react-toastify';
 
 interface AddPackageProps {
   // props?
@@ -19,9 +21,8 @@ interface AddPackageProps {
 type PackageStructure = {
   address: string;
   addressNumber: number;
-  deliveryCode: string;
   city: string;
-  deadLine: string | Date; // O podrías usar tipo Date si prefieres
+  deadLine: string | Date;
   receptorName: string;
   weight: number;
   postalCode: number;
@@ -29,24 +30,24 @@ type PackageStructure = {
 };
 
 const AddPackage: React.FC<AddPackageProps> = () => {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [startDate, setStartDate] = useState<Date>(new Date());
   const address = useInput('address');
   const city = useInput('city');
   const name = useInput('name');
-  const deliveryCode = useInput('deliveryCode');
+
   const package_weight = useInput('package_weight');
   const postalCode = useInput('postalCode');
   const addressNumber = useInput('addressNumber');
 
-  const [postPackage] = usePostAddPackageMutation();
+  const [postPackage, handlers] = usePostAddPackageMutation();
 
   const handleAddPackage = async () => {
     const packageStructure: PackageStructure = {
       city: city.value,
       address: address.value,
       addressNumber: parseInt(addressNumber.value),
-      deliveryCode: deliveryCode.value,
-      deadLine: deliveryCode.value,
+
+      deadLine: convertDateToString(startDate),
       receptorName: name.value,
       weight: parseInt(package_weight.value),
       postalCode: parseInt(postalCode.value)
@@ -54,15 +55,24 @@ const AddPackage: React.FC<AddPackageProps> = () => {
     };
     try {
       await postPackage(packageStructure).unwrap();
-      await toastAlert('success', 'Paquete agregado correctamente');
+      await toastAlert('success', 'Paquete agregado correctamente!');
+      console.log('Paquete agregado correctamente!');
+
+      // Clear inputs
+      const arrayInputs = [address, city, name, package_weight, postalCode, addressNumber];
+      arrayInputs.forEach((input) => input.setValue(''));
+      setStartDate(new Date());
+      alert('Paquete agregado correctamente!');
     } catch (err) {
       console.error(err);
+      alert('Error al agregar paquete');
       await toastAlert('error', 'No estas habilitado para trabajar hoy!');
     }
   };
 
   return (
     <div className="w-full flex flex-col items-center justify-start pt-2 px-7">
+      <ToastContainer />
       <div>
         <div className="mb-3 mt-4  tracking-normal w-full">
           <LemmonButton title="agregar paquetes" width={'w-full'} />
@@ -141,25 +151,13 @@ const AddPackage: React.FC<AddPackageProps> = () => {
                 <p className="h-[5px] text-[12px] text-[#B6371C]">{package_weight.message}</p>
               </div>
 
-              <div className="flex flex-col gap-y-[5px]">
-                <Input
-                  value={deliveryCode.value}
-                  onChange={deliveryCode.onChange}
-                  onBlur={deliveryCode.blur}
-                  onFocus={deliveryCode.focus}
-                  placeholder="Código de entrega"
-                  type="text"
-                />
-                <p className="h-[5px] text-[12px] text-[#B6371C]">{deliveryCode.message}</p>
-              </div>
-
               <div className="relative mt-1">
                 <span>Fecha de entrega</span>
                 <div className="border border-black rounded-md pt-[6px] pr-[11px] pb-[5px] pl-[15px] ">
                   <DatePicker
                     className="outline-none w-[232px] cursor-pointer"
                     selected={startDate}
-                    onChange={(date: Date | null) => setStartDate(date)}
+                    onChange={(date: Date) => setStartDate(date)}
                   />
                 </div>
                 <div className="absolute bottom-[8px] right-[11px] pointer-events-none">
@@ -170,8 +168,11 @@ const AddPackage: React.FC<AddPackageProps> = () => {
           </div>
           <div className="bg-lightGreen flex flex-col gap-y-3 mt-[10px] relative">
             <ButtonBottom
+              isDisabled={handlers.isLoading}
               titleButton={'AGREGAR'}
-              buttonClassName={'text-lemonGreen uppercase bg-darkGreen w-[300px] p-2'}
+              buttonClassName={`text-lemonGreen uppercase ${
+                handlers.isLoading ? 'bg-gray' : 'bg-darkGreen'
+              }  w-[300px] p-2`}
               handleButton={handleAddPackage}
             />
           </div>
