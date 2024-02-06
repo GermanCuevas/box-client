@@ -6,10 +6,10 @@ import { Icon, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 interface MapComponent {
-  destino: string;
-  numPackage: string;
-  userInfo: string;
-  coordinates: LatLngTuple;
+  destino?: string;
+  numPackage?: string;
+  userInfo?: string;
+  coordinates?: LatLngTuple;
 }
 
 export const MapComponent: FC<MapComponent> = ({ destino, numPackage, userInfo, coordinates }) => {
