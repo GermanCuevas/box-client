@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 type PackageStructure = {
   address: string;
-  deliveryCode: string;
   city: string;
   deadLine: string | Date; // O podrías usar tipo Date si prefieres
   receptorName: string;
