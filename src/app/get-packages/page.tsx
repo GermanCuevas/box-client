@@ -8,19 +8,19 @@ import React, { useEffect, useState } from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 import { useGetPackagesQuery, usePostPackageMutation } from '@/store/services/packageApi';
 import { useRouter } from 'next/navigation';
-import { useGetProfileQuery } from '@/store/services/userApi';
+//import { useGetProfileQuery } from '@/store/services/userApi';
+import { useDispatch } from 'react-redux';
+import { setPackage } from '@/store/slices/packageSlice';
+import { useAppSelector } from '@/store/hooks';
 
 export default function GetPackages() {
   const { data: packages } = useGetPackagesQuery(null);
-  const { data: userData } = useGetProfileQuery(null);
-
-  console.log(packages);
-  console.log('USUARIO', userData);
-
+  //const { data: userData } = useGetProfileQuery(null);
   const [postPackage] = usePostPackageMutation();
   const [packagesUser, setpackagesUser] = useState(packages);
-
   const router = useRouter();
+  const dispatch: any = useDispatch();
+  const packageState = useAppSelector((store) => store.packages);
 
   useEffect(() => {
     if (packages) {
@@ -46,7 +46,11 @@ export default function GetPackages() {
 
     // const packagesIds: string[] = packagesFilter?.map((idem: any) => idem?.id) || [];
     try {
-      await postPackage({ packagesIds: packagesFilter, userId: userData?.id_user }).unwrap();
+      await postPackage({
+        packagesIds: packagesFilter,
+        userId: '65c3ee390cc15576abe66382'
+      }).unwrap();
+      dispatch(setPackage(!packageState));
       router.push('/sworn-declaration');
     } catch (error) {
       console.error(error);
