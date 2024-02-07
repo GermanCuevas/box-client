@@ -4,7 +4,11 @@ import LemmonButton from '@/commons/LemmonButton';
 
 import { MapComponent } from '@/components/maps';
 import { useAppSelector } from '@/store/hooks';
-import { usePackageInfoQuery, usePutPackageInDeliveredMutation } from '@/store/services/packageApi';
+import {
+  usePackageInfoQuery,
+  // usePutCancelAssignedPackageMutation,
+  usePutPackageInDeliveredMutation
+} from '@/store/services/packageApi';
 import toastAlert from '@/utils/toastifyAlert';
 // import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -30,8 +34,8 @@ export default function Pending({ params }: ParamsObject) {
   const router = useRouter();
   const { userInfo } = useAppSelector((store) => store.user);
   const { data: packageInfo } = usePackageInfoQuery({ packageId: id || '' });
-  // const { data: packageInfo, isSuccess } = usePackageInfoQuery({ packageId: id || '' });
   const [putPackageInDelivered] = usePutPackageInDeliveredMutation();
+  // const [cancelAssignedPackage] = usePutCancelAssignedPackageMutation();
   const [packageInfoUser, setPackageInfoUser] = useState({});
   const [coordinates, setCordinates] = useState(null);
   const [packageState, setPackageState] = useState(status);
@@ -65,7 +69,7 @@ export default function Pending({ params }: ParamsObject) {
   //     setPackageInfoUser(packageInfoUser);
   //     fetchAdress();
   //   }
-  // }, [id, type, isSuccess, fetchAdress]);
+  // }, [id, type, isSuccess]);
 
   const hanleNavigateToPackagesInCourses = () => {
     router.push('/');
@@ -73,20 +77,33 @@ export default function Pending({ params }: ParamsObject) {
 
   const handleFinishClick = async () => {
     try {
-      console.log(id);
-      console.log(userInfo?.id_user);
-      await putPackageInDelivered({ packageId: id, userId: '65c28afdc2332213f37c7e0d' }).unwrap();
+      await putPackageInDelivered({ packageId: id, userId: userInfo?.id_user }).unwrap();
       setPackageState('delivered');
       router.push('/');
       console.log('ESTAAA ENTRANDO ACA');
     } catch (error: any) {
-      if (error.data.message === 'User already has package in course') {
-        toastAlert('error', 'No puedes tener mas de un paquete en curso!');
+      if (error.data.message === 'Error para finalizar la entrega del paquete') {
+        toastAlert('error', 'Error para finalizar la entrega del paquete!');
       } else {
         console.error(error);
       }
     }
   };
+
+  // const handleCancelClick = async () => {
+  //   try {
+  //     await cancelAssignedPackage({ packageId: id, userId: userInfo?.id_user }).unwrap();
+  //     setPackageState('pending');
+  //     router.push('/');
+  //     console.log('ESTAAA ENTRANDO ACA');
+  //   } catch (error: any) {
+  //     if (error.data.message === 'Error para cancelar el paquete') {
+  //       toastAlert('error', 'Error para cancelar el paquete!');
+  //     } else {
+  //       console.error(error);
+  //     }
+  //   }
+  // };
 
   return (
     <section className="w-full flex flex-col items-center justify-start min-h-[calc(100vh-50px)] py-4 ">
@@ -116,6 +133,7 @@ export default function Pending({ params }: ParamsObject) {
               titleButtonClasses={'text-lightGreen'}
             />
             <ButtonBottom
+              // handleButton={handleCancelClick}
               titleButton="Cancelar entrega"
               buttonClassName="uppercase w-[100%]"
               titleButtonClasses="text-darkGreen "
