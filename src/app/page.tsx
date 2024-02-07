@@ -31,6 +31,8 @@ export default function Home() {
     }
   }, [router, userInfo]);
 
+  console.log(packages);
+
   console.log('UserInfo:', userInfo);
   // console.log('paquetess', packages);
 
