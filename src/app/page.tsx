@@ -15,23 +15,38 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 
 import { usePackagePendingAndInCourseQuery } from '@/store/services/packageApi';
+//import { useGetProfileQuery } from '@/store/services/userApi';
+//import { useDispatch } from 'react-redux';
+// import { setUserInfo } from '@/store/slices/userSlice';
+// import store from '@/store/store';
+// import { setPackage } from '@/store/slices/packageSlice';
 // import { Package } from '@/commons/interfaces/PackagesInterface';
 
 export default function Home() {
   const { userInfo } = useAppSelector((store) => store.user);
+  //const dispatch: any = useDispatch();
   // const [packagesStatus, setPackagesStatus] = useState<Package[] | undefined>();
   const router = useRouter();
   const { data: packages } = usePackagePendingAndInCourseQuery({
     userId: userInfo?.id_user || ''
   });
+  //const { data } = useGetProfileQuery(null);
+  const packageState = useAppSelector((store) => store.packages);
+
+  // useEffect(() => {
+  //   if (!userInfo) {
+  //     //! SOLUCIONAR!!
+  //     dispatch(setUserInfo(data));
+  //     // router.push('/login');
+  //   }
+  // }, [data, router, userInfo]);
 
   useEffect(() => {
-    if (!userInfo) {
-      router.push('/login');
-    }
-  }, [router, userInfo]);
+    console.log('cambiando estado');
+  }, [packageState]);
 
   console.log(packages);
+  console.log('PACKAGESTATE', packageState);
 
   console.log('UserInfo:', userInfo);
   // console.log('paquetess', packages);

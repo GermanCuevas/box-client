@@ -10,7 +10,7 @@ import {
   usePutPackageInDeliveredMutation
 } from '@/store/services/packageApi';
 import toastAlert from '@/utils/toastifyAlert';
-// import axios from 'axios';
+//import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -34,6 +34,7 @@ export default function Pending({ params }: ParamsObject) {
   const router = useRouter();
   const { userInfo } = useAppSelector((store) => store.user);
   const { data: packageInfo } = usePackageInfoQuery({ packageId: id || '' });
+  //const { data: packageInfo, isSuccess } = usePackageInfoQuery({ packageId: id || '' });
   const [putPackageInDelivered] = usePutPackageInDeliveredMutation();
   // const [cancelAssignedPackage] = usePutCancelAssignedPackageMutation();
   const [packageInfoUser, setPackageInfoUser] = useState({});
@@ -69,7 +70,7 @@ export default function Pending({ params }: ParamsObject) {
   //     setPackageInfoUser(packageInfoUser);
   //     fetchAdress();
   //   }
-  // }, [id, type, isSuccess]);
+  // }, [id, type, isSuccess, fetchAdress]);
 
   const hanleNavigateToPackagesInCourses = () => {
     router.push('/');
@@ -77,7 +78,9 @@ export default function Pending({ params }: ParamsObject) {
 
   const handleFinishClick = async () => {
     try {
-      await putPackageInDelivered({ packageId: id, userId: userInfo?.id_user }).unwrap();
+      console.log(id);
+      console.log(userInfo?.id_user);
+      await putPackageInDelivered({ packageId: id, userId: '65c28afdc2332213f37c7e0d' }).unwrap();
       setPackageState('delivered');
       router.push('/');
       console.log('ESTAAA ENTRANDO ACA');
