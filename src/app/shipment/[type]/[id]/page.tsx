@@ -6,9 +6,9 @@ import { MapComponent } from '@/components/maps';
 import { useAppSelector } from '@/store/hooks';
 import { usePackageInfoQuery, usePutPackageInDeliveredMutation } from '@/store/services/packageApi';
 import toastAlert from '@/utils/toastifyAlert';
-// import axios from 'axios';
+//import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ParamsObject {
   params: {
@@ -29,8 +29,8 @@ export default function Pending({ params }: ParamsObject) {
   const { id, type } = params;
   const router = useRouter();
   const { userInfo } = useAppSelector((store) => store.user);
-  const { data: packageInfo } = usePackageInfoQuery({ packageId: id || '' });
-  // const { data: packageInfo, isSuccess } = usePackageInfoQuery({ packageId: id || '' });
+  //const { data: packageInfo } = usePackageInfoQuery({ packageId: id || '' });
+  const { data: packageInfo, isSuccess } = usePackageInfoQuery({ packageId: id || '' });
   const [putPackageInDelivered] = usePutPackageInDeliveredMutation();
   const [packageInfoUser, setPackageInfoUser] = useState({});
   const [coordinates, setCordinates] = useState(null);
@@ -60,12 +60,12 @@ export default function Pending({ params }: ParamsObject) {
   //   console.log(coordinates);
   // };
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setPackageInfoUser(packageInfoUser);
-  //     fetchAdress();
-  //   }
-  // }, [id, type, isSuccess, fetchAdress]);
+  useEffect(() => {
+    if (isSuccess) {
+      //setPackageInfoUser(packageInfoUser);
+      // fetchAdress();
+    }
+  }, [id, type, isSuccess]);
 
   const hanleNavigateToPackagesInCourses = () => {
     router.push('/');
@@ -75,7 +75,7 @@ export default function Pending({ params }: ParamsObject) {
     try {
       console.log(id);
       console.log(userInfo?.id_user);
-      await putPackageInDelivered({ packageId: id, userId: '65c28afdc2332213f37c7e0d' }).unwrap();
+      await putPackageInDelivered({ packageId: id, userId: userInfo?.id_user }).unwrap();
       setPackageState('delivered');
       router.push('/');
       console.log('ESTAAA ENTRANDO ACA');
