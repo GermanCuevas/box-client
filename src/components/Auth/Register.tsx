@@ -31,7 +31,7 @@ export const RegisterClient = () => {
       const response = await registerUser({
         name: name.value,
         lastname: lastname.value,
-        email: mail.value,
+        mail: mail.value,
         password: password.value
       });
       if ('data' in response) {

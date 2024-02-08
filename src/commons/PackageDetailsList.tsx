@@ -43,9 +43,6 @@ export default function PackageDetailsList({
   const [putPackageInCourse] = usePutPackageInCourseMutation();
   const [putCancelAssignedPackage] = usePutCancelAssignedPackageMutation();
   const [packageState, setPackageState] = useState(status);
-
-  console.log(packageState);
-
   const router = useRouter();
 
   useEffect(() => {

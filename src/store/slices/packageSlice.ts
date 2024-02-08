@@ -6,7 +6,7 @@ export const packageSlice = createSlice({
   initialState: false,
   reducers: {
     setPackage: (state, { payload }: PayloadAction<boolean>) => {
-      state = payload;
+      return payload;
     }
   }
 });

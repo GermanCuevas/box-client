@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserInfo {
-  id_user: string;
-  name: string;
-  mail: string;
-  isAdmin: boolean;
-  isDisabled: boolean;
+  id_user?: string;
+  name?: string;
+  mail?: string;
+  isAdmin?: boolean;
+  isDisabled?: boolean;
 }
 
 export interface UserState {
