@@ -34,7 +34,14 @@ export const adminApi = createApi({
         };
       }
     }),
-
+    getDeliveryUsers: builder.query<any, any>({
+      query: () => {
+        return {
+          url: 'getDeliveryUsers',
+          method: 'GET'
+        };
+      }
+    }),
     toggleHiddenHistoryAdmin: builder.mutation<void, string>({
       query: (id) => {
         return {
@@ -49,5 +56,6 @@ export const adminApi = createApi({
 export const {
   usePostAddPackageMutation,
   useGetDeliveryDetailsQuery,
+  useGetDeliveryUsersQuery,
   useToggleHiddenHistoryAdminMutation
 } = adminApi;
