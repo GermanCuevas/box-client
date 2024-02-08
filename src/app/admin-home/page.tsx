@@ -32,6 +32,7 @@ export default function AdminHome() {
 
   if (error) {
     console.log('error', error);
+    return <div>Error...</div>;
   }
 
   return (
