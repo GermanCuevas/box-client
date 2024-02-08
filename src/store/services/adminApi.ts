@@ -33,8 +33,17 @@ export const adminApi = createApi({
           method: 'GET'
         };
       }
+    }),
+    getDeliveryUsers: builder.query<any, any>({
+      query: () => {
+        return {
+          url: 'getDeliveryUsers',
+          method: 'GET'
+        };
+      }
     })
   })
 });
 
-export const { usePostAddPackageMutation, useGetDeliveryDetailsQuery } = adminApi;
+export const { usePostAddPackageMutation, useGetDeliveryDetailsQuery, useGetDeliveryUsersQuery } =
+  adminApi;

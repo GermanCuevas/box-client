@@ -6,8 +6,22 @@ import BoxTitle2 from '@/commons/BoxTitle';
 import LemmonButton from '@/commons/LemmonButton';
 import DeliveryDetails from '@/commons/DeliveryDetails';
 import Link from 'next/link';
+import { useGetDeliveryUsersQuery } from '@/store/services/adminApi';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { setUsersDelivery } from '@/store/slices/adminSlice';
+import { useEffect } from 'react';
 
 export default function Deliveries() {
+  const dispatch = useAppDispatch();
+  const adminState = useAppSelector((state) => state.adminState);
+  const { data, error } = useGetDeliveryUsersQuery(adminState.selectedDateCalendar);
+  console.log(data);
+
+  useEffect(() => {
+    if (data && !error) {
+      dispatch(setUsersDelivery(data));
+    }
+  }, [data, error, dispatch]);
   interface FeikData {
     name: string;
     percentage: number;
