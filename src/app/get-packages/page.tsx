@@ -8,14 +8,15 @@ import React, { useEffect, useState } from 'react';
 import { ChevronDownBig } from '@/commons/icons/ChevronDownBig';
 import { useGetPackagesQuery, usePostPackageMutation } from '@/store/services/packageApi';
 import { useRouter } from 'next/navigation';
-//import { useGetProfileQuery } from '@/store/services/userApi';
+import { useGetProfileQuery } from '@/store/services/userApi';
+import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { setPackage } from '@/store/slices/packageSlice';
 import { useAppSelector } from '@/store/hooks';
 
 export default function GetPackages() {
   const { data: packages } = useGetPackagesQuery(null);
-  //const { data: userData } = useGetProfileQuery(null);
+  const { data: userData } = useGetProfileQuery(null);
   const [postPackage] = usePostPackageMutation();
   const [packagesUser, setpackagesUser] = useState(packages);
   const router = useRouter();
@@ -42,13 +43,11 @@ export default function GetPackages() {
     const packagesFilter = packages?.map((idem) => {
       return idem._id;
     });
-    console.log(packagesFilter);
 
-    // const packagesIds: string[] = packagesFilter?.map((idem: any) => idem?.id) || [];
     try {
       await postPackage({
         packagesIds: packagesFilter,
-        userId: '65c3ee390cc15576abe66382'
+        userId: userData?.id_user
       }).unwrap();
       dispatch(setPackage(!packageState));
       router.push('/sworn-declaration');
@@ -62,7 +61,9 @@ export default function GetPackages() {
       {/* {JSON.stringify(packagesUser?.map((e) => e.toggleStatus))} */}
       <div className="w-full max-w-[300px]">
         <div className="mb-3 tracking-normal">
-          <LemmonButton title={'obtener paquetes'} width={'w-full'} />
+          <Link href={'/'}>
+            <LemmonButton title={'obtener paquetes'} width={'w-full'} />
+          </Link>
         </div>
       </div>
       <div className="px-3 max-w-[300px] bg-lightGreen text-xs flex flex-col justify-center items-center">

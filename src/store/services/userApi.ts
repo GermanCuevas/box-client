@@ -5,7 +5,7 @@ type User = {
   name?: string;
   lastname?: string;
   password?: string;
-  email?: string;
+  mail?: string;
   isAdmin?: boolean;
   iat?: number;
   exp?: number;

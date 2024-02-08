@@ -8,48 +8,43 @@ import { useAppSelector } from '@/store/hooks';
 import ButtonBottom from '@/commons/ButtonBottom';
 import Deliveries from '@/components/Deliveries';
 
-// import { useEffect } from 'react';
-//import { feikDataACE } from '@/utils';
 import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 
-import { usePackagePendingAndInCourseQuery } from '@/store/services/packageApi';
-//import { useGetProfileQuery } from '@/store/services/userApi';
-//import { useDispatch } from 'react-redux';
-// import { setUserInfo } from '@/store/slices/userSlice';
-// import store from '@/store/store';
-// import { setPackage } from '@/store/slices/packageSlice';
-// import { Package } from '@/commons/interfaces/PackagesInterface';
+import {
+  usePackagePendingAndInCourseQuery,
+  useUserHistoryQuery
+} from '@/store/services/packageApi';
+import { useGetProfileQuery } from '@/store/services/userApi';
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from '@/store/slices/userSlice';
 
 export default function Home() {
   const { userInfo } = useAppSelector((store) => store.user);
-  //const dispatch: any = useDispatch();
-  // const [packagesStatus, setPackagesStatus] = useState<Package[] | undefined>();
+  const dispatch: any = useDispatch();
   const router = useRouter();
-  const { data: packages } = usePackagePendingAndInCourseQuery({
+  const { data: packages, refetch } = usePackagePendingAndInCourseQuery({
     userId: userInfo?.id_user || ''
   });
-  //const { data } = useGetProfileQuery(null);
+  const { data, refetch: userRefetch } = useGetProfileQuery(null);
   const packageState = useAppSelector((store) => store.packages);
-
-  // useEffect(() => {
-  //   if (!userInfo) {
-  //     //! SOLUCIONAR!!
-  //     dispatch(setUserInfo(data));
-  //     // router.push('/login');
-  //   }
-  // }, [data, router, userInfo]);
+  const { data: userHistory, refetch: historyRefetch } = useUserHistoryQuery({
+    userId: userInfo?.id_user || ''
+  });
 
   useEffect(() => {
-    console.log('cambiando estado');
-  }, [packageState]);
+    if (!userInfo && data) {
+      userRefetch();
+      dispatch(setUserInfo(data));
+      // router.push('/login');
+    }
+  }, [data, router, userInfo, userRefetch, dispatch]);
 
-  console.log(packages);
-  console.log('PACKAGESTATE', packageState);
-
-  console.log('UserInfo:', userInfo);
-  // console.log('paquetess', packages);
+  useEffect(() => {
+    refetch();
+    historyRefetch();
+  }, [packageState, refetch, historyRefetch]);
 
   const handleButton = () => {
     router.push('/packages');
@@ -60,11 +55,12 @@ export default function Home() {
         <div className="h-[40%] overflow-y-scroll">
           <Deliveries data={packages} deliveryType={'pending'} />
         </div>
-        <div className="h-[50%] ">
+        <div className="h-[50%] overflow-y-scroll ">
           <Deliveries
             lemmonTitle={'historial de repartos'}
             deliveryType={'history'}
-            // data={feikDataACE.fakeDataAll['history']}
+            data={userHistory}
+            total={userHistory?.length}
           />
         </div>
       </div>

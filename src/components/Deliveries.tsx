@@ -6,28 +6,21 @@ import { ChevronDownSmall } from '@/commons/icons/ChevronDownSmall';
 import LemmonButton from '@/commons/LemmonButton';
 import PackageDetailsList from '@/commons/PackageDetailsList';
 import { Package } from '@/commons/interfaces/PackagesInterface';
-// import Link from 'next/link';
-
-// interface Data {
-//   deliveryCode?: string;
-//   address?: string;
-//   city?: string;
-//   status?: 'in course' | 'pending' | 'delivered';
-//   _id?: string;
-// }
 
 interface deliveries {
   lemmonTitle?: string;
   data?: Package[];
   deliveryType?: string;
   roundedClass?: string;
+  total?: number;
 }
 
 export default function Deliveries({
   lemmonTitle = 'repartos pendientes',
   data,
   deliveryType,
-  roundedClass = 'rounded-[15px]'
+  roundedClass = 'rounded-[15px]',
+  total = 0
 }: deliveries) {
   const [toggleList, setToggleList] = useState(false);
 
@@ -35,7 +28,6 @@ export default function Deliveries({
     setToggleList((prev) => !prev);
   };
 
-  // console.log('ver esta data', data);
   return (
     <section
       className={`w-[300px] min-h-[100px] ${roundedClass} m-auto ${!toggleList ? 'bg-white' : ''}`}
@@ -47,11 +39,11 @@ export default function Deliveries({
         icon={<ChevronDownSmall />}
       />
 
-      <ul className={`w-full h-fit ${!toggleList ? 'flex' : 'hidden'}   flex-col  items-center`}>
+      <ul className={`w-full h-fit ${!toggleList ? 'flex' : 'hidden'}   flex-col  items-center `}>
         {deliveryType === 'history' && (
           <>
             <li className={'text-[12px] text-start w-full pl-5 font-[500] text-darkGreen'}>
-              <p className="m-2">58 paquetes entregados</p>
+              <p className="m-2">{total} paquetes entregados</p>
             </li>
             <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />
           </>
@@ -72,8 +64,8 @@ export default function Deliveries({
               {/* </Link> */}
               {/* <PackageDetailsList
                 status={status}
-                city={city}
-                address={address}
+                location={city}
+                direction={address}
                 deliveryCode={deliveryCode}
                 _id={_id}
                 type={deliveryType}
