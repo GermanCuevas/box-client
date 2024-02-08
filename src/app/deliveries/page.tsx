@@ -10,45 +10,34 @@ import { useGetDeliveryUsersQuery } from '@/store/services/adminApi';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { setUsersDelivery } from '@/store/slices/adminSlice';
 import { useEffect } from 'react';
+import { dayAndMonthConverter } from '@/utils/dayAndMonthConverter';
 
+type StatusType = 'DESHABILITADO' | 'COMPLETADO' | 'INACTIVO' | 'EN CURSO';
 export default function Deliveries() {
   const dispatch = useAppDispatch();
-  const adminState = useAppSelector((state) => state.adminState);
-  const { data, error } = useGetDeliveryUsersQuery(adminState.selectedDateCalendar);
-  console.log(data);
+  const { selectedDateCalendar } = useAppSelector((state) => state.adminState);
+  const { data, error, isSuccess, isLoading } = useGetDeliveryUsersQuery(selectedDateCalendar);
 
   useEffect(() => {
     if (data && !error) {
       dispatch(setUsersDelivery(data));
     }
   }, [data, error, dispatch]);
-  interface FeikData {
-    name: string;
-    percentage: number;
-    status: 'delivered' | 'disabled' | 'in course';
+
+  if (isLoading || !isSuccess) {
+    return <div>Loading...</div>;
   }
-  const feikData: FeikData[] = [
-    {
-      name: 'Victoria',
-      percentage: 45,
-      status: 'in course'
-    },
-    {
-      name: 'Florencia',
-      percentage: 39,
-      status: 'disabled'
-    },
-    {
-      name: 'Ivan',
-      percentage: 29,
-      status: 'delivered'
-    },
-    {
-      name: 'Nico',
-      percentage: 1,
-      status: 'disabled'
-    }
-  ];
+
+  const dates = dayAndMonthConverter(selectedDateCalendar);
+  const day = dates.day;
+  const month = dates.month;
+
+  const statusConverter: Record<StatusType, string> = {
+    DESHABILITADO: 'disabled',
+    COMPLETADO: 'delivered',
+    INACTIVO: 'disabled',
+    'EN CURSO': 'in course'
+  };
 
   return (
     <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-100px)] py-4 px-7">
@@ -58,20 +47,23 @@ export default function Deliveries() {
         </div>
         <div className="w-full h-[490px]">
           <BoxTitle2
-            titleBox={'ENERO'}
-            dateBox="mie/03"
+            titleBox={month}
+            dateBox={day}
             titleBoxClasses="font-bold"
             dateBoxClasses="font-bold"
             boxClasses={'justify-between h-[35px] mx-5'}
           />
           <div className="bg-white rounded-b-[13px] px-[.56rem] ">
-            {feikData.map((idem, i) => {
+            {data?.map((idem: any, i: number) => {
+              const status: StatusType = idem.status;
+              const translatedStatus = statusConverter[status];
               return (
                 <Link key={i} href={'/profile-admin'}>
                   <DeliveryDetails
                     name={idem.name}
                     percentage={idem.percentage}
-                    status={idem.status}
+                    status={translatedStatus}
+                    textStatus={status}
                   />
                 </Link>
               );

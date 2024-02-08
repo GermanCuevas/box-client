@@ -87,7 +87,7 @@ export default function DeliveryAvailability({
       : `${packagesDistributed}/${totalPackages}`;
   const handleClick = () => {
     if (title === 'Repartidores') router.push('/deliveries');
-    if (title === 'Paquetes') router.push('/get-packages');
+    if (title === 'Paquetes') router.push('/packages-admin');
   };
 
   return (

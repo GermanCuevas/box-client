@@ -12,7 +12,6 @@ import { usePostAddPackageMutation } from '@/store/services/adminApi';
 
 import toastAlert from '@/utils/toastifyAlert';
 import { convertDateToString } from '@/utils/convertDateToString';
-import { ToastContainer } from 'react-toastify';
 
 interface AddPackageProps {
   // props?
@@ -56,8 +55,6 @@ const AddPackage: React.FC<AddPackageProps> = () => {
     try {
       await postPackage(packageStructure).unwrap();
       await toastAlert('success', 'Paquete agregado correctamente!');
-      console.log('Paquete agregado correctamente!');
-
       // Clear inputs
       const arrayInputs = [address, city, name, package_weight, postalCode, addressNumber];
       arrayInputs.forEach((input) => input.setValue(''));
@@ -66,13 +63,11 @@ const AddPackage: React.FC<AddPackageProps> = () => {
     } catch (err) {
       console.error(err);
       alert('Error al agregar paquete');
-      await toastAlert('error', 'No estas habilitado para trabajar hoy!');
     }
   };
 
   return (
     <div className="w-full flex flex-col items-center justify-start pt-2 px-7">
-      <ToastContainer />
       <div>
         <div className="mb-3 mt-4  tracking-normal w-full">
           <LemmonButton title="agregar paquetes" width={'w-full'} />

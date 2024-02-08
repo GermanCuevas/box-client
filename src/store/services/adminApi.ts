@@ -41,9 +41,21 @@ export const adminApi = createApi({
           method: 'GET'
         };
       }
+    }),
+    toggleHiddenHistoryAdmin: builder.mutation<void, string>({
+      query: (id) => {
+        return {
+          url: `toggleHiddenHistoryAdmin/${id}`,
+          method: 'PUT'
+        };
+      }
     })
   })
 });
 
-export const { usePostAddPackageMutation, useGetDeliveryDetailsQuery, useGetDeliveryUsersQuery } =
-  adminApi;
+export const {
+  usePostAddPackageMutation,
+  useGetDeliveryDetailsQuery,
+  useGetDeliveryUsersQuery,
+  useToggleHiddenHistoryAdminMutation
+} = adminApi;

@@ -6,14 +6,16 @@ interface delivery {
   percentage?: number;
   name?: string;
   imgProfile?: string;
-  status?: 'in course' | 'disabled' | 'delivered';
+  status?: 'in course' | 'disabled' | 'delivered' | string;
+  textStatus: 'DESHABILITADO' | 'COMPLETADO' | 'INACTIVO' | 'EN CURSO';
 }
 
 export default function DeliveryDetails({
   percentage = 0,
   name = 'Farid',
   status = 'disabled',
-  imgProfile = '/img/perfil.png'
+  imgProfile = '/img/perfil.png',
+  textStatus = 'DESHABILITADO'
 }: delivery) {
   // const rotationAngle = (percentage / 100) * 360;
   // const purpleCircleStyle = {
@@ -23,8 +25,7 @@ export default function DeliveryDetails({
   //   top: `${50 - Math.cos((rotationAngle - 90) * (Math.PI / 180)) * 41}%`,
   //   left: `${50 + Math.sin((rotationAngle - 90) * (Math.PI / 180)) * 41}%`
   // };
-
-  const statusChanges = {
+  const statusChanges: any = {
     'in course': { bgCircle: 'bg-lightGreen', textStatus: 'en curso' },
     disabled: { bgCircle: 'bg-darkGrey', textStatus: 'deshabilitado' },
     delivered: { bgCircle: 'bg-darkGreen', textStatus: 'entregado' }
@@ -63,9 +64,7 @@ export default function DeliveryDetails({
             <div
               className={`w-[7px] h-[7px] rounded-full ${statusChanges[status].bgCircle} mx-1.5`}
             />
-            <h4 className={'font-[500] uppercase text-[10px] mr-1.5'}>
-              {statusChanges[status].textStatus}
-            </h4>
+            <h4 className={'font-[500] uppercase text-[10px] mr-1.5'}>{textStatus}</h4>
           </div>
         </div>
       </div>
