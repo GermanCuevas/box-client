@@ -28,22 +28,17 @@ export const RegisterClient = () => {
       return toastAlert('error', 'Las contraseñas deben coincidir!');
     }
     try {
-      const response = await registerUser({
+      await registerUser({
         name: name.value,
         lastname: lastname.value,
-        mail: mail.value,
+        email: mail.value,
         password: password.value
       }).unwrap();
-      if ('data' in response) {
-        toastAlert('success', 'Usuario creado exitosamente!');
-        setTimeout(() => {
-          router.push('/login');
-        }, 2500);
-      } else {
-        toastAlert('error', 'Este mail ya está registrado!');
-        console.error('Error, Este mail ya está registrado!', response);
-      }
-      //}
+
+      toastAlert('success', 'Usuario creado exitosamente!');
+      setTimeout(() => {
+        router.push('/login');
+      }, 2500);
     } catch (error) {
       console.error('Error al procesar el registro:', error);
     }
