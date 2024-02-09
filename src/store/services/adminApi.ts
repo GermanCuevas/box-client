@@ -49,6 +49,23 @@ export const adminApi = createApi({
           method: 'PUT'
         };
       }
+    }),
+    patchUpdateUserStatus: builder.mutation({
+      query: ({ id, isDisabled }) => {
+        return {
+          url: `updateUserStatus/${id}`,
+          method: 'PATCH',
+          body: { isDisabled }
+        };
+      }
+    }),
+    getUsers: builder.query<any, any>({
+      query: () => {
+        return {
+          url: 'users',
+          method: 'GET'
+        };
+      }
     })
   })
 });
@@ -57,5 +74,7 @@ export const {
   usePostAddPackageMutation,
   useGetDeliveryDetailsQuery,
   useGetDeliveryUsersQuery,
-  useToggleHiddenHistoryAdminMutation
+  useToggleHiddenHistoryAdminMutation,
+  usePatchUpdateUserStatusMutation,
+  useGetUsersQuery
 } = adminApi;

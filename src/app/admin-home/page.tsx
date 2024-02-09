@@ -36,7 +36,7 @@ export default function AdminHome() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center py-4 h-[92.5]">
+    <div className="flex flex-col items-center justify-center py-4">
       <div className="w-full max-w-[300px]">
         <div className="text-center mb-2 mt-6  tracking-normal">
           <LemmonButton title={'gestionar pedidos'} width={'w-full'} icon={''} />

@@ -1,13 +1,13 @@
 'use client';
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 import Image from 'next/image';
 //router
 import { usePathname, useRouter } from 'next/navigation';
 //*Redux
-import { useAppDispatch } from '@/store/hooks';
-import { setUserInfo } from '@/store/slices/userSlice';
+//import { useAppDispatch } from '@/store/hooks';
+//import { setUserInfo } from '@/store/slices/userSlice';
 //*RTK QUERY
-import { useGetProfileQuery, useLogoutUserMutation } from '@/store/services/userApi';
+import { /* useGetProfileQuery, */ useLogoutUserMutation } from '@/store/services/userApi';
 //commons
 import LogoutButton from '@/commons/LogoutButton';
 
@@ -21,29 +21,29 @@ import LogoutButton from '@/commons/LogoutButton';
 // };
 
 export default function Header() {
-  const dispatch: any = useAppDispatch();
+  //const dispatch: any = useAppDispatch();
   // const { userInfo } = useAppSelector((state) => state.user);
 
   const router = useRouter();
   const path = usePathname();
   const [logoutUser] = useLogoutUserMutation();
-  const { data, isError, isSuccess, isLoading } = useGetProfileQuery(null);
+  // const { data, isError, isSuccess, isLoading } = useGetProfileQuery(null);
 
-  const isAdmin: any = data?.isAdmin;
+  // const isAdmin: any = data?.isAdmin;
 
-  useEffect(() => {
-    if (isLoading) {
-      if (isError) {
-        router.push('/login');
-      }
-      if (isSuccess) dispatch(setUserInfo(data));
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     if (isError) {
+  //       router.push('/login');
+  //     }
+  //     if (isSuccess) dispatch(setUserInfo(data));
 
-      if (data) {
-        if (isAdmin) router.push('/admin-home');
-        else router.push('/');
-      }
-    }
-  }, [data, dispatch, isAdmin, isError, isSuccess, router, isLoading]);
+  //     if (data) {
+  //       if (isAdmin) router.push('/admin-home');
+  //       else router.push('/');
+  //     }
+  //   }
+  // }, [data, dispatch, isAdmin, isError, isSuccess, router, isLoading]);
 
   const handleButtonLogout = async () => {
     try {
