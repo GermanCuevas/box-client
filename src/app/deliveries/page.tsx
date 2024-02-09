@@ -14,7 +14,7 @@ import { dayAndMonthConverter } from '@/utils/dayAndMonthConverter';
 
 type StatusType = 'DESHABILITADO' | 'COMPLETADO' | 'INACTIVO' | 'EN CURSO';
 export default function Deliveries() {
-  const dispatch = useAppDispatch();
+  const dispatch: any = useAppDispatch();
   const { selectedDateCalendar } = useAppSelector((state) => state.adminState);
   const { data, error, isSuccess, isLoading } = useGetDeliveryUsersQuery(selectedDateCalendar);
 
@@ -54,16 +54,17 @@ export default function Deliveries() {
             boxClasses={'justify-between h-[35px] mx-5'}
           />
           <div className="bg-white rounded-b-[13px] px-[.56rem] ">
-            {data?.map((idem: any, i: number) => {
-              const status: StatusType = idem.status;
+            {data?.map((user: any, i: number) => {
+              const status: StatusType = user.status;
               const translatedStatus = statusConverter[status];
               return (
-                <Link key={i} href={'/profile-admin'}>
+                <Link key={i} href={`/profile-admin/${user.id}`}>
                   <DeliveryDetails
-                    name={idem.name}
-                    percentage={idem.percentage}
+                    name={user.name}
+                    percentage={user.percentage}
                     status={translatedStatus}
                     textStatus={status}
+                    idUser={user.id}
                   />
                 </Link>
               );

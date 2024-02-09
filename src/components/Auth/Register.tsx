@@ -33,7 +33,7 @@ export const RegisterClient = () => {
         lastname: lastname.value,
         mail: mail.value,
         password: password.value
-      });
+      }).unwrap();
       if ('data' in response) {
         toastAlert('success', 'Usuario creado exitosamente!');
         setTimeout(() => {

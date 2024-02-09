@@ -21,8 +21,16 @@ const loadUserAuthFromLocalStorage = () => {
   return false;
 };
 
+const loadUserInfoFromLocalStorage = () => {
+  if (typeof window !== 'undefined') {
+    const storedUserAuth = localStorage.getItem('userInfo');
+    return storedUserAuth ? JSON.parse(storedUserAuth) : true;
+  }
+  return false;
+};
+
 const initialState: UserState = {
-  userInfo: null,
+  userInfo: loadUserInfoFromLocalStorage() || null,
   userAuth: loadUserAuthFromLocalStorage() || null
 };
 
@@ -37,6 +45,9 @@ export const userSlice = createSlice({
     },
     setUserInfo: (state, { payload }: PayloadAction<UserInfo>) => {
       state.userInfo = payload;
+
+      localStorage.setItem('userInfo', JSON.stringify(payload));
+
       state.userAuth = true;
     }
   }

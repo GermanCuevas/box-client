@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { usePatchUpdateUserStatusMutation } from '@/store/services/adminApi';
 
 interface hello {
   name?: string;
@@ -13,6 +14,8 @@ interface hello {
   classNameh2?: string;
   classNameGroup?: string;
   icon?: React.ReactNode;
+  userId?: string;
+  isDisabled?: boolean;
 }
 
 export default function HelloAdmin({
@@ -22,16 +25,31 @@ export default function HelloAdmin({
   subTitle = 'HABILITADO',
   classNamediv1,
   classNamediv2,
-  classNameh2
+  classNameh2,
+  userId,
+  isDisabled = false
 }: hello) {
   const pathname = usePathname();
-  const [changeMode, setchangeMode] = useState({ state: true, subtitle: 'HABILITADO' });
 
-  const handleSwitchChange = () => {
+  const [changeMode, setchangeMode] = useState({ state: isDisabled, subtitle: 'HABILITADO' });
+  const [updateUserStatus, handlers] = usePatchUpdateUserStatusMutation();
+
+  const handleSwitchChange = async () => {
     setchangeMode({
       state: !changeMode.state,
-      subtitle: changeMode.state ? 'DESABILITADO ' : 'HABILITADO'
+      subtitle: changeMode.state ? 'DESHABILITADO ' : 'HABILITADO'
     });
+
+    const isDisabled: boolean = changeMode.state;
+    if (handlers.isLoading) {
+      console.log('cargando...');
+    }
+
+    try {
+      await updateUserStatus({ id: userId, isDisabled }).unwrap();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -44,13 +62,13 @@ export default function HelloAdmin({
         <Image src={imagen} alt="" height={60} width={60} className="mr-2" />
         <div className={'flex flex-col ml-1'}>
           <h1 className={'text-darkGreen font-bold'}>{name}</h1>
-          {pathname === '/profile-admin' ? (
+          {pathname.split('/')[1] === 'profile-admin' ? (
             <h2
-              className={`text-darkGreen text-sm bg-lightGreen rounded pl-1 pr-1 font-bold ${
+              className={`text-darkGreen text-sm bg-lightGreen rounded font-bold ${
                 classNameh2 || ''
               }`}
             >
-              {changeMode.subtitle}
+              {changeMode.state ? 'DESHABILITADO ' : 'HABILITADO'}
             </h2>
           ) : (
             <h2 className={`text-darkGreen text-sm ${classNameh2 || ''}`}>{subTitle}</h2>

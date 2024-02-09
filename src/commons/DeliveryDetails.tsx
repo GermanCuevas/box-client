@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Circle } from './icons/Circle.tsx';
 import Image from 'next/image';
+//import { usePackagePendingAndInCourseQuery, useUserHistoryQuery } from '@/store/services/packageApi';
 
 interface delivery {
   percentage?: number;
@@ -8,6 +9,7 @@ interface delivery {
   imgProfile?: string;
   status?: 'in course' | 'disabled' | 'delivered' | string;
   textStatus: 'DESHABILITADO' | 'COMPLETADO' | 'INACTIVO' | 'EN CURSO';
+  idUser?: string;
 }
 
 export default function DeliveryDetails({
@@ -15,7 +17,8 @@ export default function DeliveryDetails({
   name = 'Farid',
   status = 'disabled',
   imgProfile = '/img/perfil.png',
-  textStatus = 'DESHABILITADO'
+  textStatus = 'DESHABILITADO',
+  idUser
 }: delivery) {
   // const rotationAngle = (percentage / 100) * 360;
   // const purpleCircleStyle = {
@@ -25,6 +28,8 @@ export default function DeliveryDetails({
   //   top: `${50 - Math.cos((rotationAngle - 90) * (Math.PI / 180)) * 41}%`,
   //   left: `${50 + Math.sin((rotationAngle - 90) * (Math.PI / 180)) * 41}%`
   // };
+  console.log(idUser);
+
   const statusChanges: any = {
     'in course': { bgCircle: 'bg-lightGreen', textStatus: 'en curso' },
     disabled: { bgCircle: 'bg-darkGrey', textStatus: 'deshabilitado' },

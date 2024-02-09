@@ -39,7 +39,11 @@ export default function Deliveries({
         icon={<ChevronDownSmall />}
       />
 
-      <ul className={`w-full h-fit ${!toggleList ? 'flex' : 'hidden'}   flex-col  items-center `}>
+      <ul
+        className={`w-full h-fit ${
+          !toggleList ? 'flex' : 'hidden'
+        } bg-lightWhite   flex-col  items-center `}
+      >
         {deliveryType === 'history' && (
           <>
             <li className={'text-[12px] text-start w-full pl-5 font-[500] text-darkGreen'}>
