@@ -5,7 +5,7 @@ type User = {
   name?: string;
   lastname?: string;
   password?: string;
-  mail?: string;
+  email?: string;
   isAdmin?: boolean;
   iat?: number;
   exp?: number;
@@ -27,11 +27,13 @@ export const userApi = createApi({
       query: ({ id }) => `/users/${id}`
     }),
     registerUser: builder.mutation<User, Partial<User>>({
-      query: (newUserData) => ({
-        url: '/auth/AddUser',
-        method: 'POST',
-        body: newUserData
-      })
+      query: (newUserData) => {
+        return {
+          url: '/auth/AddUser',
+          method: 'POST',
+          body: newUserData
+        };
+      }
     }),
     loginUser: builder.mutation<User, Partial<User>>({
       query: (userLogin) => ({
