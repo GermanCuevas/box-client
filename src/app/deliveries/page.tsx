@@ -43,7 +43,9 @@ export default function Deliveries() {
     <div className="w-full flex flex-col items-center justify-center min-h-[calc(100vh-100px)] py-4 px-7">
       <div className={'w-full max-w-[300px]'}>
         <div className="mb-3 mt-3 tracking-normal w-full">
-          <LemmonButton title="repartidores" width={'w-full'} />
+          <Link href={'admin-home'}>
+            <LemmonButton title="repartidores" width={'w-full'} />
+          </Link>
         </div>
         <div className="w-full h-[490px]">
           <BoxTitle2

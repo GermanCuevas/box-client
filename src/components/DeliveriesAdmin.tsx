@@ -62,7 +62,7 @@ export default function DeliveriesAdmin({
           <DeliveryAvailability
             title={'Repartidores'}
             enabledDeliveries={usersData.availablesLength}
-            percentage={usersData.percentage}
+            percentage={Math.ceil(usersData.percentage)}
             totalDeliveries={usersData.totalUsersLength}
           />
           <div className={'w-[275px] border-b-[.1px] border-b-darkGreen '} />

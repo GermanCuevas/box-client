@@ -12,6 +12,7 @@ import { usePostAddPackageMutation } from '@/store/services/adminApi';
 
 import toastAlert from '@/utils/toastifyAlert';
 import { convertDateToString } from '@/utils/convertDateToString';
+import Link from 'next/link';
 
 interface AddPackageProps {
   // props?
@@ -70,7 +71,9 @@ const AddPackage: React.FC<AddPackageProps> = () => {
     <div className="w-full flex flex-col items-center justify-start pt-2 px-7">
       <div>
         <div className="mb-3 mt-4  tracking-normal w-full">
-          <LemmonButton title="agregar paquetes" width={'w-full'} />
+          <Link href={'admin-home'}>
+            <LemmonButton title="agregar paquetes" width={'w-full'} />
+          </Link>
         </div>
         <div className="w-full ">
           <div className="bg-white  pt-[35px] pr-[20px] pb-5 pl-[20px] rounded-[13px] ">
